@@ -4,8 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import { Engine, Render, Bodies, World } from 'matter-js';
 
 export default function StartPage() {
-  const [showCircle, setShowCircle] = useState(false);
   const [buttonClicked, setButtonClicked] = useState(false);
+  const [showCircle, setShowCircle] = useState(false);
   const scene = useRef(null);
   const engine = useRef(Engine.create());
   const buttonRef = useRef(null);
@@ -34,6 +34,13 @@ export default function StartPage() {
 
     Render.run(render);
 
+    const runner = () => {
+      Engine.update(engine.current, 16);
+      requestAnimationFrame(runner);
+    };
+
+    runner();
+
     return () => {
       Render.stop(render);
       World.clear(engine.current.world, false);
@@ -43,49 +50,47 @@ export default function StartPage() {
   }, []);
 
   const handleClick = () => {
-    // Trigger button disappearance animation
     setButtonClicked(true);
 
-    const runner = () => {
-      Engine.update(engine.current, 16);
-      requestAnimationFrame(runner);
-    };
+    setTimeout(() => {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const radius = rect.width / 2;
 
-    runner();
-
-    setShowCircle(true);
-
-    // Get the button dimensions and position
-    const rect = buttonRef.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const radius = rect.width / 2;
-
-    // Add the circle to the Matter.js world
-    const circle = Bodies.circle(cx, cy, radius, {
-      restitution: 0.9, // Bounciness
-      friction: 0.005, // Low friction for smooth motion
-      render: {
-        fillStyle: '#fbbf24' // Tailwind yellow-500 color
-      }
-    });
-
-    // World.add(engine.current.world, [circle]);
+      const circle = Bodies.circle(cx, cy, radius, {
+        restitution: 0.9,
+        friction: 0.005,
+        render: {
+          fillStyle: '#fbbf24'
+        }
+      });
+      
+      setShowCircle(true);
+      World.add(engine.current.world, [circle]);
+    }, 300);
   };
 
   return (
-    <div className="relative w-full h-screen bg-gray-100">
+    <div className="relative w-full h-screen">
       <div ref={scene} className="absolute inset-0 z-0 justify-center" />
-        <div className="flex items-center justify-center w-full h-screen">
+      <div className="flex items-center justify-center w-full h-screen">
+        {!showCircle && (
           <button
             ref={buttonRef}
             className={`bg-yellow-500 hover:bg-yellow-300 text-white font-bold rounded-full transform transition-all duration-300 ${
-              buttonClicked ? 'opacity-100' : 'opacity-100'
+              buttonClicked ? 'h-20 w-20' : 'h-12 w-40'
             } focus:outline-none z-10`}
             onClick={handleClick}>
-            Get to know me
+            <span
+              className={`transition-opacity duration-300 ${
+                buttonClicked ? 'opacity-0' : 'opacity-100'
+              }`}>
+              Get to know me
+            </span>
           </button>
-        </div>
+        )}
+      </div>
     </div>
   );
 }
