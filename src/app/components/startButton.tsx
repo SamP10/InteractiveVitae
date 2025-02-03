@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Bodies, World } from 'matter-js';
+import { Bodies } from 'matter-js';
 
-export default function StartButton({ engine }) {
+export default function StartButton({ onAddBody }) {
   const [buttonClicked, setButtonClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
   const buttonRef = useRef(null);
@@ -26,7 +26,8 @@ export default function StartButton({ engine }) {
       });
 
       setShowCircle(true);
-      World.add(engine.world, [circle]);
+
+      onAddBody(circle);
     }, 300);
   };
 
