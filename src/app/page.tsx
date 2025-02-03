@@ -1,4 +1,4 @@
-import StartButton from './components/startButton';
+import WorldContent from "./components/worldContent";
 export default function StartPage() {
-  return <StartButton></StartButton>;
+  return <WorldContent></WorldContent>;
 }
