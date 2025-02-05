@@ -21,7 +21,7 @@ export interface IBendPipeConfig {
     color?: string;
 }
 
-export interface ICircleArcConfig {
+export interface IQuarterPipeConfig {
     x?: number;
     y?: number;
     startAngle?: ANGLES;
@@ -30,5 +30,15 @@ export interface ICircleArcConfig {
     innerRadius?: number;
     outerNumPoints?: number;
     innerNumPoints?: number;
+    color?: string;
+}
+
+export interface ICircleArcConfig {
+    x?: number;
+    y?: number;
+    startAngle?: ANGLES;
+    arcAngle?: ANGLES;
+    radius?: number;
+    numPoints?: number;
     color?: string;
 }
