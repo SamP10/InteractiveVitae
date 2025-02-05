@@ -1,6 +1,6 @@
 import { Bodies } from 'matter-js';
 import { ANGLES } from './angleConstants';
-import { IBendPipeConfig, ICircleArcConfig, IQuarterPipeConfig, IStraightPipeConfig } from './types/pipes';
+import { IBendPipeConfig, ICircleArcConfig, IQuarterPipeConfig, IStraightPipeConfig } from './types/Pipes';
 
 export function verticalPipe({
     x = 0,
@@ -48,71 +48,6 @@ export function horizontalPipe({
             }
         })
     ];
-}
-
-export function fullPipeCurve(diameter: number) {
-    const pipeCurves = [];
-    const radius = diameter + 15;
-    const innerRadius = 10;
-    let x = 110;
-    let y = 0;
-    pipeCurves.push(...quarterPipe({ x, y, startAngle: ANGLES[90], radius, innerRadius }));
-    pipeCurves.push(
-        ...uBendPipe({
-            x,
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius,
-            innerRadius
-        })
-    );
-    pipeCurves.push(
-        ...uBendPipe({
-            x,
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius,
-            innerRadius
-        })
-    );
-    pipeCurves.push(
-        ...uBendPipe({
-            x,
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius,
-            innerRadius
-        })
-    );
-    pipeCurves.push(
-        ...uBendPipe({
-            x,
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius,
-            innerRadius
-        })
-    );
-    pipeCurves.push(
-        ...sBendPipe({
-            x,
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[90]],
-            radius,
-            innerRadius
-        })
-    );
-    pipeCurves.push(
-        ...sBendPipe({
-            x: (x += radius + innerRadius),
-            y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[90]],
-            radius,
-            innerRadius
-        })
-    );
-
-    return pipeCurves;
 }
 
 export function sBendPipe({
