@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { Bodies } from 'matter-js';
 
-export default function StartButton({ onAddBody, onSetRadius }) {
+export default function StartButton({ onAddBodies,onSetRadius }) {
   const [buttonClicked, setButtonClicked] = useState(false);
   const [dropBall, setDropBall] = useState(false);
   const buttonRef = useRef(null);
@@ -28,7 +28,7 @@ export default function StartButton({ onAddBody, onSetRadius }) {
 
       setDropBall(true);
 
-      onAddBody(circle);
+      onAddBodies([circle]);
     }, 300);
   };
 
