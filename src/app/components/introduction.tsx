@@ -3,8 +3,9 @@
 import { Bodies } from 'matter-js';
 import { useEffect, useRef } from 'react';
 import { fullPipeCurve } from './prefabs/pipes';
+import { IIntroductionConfig } from './types/components';
 
-export default function Introduction({ onAddBodies, radius, width, height }) {
+export default function Introduction({ onAddBodies, radius, width, height }: IIntroductionConfig) {
     const ballAdded = useRef(false);
 
     useEffect(() => {
@@ -29,7 +30,7 @@ export default function Introduction({ onAddBodies, radius, width, height }) {
         }
     }, []);
 
-    const addPipes = (radius) => {
+    const addPipes = (radius: number) => {
         const diameter = radius * 2;
 
         onAddBodies(fullPipeCurve(diameter));

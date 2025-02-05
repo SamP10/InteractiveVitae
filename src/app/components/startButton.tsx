@@ -2,8 +2,9 @@
 
 import { useState, useRef } from 'react';
 import { Bodies } from 'matter-js';
+import { IStartButtonConfig } from './types/components';
 
-export default function StartButton({ onAddBodies, onSetRadius }) {
+export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
     const buttonRef = useRef(null);

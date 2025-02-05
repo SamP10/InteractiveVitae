@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, Render, World } from 'matter-js';
+import { Engine, Render, World, Bodies } from 'matter-js';
 import StartButton from './startButton';
 import Introduction from './introduction';
 
@@ -60,7 +60,7 @@ export default function WorldContent() {
         };
     }, [innerHeight, innerWidth]);
 
-    const addBodies = (bodies) => {
+    const addBodies = (bodies: Bodies[]) => {
         bodiesRef.current.push(...bodies);
         World.add(engine.current.world, bodies);
     };

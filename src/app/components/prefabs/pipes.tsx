@@ -1,5 +1,6 @@
 import { Bodies } from 'matter-js';
 import { ANGLES } from './angleConstants';
+import { IBendPipeConfig, ICircleArcConfig, IQuarterPipeConfig, IStraightPipeConfig } from './types/pipes';
 
 export function verticalPipe({
     x = 0,
@@ -8,7 +9,7 @@ export function verticalPipe({
     width = 500,
     height = 700,
     color = '#fbbf24'
-}): Bodies[] {
+}: IStraightPipeConfig): Bodies[] {
     return [
         Bodies.rectangle(x, y, width, height, {
             isStatic: true,
@@ -32,7 +33,7 @@ export function horizontalPipe({
     width = 500,
     height = 700,
     color = '#fbbf24'
-}): Bodies[] {
+}: IStraightPipeConfig): Bodies[] {
     return [
         Bodies.rectangle(x, y, width, height, {
             isStatic: true,
@@ -49,7 +50,7 @@ export function horizontalPipe({
     ];
 }
 
-export function fullPipeCurve(diameter) {
+export function fullPipeCurve(diameter: number) {
     const pipeCurves = [];
     const radius = diameter + 15;
     const innerRadius = 10;
@@ -124,7 +125,7 @@ export function sBendPipe({
     outerNumPoints = 15,
     innerNumPoints = 3,
     color = '#fbbf24'
-}) {
+}: IBendPipeConfig) {
     let secondAngleX = x;
 
     let secondAngleY = y;
@@ -174,7 +175,7 @@ export function uBendPipe({
     outerNumPoints = 15,
     innerNumPoints = 3,
     color = '#fbbf24'
-}) {
+}: IBendPipeConfig) {
     return [
         ...quarterPipe({
             x,
@@ -211,7 +212,7 @@ export function quarterPipe({
     outerNumPoints = 15,
     innerNumPoints = 3,
     color = '#fbbf24'
-}) {
+}: IQuarterPipeConfig) {
     return [
         // Outer arc
         ...circleArc({ x, y, startAngle, arcAngle, radius, numPoints: outerNumPoints, color }),
@@ -236,7 +237,7 @@ function circleArc({
     radius = 110,
     numPoints = 60,
     color = '#fbbf24'
-}): Bodies[] {
+}: ICircleArcConfig): Bodies[] {
     const curveBodies = [];
 
     for (let i = 0; i < numPoints; i++) {
