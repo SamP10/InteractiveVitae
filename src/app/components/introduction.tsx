@@ -2,27 +2,33 @@
 
 import { Bodies } from 'matter-js';
 import { useEffect, useRef } from 'react';
+import { fullPipeCurve } from './prefabs/pipes';
 
-export default function Introduction({ onAddBody, radius }) {
+export default function Introduction({ onAddBodies, radius }) {
   const ballAdded = useRef(false);
 
   useEffect(() => {
     if (!ballAdded.current) {
-      const circle = Bodies.circle(50, -50, radius, {
-        restitution: 0.9,
-        friction: 0.005,
+      addPipes(radius);
+
+      const circle = Bodies.circle(52, -50, radius, {
+        restitution: 0,
+        friction: 0.02,
         render: {
           fillStyle: '#fbbf24'
         }
       });
 
-      onAddBody(circle);
+      onAddBodies([circle]);
       ballAdded.current = true;
     }
   }, []);
 
-  return (
-    <div className="relative w-full h-screen">
-    </div>
-  );
+  const addPipes = (radius) => {
+    const diameter = radius * 2;
+
+    onAddBodies(fullPipeCurve(diameter));
+  };
+
+  return <div className="relative w-full h-screen"></div>;
 }
