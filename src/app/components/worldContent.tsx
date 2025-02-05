@@ -18,7 +18,6 @@ export default function WorldContent() {
   const bodiesRef = useRef([]);
   const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
   const [radius, setRadius] = useState(0);
-  let timesCalled = 0;
 
 
   const [{ innerHeight, innerWidth }, setInnerWidthHeight] = useState({
@@ -62,9 +61,9 @@ export default function WorldContent() {
     };
   }, [innerHeight, innerWidth]);
 
-  const addBody = (body) => {
-    bodiesRef.current.push(body);
-    World.add(engine.current.world, [body]);
+  const addBodies = (bodies) => {
+    bodiesRef.current.push(...bodies);
+    World.add(engine.current.world, bodies);
   };
 
   const cleanupOutOfBoundBodies = () => {
@@ -93,8 +92,8 @@ export default function WorldContent() {
   return (
     <div className="relative w-full h-screen">
       <div ref={scene} className="absolute inset-0 z-0" />
-      {currentPage === PAGE_STATE.START && <StartButton onAddBody={addBody} onSetRadius={setRadius} />}
-      {currentPage === PAGE_STATE.INTRO && <Introduction onAddBody={addBody} radius={radius} />}
+      {currentPage === PAGE_STATE.START && <StartButton onAddBodies={addBodies} onSetRadius={setRadius} />}
+      {currentPage === PAGE_STATE.INTRO && <Introduction onAddBodies={addBodies} radius={radius} />}
       {currentPage === PAGE_STATE.QUALIFICATIONS && <p>QU</p>}
       {currentPage === PAGE_STATE.PROJECTS && <p>Projects Content</p>}
     </div>
