@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, Render, World, Bodies } from 'matter-js';
+import { Engine, Render, World, Bodies, Events } from 'matter-js';
 import StartButton from './startButton';
 import Introduction from './introduction';
 
@@ -100,6 +100,7 @@ export default function WorldContent() {
                     radius={radius}
                     width={innerWidth}
                     height={innerHeight}
+                    engine={engine}
                 />
             )}
             {currentPage === PAGE_STATE.QUALIFICATIONS && <p>QU</p>}

@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Bodies } from 'matter-js';
-import { IStartButtonConfig } from './types/components';
+import { IStartButtonConfig } from './types/Components';
 
 export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -16,7 +16,13 @@ export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonCo
             const rect = buttonRef.current.getBoundingClientRect();
             const cx = rect.left + rect.width / 2;
             const cy = rect.top + rect.height / 2;
-            const radius = rect.width / 2;
+            let radius;
+
+            if (window.innerWidth < 768) {
+                radius = 15;
+            } else {
+                radius = rect.width / 2;
+            }
             onSetRadius(radius);
 
             const circle = Bodies.circle(cx, cy, radius, {
@@ -38,16 +44,23 @@ export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonCo
             {!dropBall && (
                 <button
                     ref={buttonRef}
-                    className={`bg-yellow-500 hover:bg-yellow-300 text-white font-bold rounded-full transform transition-all duration-300 ${
-                        buttonClicked ? 'h-20 w-20' : 'h-12 w-40'
-                    } focus:outline-none z-10`}
+                    className={`bg-yellow-500 hover:bg-yellow-300 text-white font-bold rounded-full transform transition-all duration-300 
+                        ${
+                            buttonClicked
+                                ? 'md:h-20 md:w-20 sm:h-10 sm:w-10'
+                                : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
+                        }  
+                        focus:outline-none z-10`}
                     onClick={handleClick}>
-                    <span
-                        className={`transition-opacity duration-300 ${
-                            buttonClicked ? 'opacity-0' : 'opacity-100'
-                        }`}>
-                        Get to know me
-                    </span>
+                    
+                    {!buttonClicked && (
+                        <span
+                            className={`transition-opacity duration-300 md:text-base sm:test-sm${
+                                buttonClicked ? 'opacity-0' : 'opacity-100'
+                            }`}>
+                            Get to know me
+                        </span>
+                    )}
                 </button>
             )}
         </div>
