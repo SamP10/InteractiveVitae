@@ -1,4 +1,4 @@
-import { Bodies } from 'matter-js';
+import { Bodies, Engine } from 'matter-js';
 
 export function AddBodiesFunction(bodiesToAdd: Bodies[]): void;
 export function OnSetRadius(radius: number): void;
@@ -8,6 +8,7 @@ export interface IIntroductionConfig {
     radius: number;
     width: number;
     height: number;
+    engine: Engine;
 };
 
 export interface IStartButtonConfig {
