@@ -1,41 +1,46 @@
 import { Bodies, Constraint, Body } from 'matter-js';
 
-const Car = ({ x, y, width, height, wheelSize }) => {
-    const group = Body.nextGroup(true);
+export default function Car({ x, y, width, height, wheelSize }) {
+    const group = Body.nextGroup(true),
+        wheelXOffset = width * 0.5,
+        wheelYOffset = 0;
 
-    const body = Bodies.rectangle(x, y, width, height, {
-        collisionFilter: { group }
+    const chassis = Bodies.rectangle(x, y, width, height, {
+            collisionFilter: {
+                group: group
+            },
+            density: 0.005
+        });
+
+    const wheelA = Bodies.circle(x + -wheelXOffset, y + wheelYOffset, wheelSize, {
+        collisionFilter: {
+            group: group
+        },
+        friction: 0.01
     });
 
-    const wheelA = Bodies.circle(x - width / 2, y + height / 2, wheelSize, {
-        collisionFilter: { group },
-        friction: 0.8,
-        restitution: 0
-    });
-
-    const wheelB = Bodies.circle(x + width / 2, y + height / 2, wheelSize, {
-        collisionFilter: { group },
-        friction: 0.8,
-        restitution: 0
+    const wheelB = Bodies.circle(x + wheelXOffset, y + wheelYOffset, wheelSize, {
+        collisionFilter: {
+            group: group
+        },
+        friction: 0.01
     });
 
     const axelA = Constraint.create({
-        bodyB: body,
-        pointB: { x: -width / 4, y: height / 2 },
+        bodyB: chassis,
+        pointB: { x: -wheelXOffset, y: wheelYOffset },
         bodyA: wheelA,
         stiffness: 0.5,
         length: 0
     });
 
     const axelB = Constraint.create({
-        bodyB: body,
-        pointB: { x: width / 4, y: height / 2 },
+        bodyB: chassis,
+        pointB: { x: wheelXOffset, y: wheelYOffset },
         bodyA: wheelB,
         stiffness: 0.5,
         length: 0
     });
 
-    return [body, wheelA, wheelB, axelA, axelB];
-};
-
-export default Car;
+    return [chassis, wheelA, wheelB, axelA, axelB];;
+}
