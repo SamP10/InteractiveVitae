@@ -67,7 +67,7 @@ export default function WorldContent() {
 
     const cleanupOutOfBoundBodies = () => {
         bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (body.type !== 'constraint' && body.position.y > innerHeight) {
+            if (body.type !== 'constraint' && body.type !== 'composite' && body.position.y > innerHeight) {
                 World.remove(engine.current.world, body);
                 return false;
             }
