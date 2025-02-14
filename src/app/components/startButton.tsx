@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { Bodies } from 'matter-js';
 import { IStartButtonConfig } from './types/Components';
 
-export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonConfig) {
+export default function StartButton({ onAddBodies, onSetRadius, onMovePageState }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
     const buttonRef = useRef(null);
@@ -37,6 +37,10 @@ export default function StartButton({ onAddBodies, onSetRadius }: IStartButtonCo
 
             onAddBodies([circle]);
         }, 300);
+
+        setTimeout(() => {
+            onMovePageState()
+        }, 1000);
     };
 
     return (

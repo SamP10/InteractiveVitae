@@ -45,23 +45,59 @@ export function getPipes(diameter: number) {
         })
     );
     pipeCurves.push(
-        ...sBendPipe({
+        ...uBendPipe({
             x,
             y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[90]],
+            angles: [ANGLES[270], ANGLES[360]],
             radius,
             innerRadius
         })
     );
     pipeCurves.push(
-        ...sBendPipe({
-            x: (x += radius + innerRadius),
+        ...uBendPipe({
+            x,
             y: (y += radius + innerRadius),
-            angles: [ANGLES[270], ANGLES[90]],
+            angles: [ANGLES[180], ANGLES[90]],
             radius,
             innerRadius
         })
     );
+    pipeCurves.push(
+        ...uBendPipe({
+            x,
+            y: (y += radius + innerRadius),
+            angles: [ANGLES[270], ANGLES[360]],
+            radius,
+            innerRadius
+        })
+    );
+    pipeCurves.push(
+        ...uBendPipe({
+            x,
+            y: (y += radius + innerRadius),
+            angles: [ANGLES[180], ANGLES[90]],
+            radius,
+            innerRadius
+        })
+    );
+    // pipeCurves.push(
+    //     ...sBendPipe({
+    //         x,
+    //         y: (y += radius + innerRadius),
+    //         angles: [ANGLES[270], ANGLES[90]],
+    //         radius,
+    //         innerRadius
+    //     })
+    // );
+    // pipeCurves.push(
+    //     ...sBendPipe({
+    //         x: (x += radius + innerRadius),
+    //         y: (y += radius + innerRadius),
+    //         angles: [ANGLES[270], ANGLES[90]],
+    //         radius,
+    //         innerRadius
+    //     })
+    // );
 
     return pipeCurves;
 }
