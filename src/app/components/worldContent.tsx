@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Engine, Render, World, Bodies, Events } from 'matter-js';
 import StartButton from './startButton';
-import Introduction from './introduction';
+import Introduction from './introduction/introduction';
 
 enum PAGE_STATE {
     START = 'START',
@@ -67,9 +67,8 @@ export default function WorldContent() {
 
     const cleanupOutOfBoundBodies = () => {
         bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (body.position.y > innerHeight) {
+            if (body.type !== 'constraint' && body.position.y > innerHeight) {
                 World.remove(engine.current.world, body);
-                movePageState();
                 return false;
             }
             return true;
@@ -92,7 +91,11 @@ export default function WorldContent() {
         <div className="relative w-full h-screen">
             <div ref={scene} className="absolute inset-0 z-0" />
             {currentPage === PAGE_STATE.START && (
-                <StartButton onAddBodies={addBodies} onSetRadius={setRadius} />
+                <StartButton
+                    onAddBodies={addBodies}
+                    onSetRadius={setRadius}
+                    onMovePageState={movePageState}
+                />
             )}
             {currentPage === PAGE_STATE.INTRO && (
                 <Introduction
@@ -103,8 +106,8 @@ export default function WorldContent() {
                     engine={engine}
                 />
             )}
-            {currentPage === PAGE_STATE.QUALIFICATIONS && <p>QU</p>}
-            {currentPage === PAGE_STATE.PROJECTS && <p>Projects Content</p>}
+            {currentPage === PAGE_STATE.QUALIFICATIONS && <p></p>}
+            {currentPage === PAGE_STATE.PROJECTS && <p></p>}
         </div>
     );
 }
