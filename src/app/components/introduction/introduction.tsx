@@ -14,14 +14,10 @@ export default function Introduction({
     engine
 }: IIntroductionConfig) {
     const intervalId = useRef(null);
-    // const ballRef = useRef(null);
-    // const floorRef = useRef(null);
 
     useEffect(() => {
         const floorCollisionFilterGroup = Body.nextGroup(true);
         const ballCollisionFilterGroup = Body.nextGroup(true);
-
-        addPipes(radius);
 
         const spawnBall = () => {
             const ball = Bodies.circle(radius, -50, radius, {
@@ -38,33 +34,34 @@ export default function Introduction({
             onAddBodies([ball]);
         };
 
-        if(!intervalId.current) {
-            intervalId.current = true
-            setInterval(spawnBall, 1500);
-        }
+            addPipes(radius);
 
-        const floor = Bodies.rectangle(width / 2, height, width, 10, {
-            isStatic: true,
-            render: { fillStyle: '#fbbf24' },
-            collisionFilter: {
-                group: floorCollisionFilterGroup,
-                mask: ballCollisionFilterGroup
+            if (!intervalId.current) {
+                intervalId.current = true;
+                setInterval(spawnBall, 1500);
             }
-        });
 
-        // const car = Car({
-        //     x: width/4,
-        //     y: height - 30,
-        //     width: radius * 2,
-        //     height: radius/4,
-        //     wheelSize: radius/4,
-        //     wheelBase: radius * 2
-        // });
+            const floor = Bodies.rectangle(width / 2, height, width, 10, {
+                isStatic: true,
+                render: { fillStyle: '#fbbf24' },
+                collisionFilter: {
+                    group: floorCollisionFilterGroup,
+                    mask: ballCollisionFilterGroup
+                }
+            });
 
-        onAddBodies([floor]);
+            // const car = Car({
+            //     x: width / 4,
+            //     y: height - 30,
+            //     width: radius * 2,
+            //     height: radius / 4,
+            //     wheelSize: radius / 4,
+            //     wheelBase: radius * 2
+            // });
 
-        return () => {
-        };
+            onAddBodies([floor]);
+
+        return () => {};
     }, [engine, onAddBodies, radius, width, height]);
 
     // const handleCollision = (event) => {
