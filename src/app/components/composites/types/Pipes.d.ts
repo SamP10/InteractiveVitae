@@ -1,44 +1,31 @@
 import { ANGLES } from '../../prefabs/angleConstants';
 
-export interface IStraightPipeConfig {
+export interface IPipeDefaultConfig {
     x: number;
     y: number;
-    offset: number;
     width: number;
     height: number;
     color: string;
+    composite?: Composite;
 }
 
-export interface IBendPipeConfig {
-    x?: number;
-    y?: number;
+export interface IStraightPipeConfig extends IPipeDefaultConfig {
+    offset: number;
+}
+
+export interface IBendPipeConfig extends Partial<IPipeDefaultConfig> {
     angles?: ANGLES[];
     arcAngle?: ANGLES;
     radius?: number;
     innerRadius?: number;
     outerNumPoints?: number;
     innerNumPoints?: number;
-    color?: string;
 }
 
-export interface IQuarterPipeConfig {
-    x?: number;
-    y?: number;
+export interface IQuarterPipeConfig extends Partial<IBendPipeConfig> {
     startAngle?: ANGLES;
-    arcAngle?: ANGLES;
-    radius?: number;
-    innerRadius?: number;
-    outerNumPoints?: number;
-    innerNumPoints?: number;
-    color?: string;
 }
 
-export interface ICircleArcConfig {
-    x?: number;
-    y?: number;
-    startAngle?: ANGLES;
-    arcAngle?: ANGLES;
-    radius?: number;
+export interface ICircleArcConfig extends Partial<IQuarterPipeConfig> {
     numPoints?: number;
-    color?: string;
 }

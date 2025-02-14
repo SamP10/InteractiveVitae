@@ -1,4 +1,4 @@
-import { Bodies } from 'matter-js';
+import { Bodies, Composite } from 'matter-js';
 import { ANGLES } from '../prefabs/angleConstants';
 import {
     IBendPipeConfig,
@@ -8,38 +8,66 @@ import {
 } from './types/Pipes';
 
 export default class PipeFactory {
-    static vertical({ x, y, width, height, color, offset }: IStraightPipeConfig): Bodies[] {
-        return [
+    static vertical({
+        x,
+        y,
+        width,
+        height,
+        color,
+        offset,
+        composite = Composite.create()
+    }: IStraightPipeConfig): Composite {
+        Composite.add(
+            composite,
             Bodies.rectangle(x, y, width, height, {
                 isStatic: true,
                 render: {
                     fillStyle: color
                 }
-            }),
+            })
+        );
+
+        Composite.add(
+            composite,
             Bodies.rectangle(x + offset, y, width, height, {
                 isStatic: true,
                 render: {
                     fillStyle: color
                 }
             })
-        ];
+        );
+
+        return composite;
     }
 
-    static horizontal({ x, y, offset, width, height, color }: IStraightPipeConfig): Bodies[] {
-        return [
+    static horizontal({
+        x,
+        y,
+        offset,
+        width,
+        height,
+        color,
+        composite = Composite.create()
+    }: IStraightPipeConfig): Composite {
+        Composite.add(
+            composite,
             Bodies.rectangle(x, y, width, height, {
                 isStatic: true,
                 render: {
                     fillStyle: color
                 }
-            }),
+            })
+        );
+        Composite.add(
+            composite,
             Bodies.rectangle(x, y + offset, width, height, {
                 isStatic: true,
                 render: {
                     fillStyle: color
                 }
             })
-        ];
+        );
+        return composite;
     }
 
     static sBendPipe({
@@ -51,12 +79,13 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24'
-    }: IBendPipeConfig) {
+        color = '#fbbf24',
+        composite = Composite.create()
+    }: IBendPipeConfig): Composite {
         let secondAngleX = x;
-    
+
         let secondAngleY = y;
-    
+
         if (angles[0] === ANGLES[180] && angles[1] === ANGLES[360]) {
             secondAngleY -= radius + innerRadius;
         } else if (angles[0] === ANGLES[360] && angles[1] === ANGLES[180]) {
@@ -66,30 +95,34 @@ export default class PipeFactory {
         } else if (angles[0] === ANGLES[270] && angles[1] === ANGLES[90]) {
             secondAngleX += radius + innerRadius;
         }
-        return [
-            ...PipeFactory.quarterPipe({
-                x,
-                y,
-                arcAngle,
-                startAngle: angles[0],
-                radius,
-                innerRadius,
-                outerNumPoints,
-                innerNumPoints,
-                color
-            }),
-            ...PipeFactory.quarterPipe({
-                x: secondAngleX,
-                y: secondAngleY,
-                arcAngle,
-                startAngle: angles[1],
-                radius,
-                innerRadius,
-                outerNumPoints,
-                innerNumPoints,
-                color
-            })
-        ];
+
+        PipeFactory.quarterPipe({
+            x,
+            y,
+            arcAngle,
+            startAngle: angles[0],
+            radius,
+            innerRadius,
+            outerNumPoints,
+            innerNumPoints,
+            color,
+            composite
+        });
+
+        PipeFactory.quarterPipe({
+            x: secondAngleX,
+            y: secondAngleY,
+            arcAngle,
+            startAngle: angles[1],
+            radius,
+            innerRadius,
+            outerNumPoints,
+            innerNumPoints,
+            color,
+            composite
+        });
+
+        return composite;
     }
 
     static uBendPipe({
@@ -101,32 +134,34 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24'
-    }: IBendPipeConfig) {
-        return [
-            ...PipeFactory.quarterPipe({
-                x,
-                y,
-                arcAngle,
-                startAngle: angles[0],
-                radius,
-                innerRadius,
-                outerNumPoints,
-                innerNumPoints,
-                color
-            }),
-            ...PipeFactory.quarterPipe({
-                x,
-                y,
-                arcAngle,
-                startAngle: angles[1],
-                radius,
-                innerRadius,
-                outerNumPoints,
-                innerNumPoints,
-                color
-            })
-        ];
+        color = '#fbbf24',
+        composite = Composite.create()
+    }: IBendPipeConfig): Composite {
+        PipeFactory.quarterPipe({
+            x,
+            y,
+            arcAngle,
+            startAngle: angles[0],
+            radius,
+            innerRadius,
+            outerNumPoints,
+            innerNumPoints,
+            color,
+            composite
+        });
+        PipeFactory.quarterPipe({
+            x,
+            y,
+            arcAngle,
+            startAngle: angles[1],
+            radius,
+            innerRadius,
+            outerNumPoints,
+            innerNumPoints,
+            color,
+            composite
+        });
+        return composite;
     }
 
     static quarterPipe({
@@ -138,22 +173,32 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24'
+        color = '#fbbf24',
+        composite = Composite.create()
     }: IQuarterPipeConfig) {
-        return [
-            // Outer arc
-            ...PipeFactory.circleArc({ x, y, startAngle, arcAngle, radius, numPoints: outerNumPoints, color }),
-            // Inner arc
-            ...PipeFactory.circleArc({
-                x,
-                y,
-                startAngle,
-                arcAngle,
-                radius: innerRadius,
-                numPoints: innerNumPoints,
-                color
-            })
-        ];
+        // Outer arc
+        PipeFactory.circleArc({
+            x,
+            y,
+            startAngle,
+            arcAngle,
+            radius,
+            numPoints: outerNumPoints,
+            color,
+            composite
+        });
+        // Inner arc
+        PipeFactory.circleArc({
+            x,
+            y,
+            startAngle,
+            arcAngle,
+            radius: innerRadius,
+            numPoints: innerNumPoints,
+            color,
+            composite
+        });
+        return composite;
     }
 
     static circleArc({
@@ -163,23 +208,22 @@ export default class PipeFactory {
         arcAngle = ANGLES[90],
         radius = 110,
         numPoints = 60,
-        color = '#fbbf24'
-    }: ICircleArcConfig): Bodies[] {
-        const curveBodies = [];
-    
+        color = '#fbbf24',
+        composite = Composite.create()
+    }: ICircleArcConfig): Composite {
         for (let i = 0; i < numPoints; i++) {
             const angle = startAngle + arcAngle * (i / (numPoints - 1));
             const localX = x + radius * Math.cos(angle);
             const localY = y + radius * Math.sin(angle);
-    
+
             const peg = Bodies.circle(localX, localY, 2.5, {
                 isStatic: true,
                 friction: 0,
                 render: { fillStyle: color }
             });
-            curveBodies.push(peg);
+            Composite.add(composite, peg);
         }
-    
-        return curveBodies;
+
+        return composite;
     }
 }
