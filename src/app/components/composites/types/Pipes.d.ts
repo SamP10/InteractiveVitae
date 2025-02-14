@@ -1,12 +1,12 @@
-import { ANGLES } from '../angleConstants';
+import { ANGLES } from '../../prefabs/angleConstants';
 
 export interface IStraightPipeConfig {
-    x?: number;
-    y?: number;
-    offset?: number;
-    width?: number;
-    height?: number;
-    color?: string;
+    x: number;
+    y: number;
+    offset: number;
+    width: number;
+    height: number;
+    color: string;
 }
 
 export interface IBendPipeConfig {
