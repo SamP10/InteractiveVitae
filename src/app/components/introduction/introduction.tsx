@@ -15,7 +15,7 @@ export default function Introduction({
     const intervalId = useRef(null);
 
     useEffect(() => {
-        const floorCollisionFilterGroup = Body.nextGroup(true);
+        const crossPipeCollisionFilter = Body.nextGroup(true);
         const ballCollisionFilterGroup = Body.nextGroup(true);
 
         const spawnBall = () => {
@@ -27,13 +27,26 @@ export default function Introduction({
                 },
                 collisionFilter: {
                     group: ballCollisionFilterGroup,
-                    mask: floorCollisionFilterGroup
+                    mask: crossPipeCollisionFilter
                 }
             });
-            onAddBodies([ball]);
+
+            const ball2 = Bodies.circle( 500 - radius, -50,radius, {
+                restitution: 0,
+                friction: 0.02,
+                render: {
+                    fillStyle: '#EAB308'
+                },
+                collisionFilter: {
+                    group: ballCollisionFilterGroup,
+                    mask: crossPipeCollisionFilter
+                }
+            });
+
+            onAddBodies([ball, ball2]);
         };
 
-            addPipes(radius);
+            addPipes(radius, ballCollisionFilterGroup, crossPipeCollisionFilter);
 
             if (!intervalId.current) {
                 intervalId.current = true;
