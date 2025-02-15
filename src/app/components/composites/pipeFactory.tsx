@@ -15,9 +15,7 @@ export default class PipeFactory {
         height,
         color,
         offset,
-        composite = Composite.create(),
-        ballCollisionFilterGroup,
-        crossPipeCollisionFilter
+        composite = Composite.create()
     }: IStraightPipeConfig): Composite {
         let pegY = y;
 
@@ -28,10 +26,6 @@ export default class PipeFactory {
                     isStatic: true,
                     render: {
                         fillStyle: color
-                    },
-                    collisionFilter: {
-                        group: crossPipeCollisionFilter,
-                        mask: ballCollisionFilterGroup
                     }
                 })
             );
@@ -41,10 +35,6 @@ export default class PipeFactory {
                     isStatic: true,
                     render: {
                         fillStyle: color
-                    },
-                    collisionFilter: {
-                        group: crossPipeCollisionFilter,
-                        mask: ballCollisionFilterGroup
                     }
                 })
             );
@@ -95,8 +85,8 @@ export default class PipeFactory {
         arcAngle = ANGLES[90],
         radius = 110,
         innerRadius = 15,
-        outerNumPoints = 15,
-        innerNumPoints = 3,
+        outerNumPoints = 8,
+        innerNumPoints = 2,
         color = '#EAB308',
         composite = Composite.create()
     }: IBendPipeConfig): Composite {
@@ -154,8 +144,8 @@ export default class PipeFactory {
         arcAngle = ANGLES[90],
         radius = 110,
         innerRadius = 15,
-        outerNumPoints = 15,
-        innerNumPoints = 3,
+        outerNumPoints = 8,
+        innerNumPoints = 2,
         color = '#EAB308',
         composite = Composite.create()
     }: IBendPipeConfig): Composite {
@@ -193,8 +183,8 @@ export default class PipeFactory {
         arcAngle = ANGLES[90],
         radius = 110,
         innerRadius = 15,
-        outerNumPoints = 15,
-        innerNumPoints = 3,
+        outerNumPoints = 8,
+        innerNumPoints = 2,
         color = '#EAB308',
         composite = Composite.create()
     }: IQuarterPipeConfig) {
