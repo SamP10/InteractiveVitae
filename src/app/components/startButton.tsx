@@ -67,7 +67,7 @@ export default function StartButton({
                     className={`bg-yellow-600 hover:bg-yellow-500 text-white font-bold rounded-full transform transition-all duration-300 
                         ${
                             buttonClicked
-                                ? 'md:h-20 md:w-20 sm:h-10 sm:w-10'
+                                ? 'md:h-10 md:w-10 sm:h-10 sm:w-10'
                                 : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
                         }  
                         focus:outline-none z-10`}
