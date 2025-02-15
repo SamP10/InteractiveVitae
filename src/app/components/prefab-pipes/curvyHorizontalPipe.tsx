@@ -4,11 +4,13 @@ import AbstractPipe from './abstractPipe';
 import PipeFactory from '../composites/pipeFactory';
 
 class CurvyHorizontalPipe extends AbstractPipe {
-    constructor(positionX: number, positionY: number, radius: number, onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void) {
-        super(positionX,
-            positionY,
-            radius,
-            onAddBodies);
+    constructor(
+        positionX: number,
+        positionY: number,
+        radius: number,
+        onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void
+    ) {
+        super(positionX, positionY, radius, onAddBodies);
         this.createBalls(1500);
     }
 
@@ -58,10 +60,14 @@ class CurvyHorizontalPipe extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             offset: this.diameter + 15,
-            width: 100,
-            height: 10,
+            numSegments: 110,
+            segmentLength: 10,
             composite: this.composite,
             color: pipeColor
+        });
+        this.composite.bodies.forEach((body) => {
+            body.collisionFilter.group = this.collisionGroup;
+            body.collisionFilter.mask = this.collisionMask;
         });
         this.onAddBodies([this.composite]);
     }
