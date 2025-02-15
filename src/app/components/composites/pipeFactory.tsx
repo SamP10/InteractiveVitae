@@ -1,5 +1,5 @@
 import { Bodies, Composite } from 'matter-js';
-import { ANGLES } from '../prefabs/angleConstants';
+import { ANGLES } from '../prefab-pipes/angleConstants';
 import {
     IBendPipeConfig,
     ICircleArcConfig,

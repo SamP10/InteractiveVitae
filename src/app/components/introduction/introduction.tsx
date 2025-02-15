@@ -1,9 +1,9 @@
 'use client';
 
-import { Bodies, Body } from 'matter-js';
 import { useEffect, useRef } from 'react';
-import { getPipes } from '../prefabs/IntroductionPipe';
+import CurveyHorizontalPipe from '../prefab-pipes/curvyHorizontalPipe';
 import { IIntroductionConfig } from '../types/Components';
+import CurvyDownPipe from '../prefab-pipes/curvyDownPipe';
 
 export default function Introduction({
     onAddBodies,
@@ -12,46 +12,14 @@ export default function Introduction({
     height,
     engine
 }: IIntroductionConfig) {
-    const intervalId = useRef(null);
+    const addedPipes = useRef(false);
 
     useEffect(() => {
-        const crossPipeCollisionFilter = Body.nextGroup(true);
-        const ballCollisionFilterGroup = Body.nextGroup(true);
-
-        const spawnBall = () => {
-            const ball = Bodies.circle(radius, -50, radius, {
-                restitution: 0,
-                friction: 0.02,
-                render: {
-                    fillStyle: '#EAB308'
-                },
-                collisionFilter: {
-                    group: ballCollisionFilterGroup,
-                    mask: crossPipeCollisionFilter
-                }
-            });
-
-            const ball2 = Bodies.circle( 500 - radius, -50,radius, {
-                restitution: 0,
-                friction: 0.02,
-                render: {
-                    fillStyle: '#EAB308'
-                },
-                collisionFilter: {
-                    group: ballCollisionFilterGroup,
-                    mask: crossPipeCollisionFilter
-                }
-            });
-
-            onAddBodies([ball, ball2]);
-        };
-
-            addPipes(radius, ballCollisionFilterGroup, crossPipeCollisionFilter);
-
-            if (!intervalId.current) {
-                intervalId.current = true;
-                setInterval(spawnBall, 1500);
-            }
+        if(!addedPipes.current) {
+            new CurvyDownPipe(100, -20, radius, onAddBodies);
+            new CurveyHorizontalPipe(300, -20, radius, onAddBodies);
+            addedPipes.current = true;
+        }
 
             // const floor = Bodies.rectangle(width / 2, height, width, 10, {
             //     isStatic: true,
@@ -109,11 +77,11 @@ export default function Introduction({
     //     };
     // }, [engine]);
 
-    const addPipes = (radius: number) => {
-        const diameter = radius * 2;
+    // const addPipes = (radius: number) => {
+    //     const diameter = radius * 2;
 
-        onAddBodies([getPipes(diameter)]);
-    };
+    //     onAddBodies([getPipes(diameter)]);
+    // };
 
     return <div className="relative w-full h-screen"></div>;
 }

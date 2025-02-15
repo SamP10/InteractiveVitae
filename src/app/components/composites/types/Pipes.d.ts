@@ -1,4 +1,4 @@
-import { ANGLES } from '../../prefabs/angleConstants';
+import { ANGLES } from '../../prefab-pipes/angleConstants';
 
 export interface IPipeDefaultConfig {
     x: number;
