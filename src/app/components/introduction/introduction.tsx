@@ -1,10 +1,13 @@
 'use client';
 
-import { Bodies, Events, Body, Composite } from 'matter-js';
 import { useEffect, useRef } from 'react';
-import { getPipes } from '../prefabs/IntroductionPipe';
 import { IIntroductionConfig } from '../types/Components';
-import Car from '../matter-composites/car';
+import {
+    CurvyDownPipe,
+    SuperWigglyPipe,
+    WigglyStraightPipe,
+    CurvyHorizontalPipe
+} from '../prefab-pipes';
 
 export default function Introduction({
     onAddBodies,
@@ -13,53 +16,36 @@ export default function Introduction({
     height,
     engine
 }: IIntroductionConfig) {
-    const intervalId = useRef(null);
+    const addedPipes = useRef(false);
 
     useEffect(() => {
-        const floorCollisionFilterGroup = Body.nextGroup(true);
-        const ballCollisionFilterGroup = Body.nextGroup(true);
+        if (!addedPipes.current) {
+            new CurvyDownPipe(50, -20, radius, onAddBodies);
+            new CurvyHorizontalPipe(200, -20, radius, onAddBodies);
+            new SuperWigglyPipe(500, -20, radius - 10, onAddBodies);
+            new WigglyStraightPipe(1300, -10, radius + 5, onAddBodies);
+            addedPipes.current = true;
+        }
 
-        const spawnBall = () => {
-            const ball = Bodies.circle(radius, -50, radius, {
-                restitution: 0,
-                friction: 0.02,
-                render: {
-                    fillStyle: '#fbbf24'
-                },
-                collisionFilter: {
-                    group: ballCollisionFilterGroup,
-                    mask: floorCollisionFilterGroup
-                }
-            });
-            onAddBodies([ball]);
-        };
+        // const floor = Bodies.rectangle(width / 2, height, width, 10, {
+        //     isStatic: true,
+        //     render: { fillStyle: '#EAB308' },
+        //     collisionFilter: {
+        //         group: floorCollisionFilterGroup,
+        //         mask: ballCollisionFilterGroup
+        //     }
+        // });
 
-            addPipes(radius);
+        // const car = Car({
+        //     x: width / 4,
+        //     y: height - 30,
+        //     width: radius * 2,
+        //     height: radius / 4,
+        //     wheelSize: radius / 4,
+        //     wheelBase: radius * 2
+        // });
 
-            if (!intervalId.current) {
-                intervalId.current = true;
-                setInterval(spawnBall, 1500);
-            }
-
-            const floor = Bodies.rectangle(width / 2, height, width, 10, {
-                isStatic: true,
-                render: { fillStyle: '#fbbf24' },
-                collisionFilter: {
-                    group: floorCollisionFilterGroup,
-                    mask: ballCollisionFilterGroup
-                }
-            });
-
-            // const car = Car({
-            //     x: width / 4,
-            //     y: height - 30,
-            //     width: radius * 2,
-            //     height: radius / 4,
-            //     wheelSize: radius / 4,
-            //     wheelBase: radius * 2
-            // });
-
-            onAddBodies([floor]);
+        // onAddBodies([floor]);
 
         return () => {};
     }, [engine, onAddBodies, radius, width, height]);
@@ -97,11 +83,11 @@ export default function Introduction({
     //     };
     // }, [engine]);
 
-    const addPipes = (radius: number) => {
-        const diameter = radius * 2;
+    // const addPipes = (radius: number) => {
+    //     const diameter = radius * 2;
 
-        onAddBodies(getPipes(diameter));
-    };
+    //     onAddBodies([getPipes(diameter)]);
+    // };
 
     return <div className="relative w-full h-screen"></div>;
 }
