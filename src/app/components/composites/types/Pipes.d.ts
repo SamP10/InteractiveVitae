@@ -3,14 +3,15 @@ import { ANGLES } from '../../prefab-pipes/angleConstants';
 export interface IPipeDefaultConfig {
     x: number;
     y: number;
-    width: number;
-    height: number;
+    numSegments: number,
+    segmentLength: number,
     color: string;
     composite?: Composite;
 }
 
 export interface IStraightPipeConfig extends IPipeDefaultConfig {
     offset: number;
+    decline?: number
 }
 
 export interface IBendPipeConfig extends Partial<IPipeDefaultConfig> {
