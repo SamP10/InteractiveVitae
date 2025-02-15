@@ -16,8 +16,8 @@ export default function Introduction({
 
     useEffect(() => {
         if(!addedPipes.current) {
-            new CurvyDownPipe(100, -20, radius, onAddBodies);
-            new CurveyHorizontalPipe(300, -20, radius, onAddBodies);
+            new CurvyDownPipe(50, -20, radius, onAddBodies);
+            new CurveyHorizontalPipe(200, -20, radius, onAddBodies);
             addedPipes.current = true;
         }
 
