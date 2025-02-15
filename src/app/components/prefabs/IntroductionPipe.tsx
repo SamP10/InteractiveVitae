@@ -3,11 +3,19 @@ import { ANGLES } from './angleConstants';
 import { Composite } from 'matter-js';
 
 export function getPipes(diameter: number): Composite {
+    const composite = Composite.create();
+
+    pipe1(diameter, composite);
+    pipe2(diameter, composite);
+
+    return composite;
+}
+
+function pipe1(diameter: number, composite: Composite) {
     const radius = diameter + 15;
     const innerRadius = 10;
-    let x = radius;
+    const x = radius;
     let y = 0;
-    const composite = Composite.create();
 
     PipeFactory.quarterPipe({ x, y, startAngle: ANGLES[90], radius, innerRadius, composite });
     PipeFactory.uBendPipe({
@@ -81,6 +89,38 @@ export function getPipes(diameter: number): Composite {
         innerRadius,
         composite
     });
+}
 
-    return composite;
+function pipe2(diameter: number, composite: Composite) {
+    const radius = diameter + 15;
+    const innerRadius = 10;
+    let x = 500;
+    let y = 0;
+
+    PipeFactory.quarterPipe({ x, y, startAngle: ANGLES[90], radius, innerRadius, composite });
+    PipeFactory.sBendPipe({
+        x,
+        y: (y += radius + innerRadius),
+        angles: [ANGLES[270], ANGLES[90]],
+        radius,
+        innerRadius,
+        composite
+    });
+    PipeFactory.sBendPipe({
+        x: (x += radius + innerRadius),
+        y: (y += radius + innerRadius),
+        angles: [ANGLES[270], ANGLES[90]],
+        radius,
+        innerRadius,
+        composite
+    });
+    PipeFactory.horizontal({
+        x: (x += diameter + diameter),
+        y,
+        offset: radius,
+        width: 100,
+        height: 10,
+        color: '#EAB308',
+        composite
+    });
 }
