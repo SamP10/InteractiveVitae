@@ -9,7 +9,7 @@ class CurvyDownPipe extends AbstractPipe {
             positionY,
             radius,
             onAddBodies);
-        this.createBalls(1000);
+        this.createBalls(400);
     }
     createPipe(): void {
         const innerRadius = 10;
@@ -105,6 +105,61 @@ class CurvyDownPipe extends AbstractPipe {
             x,
             y: (y += this.diameter + 15 + innerRadius),
             angles: [ANGLES[180], ANGLES[90]],
+            radius: this.diameter + 15,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+
+        });
+
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[270], ANGLES[360]],
+            radius: this.diameter + 15,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+
+        });
+
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[180], ANGLES[90]],
+            radius: this.diameter + 15,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+
+        });
+
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[270], ANGLES[360]],
+            radius: this.diameter + 15,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+
+        });
+
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[180], ANGLES[90]],
+            radius: this.diameter + 15,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+
+        });
+
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[270], ANGLES[360]],
             radius: this.diameter + 15,
             innerRadius,
             composite: this.composite,
