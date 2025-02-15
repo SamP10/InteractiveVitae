@@ -2,7 +2,11 @@ import PipeFactory from '../composites/pipeFactory';
 import { ANGLES } from './angleConstants';
 import { Composite } from 'matter-js';
 
-export function getPipes(diameter: number): Composite {
+export function getPipes(
+    diameter: number,
+    ballCollisionFilterGroup,
+    crossPipeCollisionFilter
+): Composite {
     const composite = Composite.create();
 
     pipe1(diameter, composite);
@@ -114,8 +118,16 @@ function pipe2(diameter: number, composite: Composite) {
         innerRadius,
         composite
     });
+    PipeFactory.sBendPipe({
+        x: (x += radius + innerRadius),
+        y: (y += radius + innerRadius),
+        angles: [ANGLES[270], ANGLES[90]],
+        radius,
+        innerRadius,
+        composite
+    });
     PipeFactory.horizontal({
-        x: (x += diameter + diameter),
+        x: (x += radius + innerRadius),
         y,
         offset: radius,
         width: 100,
