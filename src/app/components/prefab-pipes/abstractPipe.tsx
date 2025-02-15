@@ -1,5 +1,5 @@
 'use client';
-import { Bodies, Composite } from 'matter-js';
+import { Bodies, Composite, Body } from 'matter-js';
 
 export default abstract class AbstractPipe {
     protected balls: Bodies[] = [];
@@ -10,15 +10,17 @@ export default abstract class AbstractPipe {
     protected diameter: number;
     protected composite = Composite.create();
     protected onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void;
-    protected pipeColors: string[] = ['#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9', '#BAE1FF', '#D4A5A5', '#A5D4A5', '#A5A5D4'];
-    private ballColors: string[] = ['#FFB3BA', '#FFDFBA', '#FFFFBA', '#BAFFC9', '#BAE1FF', '#D4A5A5', '#A5D4A5', '#A5A5D4'];;
-
-
+    protected pipeColors: string[] = ['#34A853', '#FBBC05', '#EA4335', '#4285F4', '#F4B400', '#0F9D58', '#DB4437', '#F4B400'];
+    protected collisionGroup: number;
+    protected collisionMask = Body.nextGroup(true);
+    private ballColors: string[] = ['#34A853', '#FBBC05', '#EA4335', '#4285F4', '#F4B400', '#0F9D58', '#DB4437', '#F4B400'];
+    
     constructor(positionX: number, positionY: number, radius: number, onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.radius = radius;
         this.diameter = radius * 2;
+        this.collisionGroup = Body.nextGroup(false);
         this.onAddBodies = onAddBodies;
         this.createPipe();
     }
@@ -44,7 +46,11 @@ export default abstract class AbstractPipe {
             render: {
                 fillStyle: this.ballColors[Math.floor(Math.random() * this.ballColors.length)]
             },
-            label: 'ball'
+            label: 'ball',
+            collisionFilter: {
+                group: this.collisionGroup,
+                mask: this.collisionMask
+            }
         });
         this.balls.push(ball);
         this.onAddBodies([ball]);
