@@ -40,7 +40,7 @@ export default abstract class AbstractPipe {
     private createBall(): void {
         const ball = Bodies.circle(this.positionX, this.positionY, this.radius, {
             restitution: 0,
-            friction: 0.02,
+            friction: 0,
             render: {
                 fillStyle: this.ballColors[Math.floor(Math.random() * this.ballColors.length)]
             },
