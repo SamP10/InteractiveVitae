@@ -11,18 +11,20 @@ export default class PipeFactory {
     static vertical({
         x,
         y,
-        width,
-        height,
+        numSegments,
+        segmentLength,
         color,
         offset,
-        composite = Composite.create()
+        composite = Composite.create(),
+        decline = 0
     }: IStraightPipeConfig): Composite {
         let pegY = y;
+        let pegX = x;
 
-        for (let i = 0; i < width; i++) {
+        for (let i = 0; i < numSegments; i++) {
             Composite.add(
                 composite,
-                Bodies.circle(x + 10, pegY, 2.5 , {
+                Bodies.circle(pegX + 10, pegY, 2.5, {
                     isStatic: true,
                     render: {
                         fillStyle: color
@@ -31,14 +33,15 @@ export default class PipeFactory {
             );
             Composite.add(
                 composite,
-                Bodies.circle(x + offset, pegY, 2.5 , {
+                Bodies.circle(pegX + offset, pegY, 2.5, {
                     isStatic: true,
                     render: {
                         fillStyle: color
                     }
                 })
             );
-            pegY = x + i * height * 1.1;
+            pegY = y + i * segmentLength * 1.1;
+            pegX += decline;
         }
         return composite;
     }
@@ -47,8 +50,8 @@ export default class PipeFactory {
         x,
         y,
         offset,
-        width,
-        height,
+        numSegments,
+        segmentLength,
         color,
         decline = 1.5,
         composite = Composite.create()
@@ -56,7 +59,7 @@ export default class PipeFactory {
         let pegX = x;
         let pegY = y;
 
-        for (let i = 0; i < width; i++) {
+        for (let i = 0; i < numSegments; i++) {
             Composite.add(
                 composite,
                 Bodies.circle(pegX, pegY + 10, 2.5, {
@@ -75,8 +78,46 @@ export default class PipeFactory {
                     }
                 })
             );
-            pegX = x + i * height * 1.1;
-            pegY += decline; // apply decline to y axis
+            pegX = x + i * segmentLength * 1.1;
+            pegY += decline;
+        }
+        return composite;
+    }
+
+    static horizontalLeft({
+        x,
+        y,
+        offset,
+        numSegments,
+        segmentLength,
+        color,
+        decline = 1.5,
+        composite = Composite.create()
+    }: IStraightPipeConfig): Composite {
+        let pegX = x;
+        let pegY = y;
+
+        for (let i = 0; i < numSegments; i++) {
+            Composite.add(
+                composite,
+                Bodies.circle(pegX, pegY + 10, 2.5, {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    }
+                })
+            );
+            Composite.add(
+                composite,
+                Bodies.circle(pegX, pegY + offset, 2.5, {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    }
+                })
+            );
+            pegX = x - i * segmentLength * 1.1;
+            pegY += decline;
         }
         return composite;
     }
@@ -98,16 +139,26 @@ export default class PipeFactory {
         let secondAngleY = y;
 
         const anglePairs = [
-            { first: ANGLES[180], second: ANGLES[360], adjustX: 0, adjustY: -(radius + innerRadius) },
+            {
+                first: ANGLES[180],
+                second: ANGLES[360],
+                adjustX: 0,
+                adjustY: -(radius + innerRadius)
+            },
             { first: ANGLES[360], second: ANGLES[180], adjustX: radius + innerRadius, adjustY: 0 },
-            { first: ANGLES[90], second: ANGLES[270], adjustX: 0, adjustY: -(radius + innerRadius) },
+            {
+                first: ANGLES[90],
+                second: ANGLES[270],
+                adjustX: 0,
+                adjustY: -(radius + innerRadius)
+            },
             { first: ANGLES[270], second: ANGLES[90], adjustX: radius + innerRadius, adjustY: 0 }
         ];
 
-        anglePairs.forEach(pair => {
+        anglePairs.forEach((pair) => {
             if (angles[0] === pair.first && angles[1] === pair.second) {
-            secondAngleX += pair.adjustX;
-            secondAngleY += pair.adjustY;
+                secondAngleX += pair.adjustX;
+                secondAngleY += pair.adjustY;
             }
         });
 
