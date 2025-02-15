@@ -2,6 +2,7 @@ import { Bodies, Engine } from 'matter-js';
 
 export function AddBodiesFunction(bodiesToAdd: Bodies[]): void;
 export function OnSetRadius(radius: number): void;
+export function OnMovePageState(): void;
 
 export interface IIntroductionConfig {
     onAddBodies: AddBodiesFunction;
@@ -14,4 +15,5 @@ export interface IIntroductionConfig {
 export interface IStartButtonConfig {
     onAddBodies: AddBodiesFunction;
     onSetRadius: OnSetRadius;
+    onMovePageState: OnMovePageState;
 }
