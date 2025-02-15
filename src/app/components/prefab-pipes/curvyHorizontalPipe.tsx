@@ -9,7 +9,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
             positionY,
             radius,
             onAddBodies);
-        this.createBalls(2000);
+        this.createBalls(1500);
     }
 
     createPipe(): void {
