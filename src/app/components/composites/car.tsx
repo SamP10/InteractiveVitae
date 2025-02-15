@@ -15,7 +15,7 @@ export default class Car {
                 group: group
             },
             render: {
-                fillStyle: '#fbbf24'
+                fillStyle: '#EAB308'
             }
         });
 
@@ -25,7 +25,7 @@ export default class Car {
                 group: group
             },
             render: {
-                fillStyle: '#fbbf24'
+                fillStyle: '#EAB308'
             }
         });
 
@@ -35,7 +35,7 @@ export default class Car {
                 group: group
             },
             render: {
-                fillStyle: '#fbbf24'
+                fillStyle: '#EAB308'
             }
         });
 

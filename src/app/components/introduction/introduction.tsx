@@ -1,10 +1,9 @@
 'use client';
 
-import { Bodies, Events, Body, Composite } from 'matter-js';
+import { Bodies, Body } from 'matter-js';
 import { useEffect, useRef } from 'react';
 import { getPipes } from '../prefabs/IntroductionPipe';
 import { IIntroductionConfig } from '../types/Components';
-import Car from '../matter-composites/car';
 
 export default function Introduction({
     onAddBodies,
@@ -24,7 +23,7 @@ export default function Introduction({
                 restitution: 0,
                 friction: 0.02,
                 render: {
-                    fillStyle: '#fbbf24'
+                    fillStyle: '#EAB308'
                 },
                 collisionFilter: {
                     group: ballCollisionFilterGroup,
@@ -41,14 +40,14 @@ export default function Introduction({
                 setInterval(spawnBall, 1500);
             }
 
-            const floor = Bodies.rectangle(width / 2, height, width, 10, {
-                isStatic: true,
-                render: { fillStyle: '#fbbf24' },
-                collisionFilter: {
-                    group: floorCollisionFilterGroup,
-                    mask: ballCollisionFilterGroup
-                }
-            });
+            // const floor = Bodies.rectangle(width / 2, height, width, 10, {
+            //     isStatic: true,
+            //     render: { fillStyle: '#EAB308' },
+            //     collisionFilter: {
+            //         group: floorCollisionFilterGroup,
+            //         mask: ballCollisionFilterGroup
+            //     }
+            // });
 
             // const car = Car({
             //     x: width / 4,
@@ -59,7 +58,7 @@ export default function Introduction({
             //     wheelBase: radius * 2
             // });
 
-            onAddBodies([floor]);
+            // onAddBodies([floor]);
 
         return () => {};
     }, [engine, onAddBodies, radius, width, height]);
@@ -100,7 +99,7 @@ export default function Introduction({
     const addPipes = (radius: number) => {
         const diameter = radius * 2;
 
-        onAddBodies(getPipes(diameter));
+        onAddBodies([getPipes(diameter)]);
     };
 
     return <div className="relative w-full h-screen"></div>;

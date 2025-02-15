@@ -79,7 +79,7 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24',
+        color = '#EAB308',
         composite = Composite.create()
     }: IBendPipeConfig): Composite {
         let secondAngleX = x;
@@ -134,7 +134,7 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24',
+        color = '#EAB308',
         composite = Composite.create()
     }: IBendPipeConfig): Composite {
         PipeFactory.quarterPipe({
@@ -173,7 +173,7 @@ export default class PipeFactory {
         innerRadius = 15,
         outerNumPoints = 15,
         innerNumPoints = 3,
-        color = '#fbbf24',
+        color = '#EAB308',
         composite = Composite.create()
     }: IQuarterPipeConfig) {
         // Outer arc
@@ -208,7 +208,7 @@ export default class PipeFactory {
         arcAngle = ANGLES[90],
         radius = 110,
         numPoints = 60,
-        color = '#fbbf24',
+        color = '#EAB308',
         composite = Composite.create()
     }: ICircleArcConfig): Composite {
         for (let i = 0; i < numPoints; i++) {
