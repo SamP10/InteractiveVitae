@@ -1,9 +1,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import CurveyHorizontalPipe from '../prefab-pipes/curvyHorizontalPipe';
 import { IIntroductionConfig } from '../types/Components';
-import CurvyDownPipe from '../prefab-pipes/curvyDownPipe';
+import {
+    CurvyDownPipe,
+    SuperWigglyPipe,
+    WigglyStraightPipe,
+    CurvyHorizontalPipe
+} from '../prefab-pipes';
 
 export default function Introduction({
     onAddBodies,
@@ -15,31 +19,33 @@ export default function Introduction({
     const addedPipes = useRef(false);
 
     useEffect(() => {
-        if(!addedPipes.current) {
+        if (!addedPipes.current) {
             new CurvyDownPipe(50, -20, radius, onAddBodies);
-            new CurveyHorizontalPipe(200, -20, radius, onAddBodies);
+            new CurvyHorizontalPipe(200, -20, radius, onAddBodies);
+            new SuperWigglyPipe(500, -20, radius - 10, onAddBodies);
+            new WigglyStraightPipe(1300, -10, radius + 5, onAddBodies);
             addedPipes.current = true;
         }
 
-            // const floor = Bodies.rectangle(width / 2, height, width, 10, {
-            //     isStatic: true,
-            //     render: { fillStyle: '#EAB308' },
-            //     collisionFilter: {
-            //         group: floorCollisionFilterGroup,
-            //         mask: ballCollisionFilterGroup
-            //     }
-            // });
+        // const floor = Bodies.rectangle(width / 2, height, width, 10, {
+        //     isStatic: true,
+        //     render: { fillStyle: '#EAB308' },
+        //     collisionFilter: {
+        //         group: floorCollisionFilterGroup,
+        //         mask: ballCollisionFilterGroup
+        //     }
+        // });
 
-            // const car = Car({
-            //     x: width / 4,
-            //     y: height - 30,
-            //     width: radius * 2,
-            //     height: radius / 4,
-            //     wheelSize: radius / 4,
-            //     wheelBase: radius * 2
-            // });
+        // const car = Car({
+        //     x: width / 4,
+        //     y: height - 30,
+        //     width: radius * 2,
+        //     height: radius / 4,
+        //     wheelSize: radius / 4,
+        //     wheelBase: radius * 2
+        // });
 
-            // onAddBodies([floor]);
+        // onAddBodies([floor]);
 
         return () => {};
     }, [engine, onAddBodies, radius, width, height]);
