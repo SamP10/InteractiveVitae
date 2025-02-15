@@ -15,28 +15,41 @@ export default class PipeFactory {
         height,
         color,
         offset,
-        composite = Composite.create()
+        composite = Composite.create(),
+        ballCollisionFilterGroup,
+        crossPipeCollisionFilter
     }: IStraightPipeConfig): Composite {
-        Composite.add(
-            composite,
-            Bodies.rectangle(x, y, width, height, {
-                isStatic: true,
-                render: {
-                    fillStyle: color
-                }
-            })
-        );
+        let pegY = y;
 
-        Composite.add(
-            composite,
-            Bodies.rectangle(x + offset, y, width, height, {
-                isStatic: true,
-                render: {
-                    fillStyle: color
-                }
-            })
-        );
-
+        for (let i = 0; i < width; i++) {
+            Composite.add(
+                composite,
+                Bodies.circle(x + 10, pegY, 2.5 , {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    },
+                    collisionFilter: {
+                        group: crossPipeCollisionFilter,
+                        mask: ballCollisionFilterGroup
+                    }
+                })
+            );
+            Composite.add(
+                composite,
+                Bodies.circle(x + offset, pegY, 2.5 , {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    },
+                    collisionFilter: {
+                        group: crossPipeCollisionFilter,
+                        mask: ballCollisionFilterGroup
+                    }
+                })
+            );
+            pegY = x + i * height * 1.1;
+        }
         return composite;
     }
 
@@ -49,24 +62,29 @@ export default class PipeFactory {
         color,
         composite = Composite.create()
     }: IStraightPipeConfig): Composite {
-        Composite.add(
-            composite,
-            Bodies.rectangle(x, y, width, height, {
-                isStatic: true,
-                render: {
-                    fillStyle: color
-                }
-            })
-        );
-        Composite.add(
-            composite,
-            Bodies.rectangle(x, y + offset, width, height, {
-                isStatic: true,
-                render: {
-                    fillStyle: color
-                }
-            })
-        );
+        let pegX = x;
+
+        for (let i = 0; i < width; i++) {
+            Composite.add(
+                composite,
+                Bodies.circle(pegX, y+ 10, 2.5 , {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    }
+                })
+            );
+            Composite.add(
+                composite,
+                Bodies.circle(pegX, y + offset, 2.5 , {
+                    isStatic: true,
+                    render: {
+                        fillStyle: color
+                    }
+                })
+            );
+            pegX = x + i * height * 1.1;
+        }
         return composite;
     }
 
@@ -86,15 +104,19 @@ export default class PipeFactory {
 
         let secondAngleY = y;
 
-        if (angles[0] === ANGLES[180] && angles[1] === ANGLES[360]) {
-            secondAngleY -= radius + innerRadius;
-        } else if (angles[0] === ANGLES[360] && angles[1] === ANGLES[180]) {
-            secondAngleX += radius + innerRadius;
-        } else if (angles[0] === ANGLES[90] && angles[1] === ANGLES[270]) {
-            secondAngleY -= radius + innerRadius;
-        } else if (angles[0] === ANGLES[270] && angles[1] === ANGLES[90]) {
-            secondAngleX += radius + innerRadius;
-        }
+        const anglePairs = [
+            { first: ANGLES[180], second: ANGLES[360], adjustX: 0, adjustY: -(radius + innerRadius) },
+            { first: ANGLES[360], second: ANGLES[180], adjustX: radius + innerRadius, adjustY: 0 },
+            { first: ANGLES[90], second: ANGLES[270], adjustX: 0, adjustY: -(radius + innerRadius) },
+            { first: ANGLES[270], second: ANGLES[90], adjustX: radius + innerRadius, adjustY: 0 }
+        ];
+
+        anglePairs.forEach(pair => {
+            if (angles[0] === pair.first && angles[1] === pair.second) {
+            secondAngleX += pair.adjustX;
+            secondAngleY += pair.adjustY;
+            }
+        });
 
         PipeFactory.quarterPipe({
             x,
