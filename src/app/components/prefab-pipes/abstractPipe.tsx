@@ -10,10 +10,10 @@ export default abstract class AbstractPipe {
     protected diameter: number;
     protected composite = Composite.create();
     protected onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void;
-    protected pipeColors: string[] = ['#34A853', '#FBBC05', '#EA4335', '#4285F4', '#F4B400', '#0F9D58', '#DB4437', '#F4B400'];
+    protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B'];
     protected collisionGroup: number;
     protected collisionMask = Body.nextGroup(true);
-    private ballColors: string[] = ['#34A853', '#FBBC05', '#EA4335', '#4285F4', '#F4B400', '#0F9D58', '#DB4437', '#F4B400'];
+    private ballColors: string[] = ['#0B6623', '#4285F4', '#006400', '#1E88E5', '#00ACC1', '#3949AB', '#5E35B1', '#039BE5'];
     
     constructor(positionX: number, positionY: number, radius: number, onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void) {
         this.positionX = positionX;
