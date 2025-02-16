@@ -34,7 +34,7 @@ export default function StartButton({
                 restitution: 0.9,
                 friction: 0.005,
                 render: {
-                    fillStyle: '#EAB308'
+                    fillStyle: '#3B82F6'
                 }
             });
 
@@ -64,7 +64,7 @@ export default function StartButton({
             {!dropBall && (
                 <button
                     ref={buttonRef}
-                    className={`bg-yellow-600 hover:bg-yellow-500 text-white font-bold rounded-full transform transition-all duration-300 
+                    className={`bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transform transition-all duration-300 
                         ${
                             buttonClicked
                                 ? 'md:h-10 md:w-10 sm:h-10 sm:w-10'

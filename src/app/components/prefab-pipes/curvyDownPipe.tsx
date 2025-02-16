@@ -15,7 +15,7 @@ class CurvyDownPipe extends AbstractPipe {
         const innerRadius = 10;
         const x = this.positionX + this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[Math.floor(Math.random() * this.pipeColors.length)];
+        const pipeColor = this.pipeColors[0];
 
         PipeFactory.quarterPipe({
             x,

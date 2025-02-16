@@ -8,6 +8,7 @@ import {
     WigglyStraightPipe,
     CurvyHorizontalPipe
 } from '../prefab-pipes';
+import { Bodies } from 'matter-js';
 
 export default function Introduction({
     onAddBodies,
@@ -29,11 +30,7 @@ export default function Introduction({
 
         // const floor = Bodies.rectangle(width / 2, height, width, 10, {
         //     isStatic: true,
-        //     render: { fillStyle: '#EAB308' },
-        //     collisionFilter: {
-        //         group: floorCollisionFilterGroup,
-        //         mask: ballCollisionFilterGroup
-        //     }
+        //     render: { fillStyle: '#EAB308' }
         // });
 
         // const car = Car({
