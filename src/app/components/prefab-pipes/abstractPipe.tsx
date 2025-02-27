@@ -13,19 +13,36 @@ export default abstract class AbstractPipe {
     protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B'];
     protected collisionGroup: number;
     protected collisionMask = Body.nextGroup(true);
-    private ballColors: string[] = ['#0B6623', '#4285F4', '#006400', '#1E88E5', '#00ACC1', '#3949AB', '#5E35B1', '#039BE5'];
-    
-    constructor(positionX: number, positionY: number, radius: number, onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void) {
+    protected windowSize: {windowX: number, windowY: number};
+    private ballColors: string[] = [
+        '#0B6623',
+        '#4285F4',
+        '#006400',
+        '#1E88E5',
+        '#00ACC1',
+        '#3949AB',
+        '#5E35B1',
+        '#039BE5'
+    ];
+
+    constructor(
+        positionX: number,
+        positionY: number,
+        radius: number,
+        onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
+        windowSize: {windowX: number, windowY: number},
+    ) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.radius = radius;
         this.diameter = radius * 2;
         this.collisionGroup = Body.nextGroup(false);
+        this.windowSize = windowSize;
         this.onAddBodies = onAddBodies;
         this.createPipe();
     }
 
-   abstract createPipe(): void;
+    abstract createPipe(): void;
 
     public getComposite(): Composite {
         return this.composite;
@@ -55,7 +72,6 @@ export default abstract class AbstractPipe {
         this.balls.push(ball);
         this.onAddBodies([ball]);
     }
-
 
     protected createBalls(interval: number = 500): void {
         setInterval(() => this.createBall(), interval);

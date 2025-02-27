@@ -67,7 +67,12 @@ export default function WorldContent() {
 
     const cleanupOutOfBoundBodies = () => {
         bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (body.type !== 'constraint' && body.type !== 'composite' && body.position.y > innerHeight + 50 && body.position.x > innerWidth + 50) {
+            if (
+                body.type !== 'constraint' &&
+                body.type !== 'composite' &&
+                body.position.y > innerHeight + 50 &&
+                body.position.x > innerWidth + 50
+            ) {
                 World.remove(engine.current.world, body);
                 return false;
             }
@@ -88,7 +93,7 @@ export default function WorldContent() {
     };
 
     return (
-        <div className="relative w-full h-screen">
+        <div style={{ backgroundColor: 'black', width: '100%', height: '100vh' }}>
             <div ref={scene} className="absolute inset-0 z-0" />
             {currentPage === PAGE_STATE.START && (
                 <StartButton
