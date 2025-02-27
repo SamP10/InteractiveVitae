@@ -4,11 +4,14 @@ import AbstractPipe from './abstractPipe';
 import PipeFactory from '../composites/pipeFactory';
 
 class CurvyDownPipe extends AbstractPipe {
-    constructor(positionX: number, positionY: number, radius: number, onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void) {
-        super(positionX,
-            positionY,
-            radius,
-            onAddBodies);
+    constructor(
+        positionX: number,
+        positionY: number,
+        radius: number,
+        onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
+        windowSize: { windowX: number; windowY: number }
+    ) {
+        super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(400);
     }
     createPipe(): void {
@@ -26,146 +29,29 @@ class CurvyDownPipe extends AbstractPipe {
             composite: this.composite,
             color: pipeColor
         });
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-        });
 
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-        });
+        while (y < this.windowSize.windowY - this.radius) {
+            PipeFactory.uBendPipe({
+                x,
+                y: (y += this.diameter + 15 + innerRadius),
+                angles: [ANGLES[270], ANGLES[360]],
+                radius: this.diameter + 15,
+                innerRadius,
+                composite: this.composite,
+                color: pipeColor
+            });
 
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
+            PipeFactory.uBendPipe({
+                x,
+                y: (y += this.diameter + 15 + innerRadius),
+                angles: [ANGLES[180], ANGLES[90]],
+                radius: this.diameter + 15,
+                innerRadius,
+                composite: this.composite,
+                color: pipeColor
+            });
+        }
 
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[180], ANGLES[90]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
-
-        PipeFactory.uBendPipe({
-            x,
-            y: (y += this.diameter + 15 + innerRadius),
-            angles: [ANGLES[270], ANGLES[360]],
-            radius: this.diameter + 15,
-            innerRadius,
-            composite: this.composite,
-            color: pipeColor
-
-        });
         this.onAddBodies([this.composite]);
     }
 }
