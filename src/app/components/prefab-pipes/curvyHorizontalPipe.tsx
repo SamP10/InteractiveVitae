@@ -70,6 +70,10 @@ class CurvyHorizontalPipe extends AbstractPipe {
             body.collisionFilter.group = this.collisionGroup;
             body.collisionFilter.mask = this.collisionMask;
         });
+        this.composite.bodies.forEach((body) => {
+            body.collisionFilter.group = this.collisionGroup;
+            body.collisionFilter.mask = this.collisionMask;
+        });
         this.onAddBodies([this.composite]);
     }
 }
