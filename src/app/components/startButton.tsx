@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { Bodies } from 'matter-js';
-import { IStartButtonConfig } from './types/Components';
+import { IStartButtonConfig } from './types/components';
 
 export default function StartButton({
     onAddBodies,
