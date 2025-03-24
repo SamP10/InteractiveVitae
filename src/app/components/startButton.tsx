@@ -3,16 +3,41 @@
 import { useState, useRef, useEffect } from 'react';
 import { Bodies } from 'matter-js';
 import { IStartButtonConfig } from './types/components';
+import { Render } from 'matter-js';
 
 export default function StartButton({
     onAddBodies,
     onSetRadius,
-    onMovePageState
+    onMovePageState,
+    width,
+    height,
+    engine,
+    scene
 }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
     const [circle, setCircle] = useState(null);
     const buttonRef = useRef(null);
+
+    useEffect(() => {
+        const render = Render.create({
+            element: scene.current,
+            engine: engine.current,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: 'black'
+            }
+        });
+
+        Render.run(render);
+
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, width, height]);
 
     const handleClick = () => {
         setButtonClicked(true);

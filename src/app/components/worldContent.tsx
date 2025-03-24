@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, Render, World, Bodies } from 'matter-js';
+import { Engine, World, Bodies } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
-import Introduction from './introduction/introductionPipes';
+import Introduction from './introduction/introduction';
 
 enum PAGE_STATE {
     START = 'START',
@@ -32,19 +32,6 @@ export default function WorldContent() {
     useEffect(() => {
         if (!innerWidth || !innerHeight) return;
 
-        const render = Render.create({
-            element: scene.current,
-            engine: engine.current,
-            options: {
-                width: innerWidth,
-                height: innerHeight,
-                wireframes: false,
-                background: 'transparent'
-            }
-        });
-
-        Render.run(render);
-
         const runner = () => {
             Engine.update(engine.current, 16);
             cleanupOutOfBoundBalls();
@@ -54,10 +41,8 @@ export default function WorldContent() {
         runner();
 
         return () => {
-            Render.stop(render);
             World.clear(engine.current.world, false);
             Engine.clear(engine.current);
-            render.canvas.remove();
         };
     }, [innerHeight, innerWidth]);
 
@@ -70,8 +55,10 @@ export default function WorldContent() {
         bodiesRef.current = bodiesRef.current.filter((body) => {
             if (
                 body.label === BALL_LABEL &&
-                body.position.y > innerHeight + 50 &&
-                body.position.x > innerWidth + 50
+                (body.position.y > innerHeight + 50 ||
+                 body.position.y < -innerHeight - 50 ||
+                 body.position.x > innerWidth + 50 ||
+                 body.position.x < -innerWidth - 50)
             ) {
                 World.remove(engine.current.world, body);
                 return false;
@@ -94,12 +81,16 @@ export default function WorldContent() {
 
     return (
         <div style={{ backgroundColor: 'black', width: '100%', height: '100vh' }}>
-            <div ref={scene} className="absolute inset-0 z-0" />
+            <div ref={scene} className="absolute" />
             {currentPage === PAGE_STATE.START && (
                 <StartButton
                     onAddBodies={addBodies}
                     onSetRadius={setRadius}
                     onMovePageState={movePageState}
+                    width={innerWidth}
+                    height={innerHeight}
+                    engine={engine}
+                    scene={scene}
                 />
             )}
             {currentPage === PAGE_STATE.INTRO && (
@@ -107,8 +98,9 @@ export default function WorldContent() {
                     onAddBodies={addBodies}
                     radius={radius}
                     width={innerWidth}
-                    height={innerHeight}
+                    height={innerHeight*2}
                     engine={engine}
+                    scene={scene}
                 />
             )}
             {currentPage === PAGE_STATE.QUALIFICATIONS && <p></p>}
