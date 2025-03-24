@@ -14,6 +14,7 @@ class WigglyStraightPipe extends AbstractPipe {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(2500);
     }
+
     createPipe(): void {
         const innerRadius = 10;
         let x = this.positionX - this.radius;

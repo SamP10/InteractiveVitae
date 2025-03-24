@@ -14,6 +14,7 @@ class SuperWigglyPipe extends AbstractPipe {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(450);
     }
+    
     createPipe(): void {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
@@ -151,7 +152,7 @@ class SuperWigglyPipe extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowY,
+            numSegments: this.windowSize.windowY/2,
             segmentLength: 7,
             composite: this.composite,
             color: pipeColor
