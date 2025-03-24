@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, Render, World, Bodies, Events } from 'matter-js';
+import { Engine, Render, World, Bodies } from 'matter-js';
 import StartButton from './startButton';
-import Introduction from './introduction/introduction';
+import Introduction from './introduction/introductionPipes';
 
 enum PAGE_STATE {
     START = 'START',

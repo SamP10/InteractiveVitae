@@ -1,14 +1,13 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { IIntroductionConfig } from '../types/Components';
+import { IIntroductionConfig } from '../types/components';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
     WigglyStraightPipe,
     CurvyHorizontalPipe
 } from '../prefab-pipes';
-import { Bodies } from 'matter-js';
 
 export default function Introduction({
     onAddBodies,
