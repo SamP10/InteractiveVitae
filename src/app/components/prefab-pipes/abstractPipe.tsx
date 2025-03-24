@@ -1,5 +1,6 @@
 'use client';
 import { Bodies, Composite, Body } from 'matter-js';
+import { BALL_LABEL } from '../constants';
 
 export default abstract class AbstractPipe {
     protected balls: Bodies[] = [];
@@ -64,7 +65,7 @@ export default abstract class AbstractPipe {
             render: {
                 fillStyle: this.ballColors[Math.floor(Math.random() * this.ballColors.length)]
             },
-            label: 'ball',
+            label: BALL_LABEL,
             collisionFilter: {
                 group: this.collisionGroup,
                 mask: this.collisionMask

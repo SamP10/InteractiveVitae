@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { Engine, Render, World, Bodies } from 'matter-js';
+import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
 import Introduction from './introduction/introductionPipes';
 
@@ -46,7 +47,7 @@ export default function WorldContent() {
 
         const runner = () => {
             Engine.update(engine.current, 16);
-            cleanupOutOfBoundBodies();
+            cleanupOutOfBoundBalls();
             requestAnimationFrame(runner);
         };
 
@@ -65,11 +66,10 @@ export default function WorldContent() {
         World.add(engine.current.world, bodies);
     };
 
-    const cleanupOutOfBoundBodies = () => {
+    const cleanupOutOfBoundBalls = () => {
         bodiesRef.current = bodiesRef.current.filter((body) => {
             if (
-                body.type !== 'constraint' &&
-                body.type !== 'composite' &&
+                body.label === BALL_LABEL &&
                 body.position.y > innerHeight + 50 &&
                 body.position.x > innerWidth + 50
             ) {
