@@ -84,11 +84,6 @@ class WigglyStraightPipe extends AbstractPipe {
             composite: this.composite,
             color: pipeColor
         });
-
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-            body.collisionFilter.mask = this.collisionMask;
-        });
         this.onAddBodies([this.composite]);
     }
 }

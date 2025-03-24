@@ -40,6 +40,7 @@ export default abstract class AbstractPipe {
         this.windowSize = windowSize;
         this.onAddBodies = onAddBodies;
         this.createPipe();
+        this.enableCollisions();
     }
 
     abstract createPipe(): void;
@@ -75,5 +76,12 @@ export default abstract class AbstractPipe {
 
     protected createBalls(interval: number = 500): void {
         setInterval(() => this.createBall(), interval);
+    }
+
+    private enableCollisions() :void {
+        this.composite.bodies.forEach((body) => {
+            body.collisionFilter.group = this.collisionGroup;
+            body.collisionFilter.mask = this.collisionMask;
+        });
     }
 }

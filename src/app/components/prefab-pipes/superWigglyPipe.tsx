@@ -156,9 +156,6 @@ class SuperWigglyPipe extends AbstractPipe {
             composite: this.composite,
             color: pipeColor
         });
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-        });
         this.onAddBodies([this.composite]);
     }
 }

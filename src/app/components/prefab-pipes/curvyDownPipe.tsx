@@ -51,10 +51,6 @@ class CurvyDownPipe extends AbstractPipe {
                 color: pipeColor
             });
         }
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-            body.collisionFilter.mask = this.collisionMask;
-        });
 
         this.onAddBodies([this.composite]);
     }
