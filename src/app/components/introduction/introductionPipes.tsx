@@ -20,15 +20,21 @@ export default function IntroductionPipes({
 
     useEffect(() => {
         if (!addedPipes.current) {
-            new CurvyDownPipe(Math.random() * width, -20, radius, onAddBodies, {
-                windowX: width,
-                windowY: height
-            });
+            new CurvyDownPipe(
+                Math.random() * width * 0.35 + width * 0.65 - 40,
+                -20,
+                radius,
+                onAddBodies,
+                {
+                    windowX: width,
+                    windowY: height
+                }
+            );
             new CurvyHorizontalPipe((Math.random() * width) / 2, -20, radius, onAddBodies, {
                 windowX: width,
                 windowY: height
             });
-            new SuperWigglyPipe(Math.random() * width, -20, radius - 10, onAddBodies, {
+            new SuperWigglyPipe((Math.random() * width) / 2, -20, radius - 10, onAddBodies, {
                 windowX: width,
                 windowY: height
             });
