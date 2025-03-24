@@ -9,7 +9,7 @@ import {
     CurvyHorizontalPipe
 } from '../prefab-pipes';
 
-export default function Introduction({
+export default function IntroductionPipes({
     onAddBodies,
     radius,
     width,
@@ -20,8 +20,11 @@ export default function Introduction({
 
     useEffect(() => {
         if (!addedPipes.current) {
-            new CurvyDownPipe(Math.random() * width, -20, radius, onAddBodies, { windowX: width, windowY: height });
-            new CurvyHorizontalPipe(Math.random() * width/2, -20, radius, onAddBodies, {
+            new CurvyDownPipe(Math.random() * width, -20, radius, onAddBodies, {
+                windowX: width,
+                windowY: height
+            });
+            new CurvyHorizontalPipe((Math.random() * width) / 2, -20, radius, onAddBodies, {
                 windowX: width,
                 windowY: height
             });
@@ -29,10 +32,16 @@ export default function Introduction({
                 windowX: width,
                 windowY: height
             });
-            new WigglyStraightPipe(Math.random() * width * 0.25 + width * 0.75, -10, radius + 5, onAddBodies, {
-                windowX: width,
-                windowY: height
-            });
+            new WigglyStraightPipe(
+                Math.random() * width * 0.25 + width * 0.75,
+                -10,
+                radius + 5,
+                onAddBodies,
+                {
+                    windowX: width,
+                    windowY: height
+                }
+            );
             addedPipes.current = true;
         }
 

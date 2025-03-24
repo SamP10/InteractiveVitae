@@ -9,7 +9,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
         positionY: number,
         radius: number,
         onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
-        windowSize: {windowX: number, windowY: number}
+        windowSize: { windowX: number; windowY: number }
     ) {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(1500);
