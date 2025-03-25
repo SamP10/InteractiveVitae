@@ -11,13 +11,13 @@ class Horizontal1 extends AbstractPipe {
         onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
         windowSize: { windowX: number; windowY: number }
     ) {
-        super(positionX+20, positionY, radius, onAddBodies, windowSize);
+        super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(1500);
     }
 
     createPipe(): void {
         const innerRadius = 10;
-        let x = this.positionX-20;
+        let x = this.positionX - this.radius;
         let y = this.positionY;
         const pipeColor = this.pipeColors[2];
 
@@ -25,7 +25,7 @@ class Horizontal1 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: 50,
+            numSegments: 20,
             segmentLength: 7,
             composite: this.composite,
             color: pipeColor
@@ -36,7 +36,7 @@ class Horizontal1 extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             startAngle: ANGLES[90],
-            radius: this.diameter + 15,
+            radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
             color: pipeColor
@@ -45,22 +45,23 @@ class Horizontal1 extends AbstractPipe {
         let comp = PipeFactory.horizontal({
             x,
             y,
-            offset: this.diameter + 15,
+            offset: this.diameter + 17,
             numSegments: 50,
-            segmentLength: 10,
+            segmentLength: 7,
             composite: this.composite,
-            color: pipeColor
+            color: pipeColor,
+            decline: 1.7
         });
 
         let bodies = Composite.allBodies(comp);
         let body = bodies[bodies.length - 1];
         x = body.position.x;
-        y = body.position.y + 11;
+        y = body.position.y + 9;
         PipeFactory.sBendPipe({
             x,
             y,
             angles: [ANGLES[270], ANGLES[90]],
-            radius: this.diameter + 15,
+            radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
             color: pipeColor
@@ -69,21 +70,22 @@ class Horizontal1 extends AbstractPipe {
         comp = PipeFactory.horizontal({
             x: (x += this.diameter + 15 + innerRadius),
             y,
-            offset: this.diameter + 15,
+            offset: this.diameter + 17,
             numSegments: 50,
-            segmentLength: 10,
+            segmentLength: 7,
             composite: this.composite,
-            color: pipeColor
+            color: pipeColor,
+            decline: 1.7
         });
         bodies = Composite.allBodies(comp);
         body = bodies[bodies.length - 1];
         x = body.position.x;
-        y = body.position.y + 11;
+        y = body.position.y + 9;
         PipeFactory.sBendPipe({
             x,
             y,
             angles: [ANGLES[270], ANGLES[90]],
-            radius: this.diameter + 15,
+            radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
             color: pipeColor
@@ -92,11 +94,12 @@ class Horizontal1 extends AbstractPipe {
         PipeFactory.horizontal({
             x: (x += this.diameter + 15 + innerRadius),
             y,
-            offset: this.diameter + 15,
+            offset: this.diameter + 17,
             numSegments: this.windowSize.windowX,
-            segmentLength: 10,
+            segmentLength: 7,
             composite: this.composite,
-            color: pipeColor
+            color: pipeColor,
+            decline: 1.7
         });
         this.onAddBodies([this.composite]);
     }
