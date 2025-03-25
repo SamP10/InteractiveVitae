@@ -6,7 +6,8 @@ import {
     CurvyDownPipe,
     SuperWigglyPipe,
     WigglyStraightPipe,
-    CurvyHorizontalPipe
+    CurvyHorizontalPipe,
+    Horizontal1
 } from '../prefab-pipes';
 
 export default function IntroductionPipes({
@@ -42,6 +43,16 @@ export default function IntroductionPipes({
                 Math.random() * width * 0.25 + width * 0.75,
                 -10,
                 radius + 5,
+                onAddBodies,
+                {
+                    windowX: width,
+                    windowY: height
+                }
+            );
+            new Horizontal1(
+                -40,
+                Math.random() * width * 0.45 + width * 0.35,
+                radius - 5,
                 onAddBodies,
                 {
                     windowX: width,

@@ -34,7 +34,7 @@ export default function WorldContent() {
 
         const runner = () => {
             Engine.update(engine.current, 16);
-            cleanupOutOfBoundBalls();
+            // cleanupOutOfBoundBalls();
             requestAnimationFrame(runner);
         };
 
@@ -56,9 +56,10 @@ export default function WorldContent() {
             if (
                 body.label === BALL_LABEL &&
                 (body.position.y > innerHeight + 50 ||
-                 body.position.y < -innerHeight - 50 ||
-                 body.position.x > innerWidth + 50 ||
-                 body.position.x < -innerWidth - 50)
+                    body.position.y <
+                        -(innerHeight*2) - 50 ||
+                    body.position.x > innerWidth + 50 ||
+                    body.position.x < -innerWidth - 50)
             ) {
                 World.remove(engine.current.world, body);
                 return false;
@@ -98,7 +99,7 @@ export default function WorldContent() {
                     onAddBodies={addBodies}
                     radius={radius}
                     width={innerWidth}
-                    height={innerHeight*2}
+                    height={innerHeight * 2}
                     engine={engine}
                     scene={scene}
                 />

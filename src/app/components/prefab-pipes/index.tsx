@@ -4,4 +4,4 @@ import SuperWigglyPipe from './superWigglyPipe';
 import WigglyStraightPipe from './wigglyStraightPipe';
 import Horizontal1 from './horizontal1';
 
-export { CurvyDownPipe, CurvyHorizontalPipe, SuperWigglyPipe, WigglyStraightPipe, Horizontal1 };
+export { CurvyDownPipe, CurvyHorizontalPipe, SuperWigglyPipe, WigglyStraightPipe, Horizontal1, Horizontal2 };

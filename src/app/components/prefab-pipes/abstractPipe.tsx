@@ -12,8 +12,8 @@ export default abstract class AbstractPipe {
     protected composite = Composite.create();
     protected onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void;
     protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B'];
-    protected collisionGroup: number;
-    protected collisionMask = Body.nextGroup(true);
+    protected collisionGroup = Body.nextGroup(false);
+    protected collisionMask = Body.nextGroup(false);
     protected windowSize: { windowX: number; windowY: number };
     private ballColors: string[] = [
         '#0B6623',
@@ -37,7 +37,6 @@ export default abstract class AbstractPipe {
         this.positionY = positionY;
         this.radius = radius;
         this.diameter = radius * 2;
-        this.collisionGroup = Body.nextGroup(false);
         this.windowSize = windowSize;
         this.onAddBodies = onAddBodies;
         this.createPipe();
