@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Bodies } from 'matter-js';
 import { IStartButtonConfig } from './types/components';
-import { Render } from 'matter-js';
+import { Render, World } from 'matter-js';
 
 export default function StartButton({
     onAddBodies,
@@ -76,6 +76,7 @@ export default function StartButton({
             const intervalId = setInterval(() => {
                 if (circle.position.y > window.innerHeight) {
                     onMovePageState();
+                    World.remove(engine.current.world, circle);
                     clearInterval(intervalId);
                 }
             }, 700);
