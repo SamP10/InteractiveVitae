@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, World, Bodies } from 'matter-js';
+import { Engine, World, Bodies, IBodyDefinition } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
@@ -16,7 +16,7 @@ enum PAGE_STATE {
 export default function WorldContent() {
     const scene = useRef(null);
     const engine = useRef(Engine.create());
-    const bodiesRef = useRef([]);
+    const bodiesRef = useRef([] as IBodyDefinition[]);
     const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
     const [radius, setRadius] = useState(0);
 
@@ -24,6 +24,25 @@ export default function WorldContent() {
         innerWidth: 0,
         innerHeight: 0
     });
+
+    const isOutOfBound = (body: IBodyDefinition) => {
+        return (
+            body.position &&
+            (body.position.y > innerHeight*2 + 50 ||
+                body.position.x > innerWidth + 50 
+            )
+        );
+    };
+
+    const cleanupOutOfBoundBalls = () => {
+        bodiesRef.current = bodiesRef.current.filter((body) => {
+            if (body.label === BALL_LABEL && isOutOfBound(body)) {
+                World.remove(engine.current.world, body);
+                return false;
+            }
+            return true;
+        });
+    };
 
     useEffect(() => {
         setInnerWidthHeight({ innerWidth: window.innerWidth, innerHeight: window.innerHeight });
@@ -34,7 +53,7 @@ export default function WorldContent() {
 
         const runner = () => {
             Engine.update(engine.current, 16);
-            // cleanupOutOfBoundBalls();
+            cleanupOutOfBoundBalls();
             requestAnimationFrame(runner);
         };
 
@@ -49,23 +68,6 @@ export default function WorldContent() {
     const addBodies = (bodies: Bodies[]) => {
         bodiesRef.current.push(...bodies);
         World.add(engine.current.world, bodies);
-    };
-
-    const cleanupOutOfBoundBalls = () => {
-        bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (
-                body.label === BALL_LABEL &&
-                (body.position.y > innerHeight + 50 ||
-                    body.position.y <
-                        -(innerHeight*2) - 50 ||
-                    body.position.x > innerWidth + 50 ||
-                    body.position.x < -innerWidth - 50)
-            ) {
-                World.remove(engine.current.world, body);
-                return false;
-            }
-            return true;
-        });
     };
 
     const movePageState = () => {
