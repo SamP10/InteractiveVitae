@@ -42,7 +42,7 @@ class Horizontal2 extends AbstractPipe {
             color: pipeColor
         });
 
-        let comp = PipeFactory.horizontalLeft({
+        const comp = PipeFactory.horizontalLeft({
             x,
             y,
             offset: this.diameter + 17,
@@ -51,8 +51,8 @@ class Horizontal2 extends AbstractPipe {
             composite: this.composite,
             color: pipeColor
         });
-        let bodies = Composite.allBodies(comp);
-        let body = bodies[bodies.length - 1];
+        const bodies = Composite.allBodies(comp);
+        const body = bodies[bodies.length - 1];
         x = body.position.x;
         y = body.position.y + 9;
 
