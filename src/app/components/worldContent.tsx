@@ -84,7 +84,7 @@ export default function WorldContent() {
     };
 
     return (
-        <div style={{ backgroundColor: 'black', width: '100%', height: '100vh' }}>
+        <div>
             <div ref={scene} className="absolute" />
             {currentPage === PAGE_STATE.START && (
                 <StartButton
