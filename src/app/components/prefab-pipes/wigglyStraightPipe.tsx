@@ -14,6 +14,7 @@ class WigglyStraightPipe extends AbstractPipe {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(2500);
     }
+
     createPipe(): void {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
@@ -79,16 +80,12 @@ class WigglyStraightPipe extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowX,
+            numSegments: this.windowSize.windowX/10,
             segmentLength: 10,
             composite: this.composite,
             color: pipeColor
         });
 
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-            body.collisionFilter.mask = this.collisionMask;
-        });
         this.onAddBodies([this.composite]);
     }
 }

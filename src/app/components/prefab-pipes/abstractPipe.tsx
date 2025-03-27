@@ -1,5 +1,6 @@
 'use client';
 import { Bodies, Composite, Body } from 'matter-js';
+import { BALL_LABEL } from '../constants';
 
 export default abstract class AbstractPipe {
     protected balls: Bodies[] = [];
@@ -10,10 +11,10 @@ export default abstract class AbstractPipe {
     protected diameter: number;
     protected composite = Composite.create();
     protected onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void;
-    protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B'];
-    protected collisionGroup: number;
-    protected collisionMask = Body.nextGroup(true);
-    protected windowSize: {windowX: number, windowY: number};
+    protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B', '#800080', '#9370DB'];
+    protected collisionGroup = Body.nextGroup(false);
+    protected collisionMask = Body.nextGroup(false);
+    protected windowSize: { windowX: number; windowY: number };
     private ballColors: string[] = [
         '#0B6623',
         '#4285F4',
@@ -30,16 +31,16 @@ export default abstract class AbstractPipe {
         positionY: number,
         radius: number,
         onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
-        windowSize: {windowX: number, windowY: number},
+        windowSize: { windowX: number; windowY: number }
     ) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.radius = radius;
         this.diameter = radius * 2;
-        this.collisionGroup = Body.nextGroup(false);
         this.windowSize = windowSize;
         this.onAddBodies = onAddBodies;
         this.createPipe();
+        this.enableCollisions();
     }
 
     abstract createPipe(): void;
@@ -63,7 +64,7 @@ export default abstract class AbstractPipe {
             render: {
                 fillStyle: this.ballColors[Math.floor(Math.random() * this.ballColors.length)]
             },
-            label: 'ball',
+            label: BALL_LABEL,
             collisionFilter: {
                 group: this.collisionGroup,
                 mask: this.collisionMask
@@ -75,5 +76,12 @@ export default abstract class AbstractPipe {
 
     protected createBalls(interval: number = 500): void {
         setInterval(() => this.createBall(), interval);
+    }
+
+    private enableCollisions(): void {
+        this.composite.bodies.forEach((body) => {
+            body.collisionFilter.group = this.collisionGroup;
+            body.collisionFilter.mask = this.collisionMask;
+        });
     }
 }

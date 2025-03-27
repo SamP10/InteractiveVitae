@@ -10,10 +10,15 @@ export interface IIntroductionConfig {
     width: number;
     height: number;
     engine: Engine;
+    scene?: HTMLDivElement | undefined | null;
 };
 
 export interface IStartButtonConfig {
     onAddBodies: AddBodiesFunction;
     onSetRadius: OnSetRadius;
     onMovePageState: OnMovePageState;
+    width: number;
+    height: number;
+    engine: Engine;
+    scene?: HTMLDivElement | undefined | null;
 }

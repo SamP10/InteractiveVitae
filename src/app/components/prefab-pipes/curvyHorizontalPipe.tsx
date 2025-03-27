@@ -9,7 +9,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
         positionY: number,
         radius: number,
         onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void,
-        windowSize: {windowX: number, windowY: number}
+        windowSize: { windowX: number; windowY: number }
     ) {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(1500);
@@ -19,7 +19,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[1];
+        const pipeColor = this.pipeColors[3];
 
         PipeFactory.quarterPipe({
             x,
@@ -61,15 +61,12 @@ class CurvyHorizontalPipe extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowX,
+            numSegments: this.windowSize.windowX/10,
             segmentLength: 10,
             composite: this.composite,
             color: pipeColor
         });
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-            body.collisionFilter.mask = this.collisionMask;
-        });
+
         this.onAddBodies([this.composite]);
     }
 }

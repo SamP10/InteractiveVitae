@@ -1,7 +1,8 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, Render, World, Bodies, Events } from 'matter-js';
+import { Engine, World, Constraint, MouseConstraint, IBodyDefinition, Composite, Body } from 'matter-js';
+import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
 
@@ -13,9 +14,9 @@ enum PAGE_STATE {
 }
 
 export default function WorldContent() {
-    const scene = useRef(null);
+    const scene = useRef<HTMLDivElement>(null);
     const engine = useRef(Engine.create());
-    const bodiesRef = useRef([]);
+    const bodiesRef = useRef<(Composite | Body)[]>([]);
     const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
     const [radius, setRadius] = useState(0);
 
@@ -24,6 +25,26 @@ export default function WorldContent() {
         innerHeight: 0
     });
 
+    const isOutOfBound = (body: IBodyDefinition) => {
+        return (
+            body.position &&
+            (body.position.y > innerHeight*2 + 50 ||
+                body.position.x > innerWidth + 50 ||
+                body.position.x < -innerWidth - 50 
+            )
+        );
+    };
+
+    const cleanupOutOfBoundBalls = () => {
+        bodiesRef.current = bodiesRef.current.filter((body) => {
+            if (body.label === BALL_LABEL && isOutOfBound(body as IBodyDefinition)) {
+                World.remove(engine.current.world, body);
+                return false;
+            }
+            return true;
+        });
+    };
+
     useEffect(() => {
         setInnerWidthHeight({ innerWidth: window.innerWidth, innerHeight: window.innerHeight });
     }, []);
@@ -31,53 +52,23 @@ export default function WorldContent() {
     useEffect(() => {
         if (!innerWidth || !innerHeight) return;
 
-        const render = Render.create({
-            element: scene.current,
-            engine: engine.current,
-            options: {
-                width: innerWidth,
-                height: innerHeight,
-                wireframes: false,
-                background: 'transparent'
-            }
-        });
-
-        Render.run(render);
-
         const runner = () => {
             Engine.update(engine.current, 16);
-            cleanupOutOfBoundBodies();
+            cleanupOutOfBoundBalls();
             requestAnimationFrame(runner);
         };
 
         runner();
 
         return () => {
-            Render.stop(render);
             World.clear(engine.current.world, false);
             Engine.clear(engine.current);
-            render.canvas.remove();
         };
     }, [innerHeight, innerWidth]);
 
-    const addBodies = (bodies: Bodies[]) => {
+    const addBodies = (bodies: Array<Body|Composite>) => {
         bodiesRef.current.push(...bodies);
-        World.add(engine.current.world, bodies);
-    };
-
-    const cleanupOutOfBoundBodies = () => {
-        bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (
-                body.type !== 'constraint' &&
-                body.type !== 'composite' &&
-                body.position.y > innerHeight + 50 &&
-                body.position.x > innerWidth + 50
-            ) {
-                World.remove(engine.current.world, body);
-                return false;
-            }
-            return true;
-        });
+        World.add(engine.current.world, bodies as (Composite | Matter.Body | Constraint | MouseConstraint)[]);
     };
 
     const movePageState = () => {
@@ -93,13 +84,17 @@ export default function WorldContent() {
     };
 
     return (
-        <div style={{ backgroundColor: 'black', width: '100%', height: '100vh' }}>
-            <div ref={scene} className="absolute inset-0 z-0" />
+        <div>
+            <div ref={scene} className="absolute" />
             {currentPage === PAGE_STATE.START && (
                 <StartButton
                     onAddBodies={addBodies}
                     onSetRadius={setRadius}
                     onMovePageState={movePageState}
+                    width={innerWidth}
+                    height={innerHeight}
+                    engine={engine.current}
+                    scene={scene.current}
                 />
             )}
             {currentPage === PAGE_STATE.INTRO && (
@@ -107,8 +102,9 @@ export default function WorldContent() {
                     onAddBodies={addBodies}
                     radius={radius}
                     width={innerWidth}
-                    height={innerHeight}
-                    engine={engine}
+                    height={innerHeight * 2}
+                    engine={engine.current}
+                    scene={scene.current}
                 />
             )}
             {currentPage === PAGE_STATE.QUALIFICATIONS && <p></p>}

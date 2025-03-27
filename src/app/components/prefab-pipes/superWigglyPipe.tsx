@@ -14,11 +14,12 @@ class SuperWigglyPipe extends AbstractPipe {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(450);
     }
+    
     createPipe(): void {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[0];
+        const pipeColor = this.pipeColors[4];
 
         PipeFactory.quarterPipe({
             x,
@@ -151,14 +152,12 @@ class SuperWigglyPipe extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowY,
-            segmentLength: 7,
+            numSegments: this.windowSize.windowY/10,
+            segmentLength: 11,
             composite: this.composite,
             color: pipeColor
         });
-        this.composite.bodies.forEach((body) => {
-            body.collisionFilter.group = this.collisionGroup;
-        });
+
         this.onAddBodies([this.composite]);
     }
 }

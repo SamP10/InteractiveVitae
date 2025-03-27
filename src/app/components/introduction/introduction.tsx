@@ -1,44 +1,46 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { IIntroductionConfig } from '../types/Components';
-import {
-    CurvyDownPipe,
-    SuperWigglyPipe,
-    WigglyStraightPipe,
-    CurvyHorizontalPipe
-} from '../prefab-pipes';
-import { Bodies } from 'matter-js';
+import { useEffect } from 'react';
+import { IIntroductionConfig } from '../types/components';
+import { Render } from 'matter-js';
+import IntroductionPipes from './introductionPipes';
 
 export default function Introduction({
     onAddBodies,
     radius,
     width,
     height,
-    engine
+    engine,
+    scene
 }: IIntroductionConfig) {
-    const addedPipes = useRef(false);
-
     useEffect(() => {
-        if (!addedPipes.current) {
-            new CurvyDownPipe(Math.random() * width, -20, radius, onAddBodies, { windowX: width, windowY: height });
-            new CurvyHorizontalPipe(Math.random() * width/2, -20, radius, onAddBodies, {
-                windowX: width,
-                windowY: height
-            });
-            new SuperWigglyPipe(Math.random() * width, -20, radius - 10, onAddBodies, {
-                windowX: width,
-                windowY: height
-            });
-            new WigglyStraightPipe(Math.random() * width * 0.25 + width * 0.75, -10, radius + 5, onAddBodies, {
-                windowX: width,
-                windowY: height
-            });
-            addedPipes.current = true;
-        }
+        const render = Render.create({
+            element: scene as HTMLDivElement,
+            engine: engine,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: 'black',
+                showStats: true
+            }
+        });
 
-        return () => {};
-    }, [engine, onAddBodies, radius, width, height]);
+        Render.run(render);
 
-    return <div className="relative w-full h-screen"></div>;
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, scene, width, height]);
+
+    return (
+        <IntroductionPipes
+            onAddBodies={onAddBodies}
+            radius={radius}
+            width={width}
+            height={height}
+            engine={engine}
+        />
+    );
 }
