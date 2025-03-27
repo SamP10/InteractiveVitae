@@ -47,7 +47,7 @@ class Horizontal1 extends AbstractPipe {
             y,
             offset: this.diameter + 17,
             numSegments: 50,
-            segmentLength: 7,
+            segmentLength: 13,
             composite: this.composite,
             color: pipeColor,
             decline: 1.7
@@ -64,7 +64,7 @@ class Horizontal1 extends AbstractPipe {
             radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
-            outerNumPoints: 15,
+            outerNumPoints: 6,
             color: pipeColor
         });
 
@@ -72,8 +72,8 @@ class Horizontal1 extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             offset: this.diameter + 17,
-            numSegments: 50,
-            segmentLength: 7,
+            numSegments: 25,
+            segmentLength: 13,
             composite: this.composite,
             color: pipeColor,
             decline: 1.7
@@ -89,7 +89,7 @@ class Horizontal1 extends AbstractPipe {
             radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
-            outerNumPoints: 15,
+            outerNumPoints: 6,
             color: pipeColor
         });
 
@@ -97,12 +97,13 @@ class Horizontal1 extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             offset: this.diameter + 17,
-            numSegments: this.windowSize.windowX,
-            segmentLength: 7,
+            numSegments: this.windowSize.windowX/10,
+            segmentLength: 15,
             composite: this.composite,
             color: pipeColor,
             decline: 1.7
         });
+
         this.onAddBodies([this.composite]);
     }
 }

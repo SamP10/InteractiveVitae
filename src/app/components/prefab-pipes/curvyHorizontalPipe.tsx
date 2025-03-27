@@ -61,11 +61,12 @@ class CurvyHorizontalPipe extends AbstractPipe {
             x: (x += this.diameter + 15 + innerRadius),
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowX,
+            numSegments: this.windowSize.windowX/10,
             segmentLength: 10,
             composite: this.composite,
             color: pipeColor
         });
+
         this.onAddBodies([this.composite]);
     }
 }

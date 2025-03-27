@@ -12,7 +12,7 @@ class Horizontal2 extends AbstractPipe {
         windowSize: { windowX: number; windowY: number }
     ) {
         super(positionX, positionY, radius, onAddBodies, windowSize);
-        this.createBalls(1500);
+        this.createBalls(1000);
     }
 
     createPipe(): void {
@@ -25,8 +25,8 @@ class Horizontal2 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: 20,
-            segmentLength: 7,
+            numSegments: 3,
+            segmentLength: 4,
             composite: this.composite,
             color: pipeColor
         });
@@ -80,13 +80,12 @@ class Horizontal2 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 17,
-            numSegments: this.windowSize.windowX,
+            numSegments: this.windowSize.windowX/10,
             segmentLength: 7,
             composite: this.composite,
             color: pipeColor,
             decline: 1.7
         });
-
 
         this.onAddBodies([this.composite]);
     }

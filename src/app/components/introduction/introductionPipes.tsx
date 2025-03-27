@@ -53,7 +53,7 @@ export default function IntroductionPipes({
             new Horizontal1(
                 -60,
                 Math.random() * width * 0.45 + width * 0.35,
-                radius + 12,
+                radius + 5,
                 onAddBodies,
                 {
                     windowX: width,
@@ -70,16 +70,16 @@ export default function IntroductionPipes({
                     windowY: height
                 }
             );
-            // new HorizontalDown1(
-            //     -35,
-            //     Math.random() * height * 0.2 + height * 0.2,
-            //     radius - 7,
-            //     onAddBodies,
-            //     {
-            //         windowX: width,
-            //         windowY: height
-            //     }
-            // )
+            new HorizontalDown1(
+                -35,
+                Math.random() * height * 0.2 + height * 0.2,
+                radius - 7,
+                onAddBodies,
+                {
+                    windowX: width,
+                    windowY: height
+                }
+            )
 
             addedPipes.current = true;
         }

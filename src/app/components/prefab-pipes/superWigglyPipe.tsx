@@ -152,11 +152,12 @@ class SuperWigglyPipe extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowY/2,
-            segmentLength: 7,
+            numSegments: this.windowSize.windowY/10,
+            segmentLength: 11,
             composite: this.composite,
             color: pipeColor
         });
+
         this.onAddBodies([this.composite]);
     }
 }

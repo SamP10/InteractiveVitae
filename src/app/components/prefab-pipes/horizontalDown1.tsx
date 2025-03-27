@@ -12,7 +12,7 @@ class HorizontalDown1 extends AbstractPipe {
         windowSize: { windowX: number; windowY: number }
     ) {
         super(positionX, positionY, radius, onAddBodies, windowSize);
-        this.createBalls(1500);
+        this.createBalls(1700);
     }
 
     createPipe(): void {
@@ -25,8 +25,8 @@ class HorizontalDown1 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: 20,
-            segmentLength: 7,
+            numSegments: 3,
+            segmentLength: 4,
             composite: this.composite,
             color: pipeColor
         });
@@ -46,8 +46,8 @@ class HorizontalDown1 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 17,
-            numSegments: 25,
-            segmentLength: 7,
+            numSegments: 20,
+            segmentLength: 9,
             composite: this.composite,
             color: pipeColor,
             decline: 1.7
@@ -64,6 +64,7 @@ class HorizontalDown1 extends AbstractPipe {
             radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
+            outerNumPoints: 6,
             color: pipeColor
         });
 
@@ -103,7 +104,7 @@ class HorizontalDown1 extends AbstractPipe {
             y,
             offset: this.diameter + 17,
             numSegments: 25,
-            segmentLength: 7,
+            segmentLength: 9,
             composite: this.composite,
             color: pipeColor,
             decline: 2.4
@@ -119,6 +120,7 @@ class HorizontalDown1 extends AbstractPipe {
             angles: [ANGLES[270], ANGLES[360]],
             radius: this.diameter + 17,
             innerRadius,
+            outerNumPoints: 6,
             composite: this.composite,
             color: pipeColor
         });
@@ -129,6 +131,7 @@ class HorizontalDown1 extends AbstractPipe {
             angles: [ANGLES[90], ANGLES[180]],
             radius: this.diameter + 17,
             innerRadius,
+            outerNumPoints: 6,
             composite: this.composite,
             color: pipeColor
         });
@@ -144,14 +147,14 @@ class HorizontalDown1 extends AbstractPipe {
         });
 
         PipeFactory.vertical({
-                    x,
-                    y,
-                    offset: this.diameter + 15,
-                    numSegments: this.windowSize.windowY/2,
-                    segmentLength: 7,
-                    composite: this.composite,
-                    color: pipeColor
-                });
+            x,
+            y,
+            offset: this.diameter + 15,
+            numSegments: this.windowSize.windowY/10,
+            segmentLength: 11,
+            composite: this.composite,
+            color: pipeColor
+        });
 
         this.onAddBodies([this.composite]);
     }
