@@ -9,8 +9,8 @@ export interface IIntroductionConfig {
     radius: number;
     width: number;
     height: number;
-    engine?: Engine;
-    scene?: React.RefObject<HTMLDivElement|null>;
+    engine: Engine;
+    scene?: HTMLDivElement | undefined | null;
 };
 
 export interface IStartButtonConfig {
@@ -20,5 +20,5 @@ export interface IStartButtonConfig {
     width: number;
     height: number;
     engine: Engine;
-    scene: React.RefObject<HTMLDivElement|null>;
+    scene?: HTMLDivElement | undefined | null;
 }

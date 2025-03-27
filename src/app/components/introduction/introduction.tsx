@@ -15,7 +15,7 @@ export default function Introduction({
 }: IIntroductionConfig) {
     useEffect(() => {
         const render = Render.create({
-            element: scene.current,
+            element: scene as HTMLDivElement,
             engine: engine,
             options: {
                 width: width,
