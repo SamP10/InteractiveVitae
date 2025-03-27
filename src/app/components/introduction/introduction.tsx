@@ -16,7 +16,7 @@ export default function Introduction({
     useEffect(() => {
         const render = Render.create({
             element: scene.current,
-            engine: engine.current,
+            engine: engine,
             options: {
                 width: width,
                 height: height,

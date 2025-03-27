@@ -9,11 +9,16 @@ export interface IIntroductionConfig {
     radius: number;
     width: number;
     height: number;
-    engine: Engine;
+    engine?: Engine;
+    scene?: React.RefObject<HTMLDivElement>;
 };
 
 export interface IStartButtonConfig {
     onAddBodies: AddBodiesFunction;
     onSetRadius: OnSetRadius;
     onMovePageState: OnMovePageState;
+    width: number;
+    height: number;
+    engine: Engine;
+    scene: React.RefObject<HTMLDivElement>;
 }

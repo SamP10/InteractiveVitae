@@ -14,7 +14,7 @@ enum PAGE_STATE {
 }
 
 export default function WorldContent() {
-    const scene = useRef(null);
+    const scene = useRef<HTMLDivElement>(null);
     const engine = useRef(Engine.create());
     const bodiesRef = useRef([] as IBodyDefinition[]);
     const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
@@ -29,7 +29,8 @@ export default function WorldContent() {
         return (
             body.position &&
             (body.position.y > innerHeight*2 + 50 ||
-                body.position.x > innerWidth + 50 
+                body.position.x > innerWidth + 50 ||
+                body.position.x < -innerWidth - 50 
             )
         );
     };
@@ -92,7 +93,7 @@ export default function WorldContent() {
                     onMovePageState={movePageState}
                     width={innerWidth}
                     height={innerHeight}
-                    engine={engine}
+                    engine={engine.current}
                     scene={scene}
                 />
             )}
@@ -102,7 +103,7 @@ export default function WorldContent() {
                     radius={radius}
                     width={innerWidth}
                     height={innerHeight * 2}
-                    engine={engine}
+                    engine={engine.current}
                     scene={scene}
                 />
             )}

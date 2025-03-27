@@ -3,7 +3,7 @@ import { ANGLES } from './angleConstants';
 import AbstractPipe from './abstractPipe';
 import PipeFactory from '../composites/pipeFactory';
 
-class Horizontal1 extends AbstractPipe {
+class HorizontalDown1 extends AbstractPipe {
     constructor(
         positionX: number,
         positionY: number,
@@ -107,4 +107,4 @@ class Horizontal1 extends AbstractPipe {
     }
 }
 
-export default Horizontal1;
+export default HorizontalDown1;

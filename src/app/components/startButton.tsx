@@ -16,13 +16,13 @@ export default function StartButton({
 }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
-    const [circle, setCircle] = useState(null);
-    const buttonRef = useRef(null);
+    const [circle, setCircle] = useState<Body|null>(null);
+    const buttonRef = useRef<HTMLDivElement|null>(null);
 
     useEffect(() => {
         const render = Render.create({
             element: scene.current,
-            engine: engine.current,
+            engine: engine,
             options: {
                 width: width,
                 height: height,
@@ -37,7 +37,7 @@ export default function StartButton({
             Render.stop(render);
             render.canvas.remove();
         };
-    }, [engine, width, height]);
+    }, [engine, width, height, scene]);
 
     const handleClick = () => {
         setButtonClicked(true);
@@ -74,16 +74,16 @@ export default function StartButton({
     useEffect(() => {
         if (circle) {
             const intervalId = setInterval(() => {
-                if (circle.position.y > window.innerHeight) {
+                if (circle.position.y > height) {
                     onMovePageState();
-                    World.remove(engine.current.world, circle);
+                    World.remove(engine.world, circle);
                     clearInterval(intervalId);
                 }
             }, 700);
 
             return () => clearInterval(intervalId);
         }
-    }, [circle, onMovePageState]);
+    }, [circle, onMovePageState, engine, height]);
 
     return (
         <div className="flex items-center justify-center w-full h-screen">

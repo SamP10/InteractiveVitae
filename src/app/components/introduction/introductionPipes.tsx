@@ -15,8 +15,7 @@ export default function IntroductionPipes({
     onAddBodies,
     radius,
     width,
-    height,
-    engine
+    height
 }: IIntroductionConfig) {
     const addedPipes = useRef(false);
 
@@ -51,9 +50,9 @@ export default function IntroductionPipes({
                 }
             );
             new Horizontal1(
-                -40,
+                -60,
                 Math.random() * width * 0.45 + width * 0.35,
-                radius - 5,
+                radius + 12,
                 onAddBodies,
                 {
                     windowX: width,
@@ -61,9 +60,9 @@ export default function IntroductionPipes({
                 }
             );
             new Horizontal2(
-                width + 20,
+                width + 30,
                 Math.random() * width * 0.45 + width * 0.35,
-                radius - 5,
+                radius - 7,
                 onAddBodies,
                 {
                     windowX: width,
@@ -74,7 +73,7 @@ export default function IntroductionPipes({
         }
 
         return () => {};
-    }, [engine, onAddBodies, radius, width, height]);
+    }, [onAddBodies, radius, width, height]);
 
     return <div className="relative w-full h-screen"></div>;
 }
