@@ -46,7 +46,7 @@ class HorizontalDown1 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 17,
-            numSegments: 50,
+            numSegments: 25,
             segmentLength: 7,
             composite: this.composite,
             color: pipeColor,
@@ -64,45 +64,95 @@ class HorizontalDown1 extends AbstractPipe {
             radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
-            outerNumPoints: 15,
+            color: pipeColor
+        });
+
+        PipeFactory.quarterPipe({
+            x: (x += this.diameter + 15 + innerRadius),
+            y: (y += this.diameter + 15 + innerRadius),
+            startAngle: ANGLES[270],
+            radius: this.diameter + 17,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+        });
+
+        PipeFactory.vertical({
+            x,
+            y,
+            offset: this.diameter + 15,
+            numSegments: 40,
+            segmentLength: 12,
+            composite: this.composite,
+            color: pipeColor
+        });
+        y = this.composite.bodies[this.composite.bodies.length - 1].position.y;
+
+        PipeFactory.quarterPipe({
+            x: (x += this.diameter + 15 + innerRadius),
+            y,
+            startAngle: ANGLES[90],
+            radius: this.diameter + 17,
+            innerRadius,
+            composite: this.composite,
             color: pipeColor
         });
 
         comp = PipeFactory.horizontal({
-            x: (x += this.diameter + 15 + innerRadius),
+            x,
             y,
             offset: this.diameter + 17,
-            numSegments: 50,
+            numSegments: 25,
             segmentLength: 7,
             composite: this.composite,
             color: pipeColor,
-            decline: 1.7
+            decline: 2.4
         });
         bodies = Composite.allBodies(comp);
         body = bodies[bodies.length - 1];
         x = body.position.x;
         y = body.position.y + 9;
-        PipeFactory.sBendPipe({
+
+        PipeFactory.uBendPipe({
             x,
             y,
-            angles: [ANGLES[270], ANGLES[90]],
+            angles: [ANGLES[270], ANGLES[360]],
             radius: this.diameter + 17,
             innerRadius,
             composite: this.composite,
-            outerNumPoints: 15,
             color: pipeColor
         });
 
-        PipeFactory.horizontal({
-            x: (x += this.diameter + 15 + innerRadius),
-            y,
-            offset: this.diameter + 17,
-            numSegments: this.windowSize.windowX,
-            segmentLength: 7,
+        PipeFactory.uBendPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            angles: [ANGLES[90], ANGLES[180]],
+            radius: this.diameter + 17,
+            innerRadius,
             composite: this.composite,
-            color: pipeColor,
-            decline: 1.7
+            color: pipeColor
         });
+
+        PipeFactory.quarterPipe({
+            x,
+            y: (y += this.diameter + 15 + innerRadius),
+            startAngle: ANGLES[270],
+            radius: this.diameter + 17,
+            innerRadius,
+            composite: this.composite,
+            color: pipeColor
+        });
+
+        PipeFactory.vertical({
+                    x,
+                    y,
+                    offset: this.diameter + 15,
+                    numSegments: this.windowSize.windowY/2,
+                    segmentLength: 7,
+                    composite: this.composite,
+                    color: pipeColor
+                });
+
         this.onAddBodies([this.composite]);
     }
 }
