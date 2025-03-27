@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, World, Bodies, IBodyDefinition } from 'matter-js';
+import { Engine, World, Constraint, MouseConstraint, IBodyDefinition, Composite, Body } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
@@ -16,7 +16,7 @@ enum PAGE_STATE {
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);
     const engine = useRef(Engine.create());
-    const bodiesRef = useRef([] as IBodyDefinition[]);
+    const bodiesRef = useRef<(Composite | Body)[]>([]);
     const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
     const [radius, setRadius] = useState(0);
 
@@ -37,7 +37,7 @@ export default function WorldContent() {
 
     const cleanupOutOfBoundBalls = () => {
         bodiesRef.current = bodiesRef.current.filter((body) => {
-            if (body.label === BALL_LABEL && isOutOfBound(body)) {
+            if (body.label === BALL_LABEL && isOutOfBound(body as IBodyDefinition)) {
                 World.remove(engine.current.world, body);
                 return false;
             }
@@ -66,9 +66,9 @@ export default function WorldContent() {
         };
     }, [innerHeight, innerWidth]);
 
-    const addBodies = (bodies: Bodies[]) => {
+    const addBodies = (bodies: Array<Body|Composite>) => {
         bodiesRef.current.push(...bodies);
-        World.add(engine.current.world, bodies);
+        World.add(engine.current.world, bodies as (Composite | Matter.Body | Constraint | MouseConstraint)[]);
     };
 
     const movePageState = () => {
