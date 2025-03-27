@@ -87,5 +87,5 @@ export default function IntroductionPipes({
         return () => {};
     }, [onAddBodies, radius, width, height]);
 
-    return <div className="relative w-full h-screen"></div>;
+    return <div></div>;
 }

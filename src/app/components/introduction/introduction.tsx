@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { IIntroductionConfig } from '../types/components';
 import { Render } from 'matter-js';
 import IntroductionPipes from './introductionPipes';
+import IntroductionContent from './introductionContent';
 
 export default function Introduction({
     onAddBodies,
@@ -35,12 +36,17 @@ export default function Introduction({
     }, [engine, scene, width, height]);
 
     return (
-        <IntroductionPipes
-            onAddBodies={onAddBodies}
-            radius={radius}
-            width={width}
-            height={height}
-            engine={engine}
-        />
+        <div className="overflow-y-auto max-h-full">
+            <div>
+                <IntroductionPipes
+                    onAddBodies={onAddBodies}
+                    radius={radius}
+                    width={width}
+                    height={height}
+                    engine={engine}
+                />
+                <IntroductionContent />
+            </div>
+        </div>
     );
 }
