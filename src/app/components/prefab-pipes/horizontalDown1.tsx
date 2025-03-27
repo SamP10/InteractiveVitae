@@ -19,7 +19,7 @@ class HorizontalDown1 extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[2];
+        const pipeColor = this.pipeColors[3];
 
         PipeFactory.vertical({
             x,

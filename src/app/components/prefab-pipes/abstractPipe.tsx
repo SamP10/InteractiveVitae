@@ -11,7 +11,7 @@ export default abstract class AbstractPipe {
     protected diameter: number;
     protected composite = Composite.create();
     protected onAddBodies: (bodiesToAdd: Bodies[] | Composite[]) => void;
-    protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B'];
+    protected pipeColors: string[] = ['#2E0854', '#4B0082', '#551A8B', '#800080', '#9370DB'];
     protected collisionGroup = Body.nextGroup(false);
     protected collisionMask = Body.nextGroup(false);
     protected windowSize: { windowX: number; windowY: number };

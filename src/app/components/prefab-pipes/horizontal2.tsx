@@ -19,7 +19,7 @@ class Horizontal2 extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[1];
+        const pipeColor = this.pipeColors[4];
 
         PipeFactory.vertical({
             x,

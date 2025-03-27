@@ -19,7 +19,7 @@ class SuperWigglyPipe extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
         let y = this.positionY;
-        const pipeColor = this.pipeColors[0];
+        const pipeColor = this.pipeColors[4];
 
         PipeFactory.quarterPipe({
             x,
