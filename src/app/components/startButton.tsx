@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Bodies } from 'matter-js';
+import { Bodies, IBodyDefinition, Composite, Constraint, MouseConstraint } from 'matter-js';
 import { IStartButtonConfig } from './types/components';
 import { Render, World } from 'matter-js';
 
@@ -16,12 +16,12 @@ export default function StartButton({
 }: IStartButtonConfig) {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
-    const [circle, setCircle] = useState<Body|null>(null);
-    const buttonRef = useRef<HTMLDivElement|null>(null);
+    const [circle, setCircle] = useState<IBodyDefinition | null>(null);
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
         const render = Render.create({
-            element: scene.current,
+            element: scene as HTMLDivElement,
             engine: engine,
             options: {
                 width: width,
@@ -43,6 +43,8 @@ export default function StartButton({
         setButtonClicked(true);
 
         setTimeout(() => {
+            if (!buttonRef.current) return;
+
             const rect = buttonRef.current.getBoundingClientRect();
             const cx = rect.left + rect.width / 2;
             const cy = rect.top + rect.height / 2;
@@ -72,17 +74,20 @@ export default function StartButton({
     };
 
     useEffect(() => {
-        if (circle) {
-            const intervalId = setInterval(() => {
-                if (circle.position.y > height) {
-                    onMovePageState();
-                    World.remove(engine.world, circle);
-                    clearInterval(intervalId);
-                }
-            }, 700);
+        if (!circle || circle.position == undefined) return;
 
-            return () => clearInterval(intervalId);
-        }
+        const intervalId = setInterval(() => {
+            if (circle.position!.y > height) {
+                onMovePageState();
+                World.remove(
+                    engine.world,
+                    circle as (Composite | Matter.Body | Constraint | MouseConstraint)[]
+                );
+                clearInterval(intervalId);
+            }
+        }, 700);
+
+        return () => clearInterval(intervalId);
     }, [circle, onMovePageState, engine, height]);
 
     return (
