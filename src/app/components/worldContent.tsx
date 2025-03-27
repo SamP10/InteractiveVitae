@@ -94,7 +94,7 @@ export default function WorldContent() {
                     width={innerWidth}
                     height={innerHeight}
                     engine={engine.current}
-                    scene={scene}
+                    scene={scene.current}
                 />
             )}
             {currentPage === PAGE_STATE.INTRO && (
@@ -104,7 +104,7 @@ export default function WorldContent() {
                     width={innerWidth}
                     height={innerHeight * 2}
                     engine={engine.current}
-                    scene={scene}
+                    scene={scene.current}
                 />
             )}
             {currentPage === PAGE_STATE.QUALIFICATIONS && <p></p>}
