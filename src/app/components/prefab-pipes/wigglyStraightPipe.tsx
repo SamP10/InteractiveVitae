@@ -19,6 +19,7 @@ class WigglyStraightPipe extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[2];
 
         PipeFactory.quarterPipe({
@@ -31,8 +32,8 @@ class WigglyStraightPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x -= this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x -= offset),
+            y: (y += offset),
             angles: [ANGLES[360], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -40,8 +41,8 @@ class WigglyStraightPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x -= this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x -= offset),
+            y: (y += offset),
             angles: [ANGLES[360], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -50,7 +51,7 @@ class WigglyStraightPipe extends AbstractPipe {
         });
         PipeFactory.quarterPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             startAngle: ANGLES[180],
             radius: this.diameter + 15,
             innerRadius,
@@ -58,7 +59,7 @@ class WigglyStraightPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.vertical({
-            x: (x -= this.diameter + 15 + innerRadius),
+            x: (x -= offset),
             y,
             offset: this.diameter + 15,
             numSegments: 30,

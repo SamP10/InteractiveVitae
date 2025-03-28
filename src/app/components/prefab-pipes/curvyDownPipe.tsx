@@ -19,6 +19,7 @@ class CurvyDownPipe extends AbstractPipe {
         const innerRadius = 10;
         const x = this.positionX + this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[0];
 
         PipeFactory.quarterPipe({
@@ -34,7 +35,7 @@ class CurvyDownPipe extends AbstractPipe {
         while (y < (this.windowSize.windowY - this.radius)) {
             PipeFactory.uBendPipe({
                 x,
-                y: (y += this.diameter + 15 + innerRadius),
+                y: (y += offset),
                 angles: [ANGLES[270], ANGLES[360]],
                 radius: this.diameter + 15,
                 innerRadius,
@@ -44,7 +45,7 @@ class CurvyDownPipe extends AbstractPipe {
 
             PipeFactory.uBendPipe({
                 x,
-                y: (y += this.diameter + 15 + innerRadius),
+                y: (y += offset),
                 angles: [ANGLES[180], ANGLES[90]],
                 radius: this.diameter + 15,
                 innerRadius,

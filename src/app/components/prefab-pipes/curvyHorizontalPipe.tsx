@@ -19,6 +19,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[3];
 
         PipeFactory.quarterPipe({
@@ -32,7 +33,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
         });
         PipeFactory.sBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -40,8 +41,8 @@ class CurvyHorizontalPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -49,8 +50,8 @@ class CurvyHorizontalPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -58,7 +59,7 @@ class CurvyHorizontalPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.horizontal({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             offset: this.diameter + 15,
             numSegments: this.windowSize.windowX/10,

@@ -19,6 +19,7 @@ class SuperWigglyPipe extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX + this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[4];
 
         PipeFactory.quarterPipe({
@@ -32,7 +33,7 @@ class SuperWigglyPipe extends AbstractPipe {
         });
         PipeFactory.sBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -40,8 +41,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.uBendPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[360]],
             radius: this.diameter + 15,
             innerRadius,
@@ -49,8 +50,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x -= this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x -= offset),
+            y: (y += offset),
             angles: [ANGLES[360], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -58,8 +59,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x -= this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x -= offset),
+            y: (y += offset),
             angles: [ANGLES[360], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -67,8 +68,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x -= this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x -= offset),
+            y: (y += offset),
             angles: [ANGLES[360], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -77,7 +78,7 @@ class SuperWigglyPipe extends AbstractPipe {
         });
         PipeFactory.uBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[90], ANGLES[180]],
             radius: this.diameter + 15,
             innerRadius,
@@ -86,7 +87,7 @@ class SuperWigglyPipe extends AbstractPipe {
         });
         PipeFactory.quarterPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             startAngle: ANGLES[270],
             radius: this.diameter + 15,
             innerRadius,
@@ -104,7 +105,7 @@ class SuperWigglyPipe extends AbstractPipe {
         });
         y = this.composite.bodies[this.composite.bodies.length - 1].position.y;
         PipeFactory.quarterPipe({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             startAngle: ANGLES[90],
             radius: this.diameter + 15,
@@ -114,7 +115,7 @@ class SuperWigglyPipe extends AbstractPipe {
         });
         PipeFactory.sBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -122,8 +123,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -131,8 +132,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.sBendPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[90]],
             radius: this.diameter + 15,
             innerRadius,
@@ -140,8 +141,8 @@ class SuperWigglyPipe extends AbstractPipe {
             color: pipeColor
         });
         PipeFactory.quarterPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             startAngle: ANGLES[270],
             radius: this.diameter + 15,
             innerRadius,
