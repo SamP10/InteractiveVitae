@@ -6,8 +6,8 @@ export default function IntroductionContent() {
     const indexRef = useRef(0);
 
     const typeEffect = useCallback((text: string) => {
-        if (indexRef.current < text.length) {
-            setTitle((prev) => prev += text[indexRef.current - 1]);
+        if (indexRef.current < text.length -1) {
+            setTitle((prev) => prev += text[indexRef.current]);
             indexRef.current++;
             setTimeout(() => typeEffect(text), 50);
         } else {
@@ -19,7 +19,7 @@ export default function IntroductionContent() {
         if (hasTyped.current) return;
         hasTyped.current = true;
 
-        const actualTitle = "So you want to get to know me...?";
+        const actualTitle = "Soo you want to get to know me...?";
 
 
         typeEffect(actualTitle);
