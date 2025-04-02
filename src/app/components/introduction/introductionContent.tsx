@@ -1,17 +1,30 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 
 export default function IntroductionContent() {
-    const [title, setTitle] = useState("");
+    const [text, setText] = useState<string[]>([]);
     const hasTyped = useRef(false);
     const indexRef = useRef(0);
+    const stringIndex = useRef(0);
+
+    const typeChar = useCallback((char: string) => {
+        setText((prev) => {
+            const newText = [...prev];
+
+            newText[stringIndex.current] = (newText[stringIndex.current] || '') + char;
+
+            return newText;
+        });
+    }, []);
 
     const typeEffect = useCallback((text: string) => {
-        if (indexRef.current < text.length -1) {
-            setTitle((prev) => prev += text[indexRef.current]);
+        if (indexRef.current < text.length 
+        ) {
+            typeChar(text[indexRef.current]);
             indexRef.current++;
             setTimeout(() => typeEffect(text), 50);
         } else {
             indexRef.current = 0;
+            stringIndex.current++;
         }
     }, []);
 
@@ -19,8 +32,7 @@ export default function IntroductionContent() {
         if (hasTyped.current) return;
         hasTyped.current = true;
 
-        const actualTitle = "Soo you want to get to know me...?";
-
+        const actualTitle = "So you want to get to know me...?";
 
         typeEffect(actualTitle);
     }, [typeEffect]);
@@ -34,7 +46,7 @@ export default function IntroductionContent() {
 
                 <div className="p-5 rounded-lg max-w-6xl text-left" style={{ fontFamily: 'Doto', fontSize: 30, color: 'white', backgroundColor: 'rgba(80, 80, 80, 0.7)', fontWeight: 900 }}>
                     <p>
-                        <i>{title}</i>
+                        <i>{text}</i>
                     </p>
                 </div>
                 <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
