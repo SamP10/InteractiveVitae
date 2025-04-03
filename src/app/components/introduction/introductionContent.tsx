@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import OllamaInput from '../ollama/OllamaInput';
 
 export default function IntroductionContent() {
     const [text, setText] = useState<string[]>([]);
@@ -49,45 +50,8 @@ export default function IntroductionContent() {
                         <i>{text}</i>
                     </p>
                 </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                </div>
-                <div className="p-5 rounded-lg max-w-6xl text-center" style={{ backgroundColor: 'rgba(80, 80, 80, 0.7)', color: 'white' }}>
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
+                <div className="p-5 rounded-lg max-w-6xl text-left" style={{ fontFamily: 'Doto', fontSize: 30, color: 'white', backgroundColor: 'rgba(80, 80, 80, 0.7)', fontWeight: 900 }}>
+                    <OllamaInput />
                 </div>
             </div>
         </div>
