@@ -1,7 +1,15 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Engine, World, Constraint, MouseConstraint, IBodyDefinition, Composite, Body } from 'matter-js';
+import {
+    Engine,
+    World,
+    Constraint,
+    MouseConstraint,
+    IBodyDefinition,
+    Composite,
+    Body
+} from 'matter-js';
 import { BALL_LABEL } from './constants';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
@@ -28,10 +36,9 @@ export default function WorldContent() {
     const isOutOfBound = (body: IBodyDefinition) => {
         return (
             body.position &&
-            (body.position.y > innerHeight*2 + 50 ||
+            (body.position.y > innerHeight * 2 + 50 ||
                 body.position.x > innerWidth + 50 ||
-                body.position.x < -innerWidth - 50 
-            )
+                body.position.x < -innerWidth - 50)
         );
     };
 
@@ -66,9 +73,12 @@ export default function WorldContent() {
         };
     }, [innerHeight, innerWidth]);
 
-    const addBodies = (bodies: Array<Body|Composite>) => {
+    const addBodies = (bodies: Array<Body | Composite>) => {
         bodiesRef.current.push(...bodies);
-        World.add(engine.current.world, bodies as (Composite | Matter.Body | Constraint | MouseConstraint)[]);
+        World.add(
+            engine.current.world,
+            bodies as (Composite | Matter.Body | Constraint | MouseConstraint)[]
+        );
     };
 
     const movePageState = () => {
