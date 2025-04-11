@@ -12,7 +12,7 @@ export class TypeEffect {
     }
 
     private typeChar(char: string) {
-        this.setText((prev) => {
+        this.setText((prev: string[]) => {
             const newText = [...prev];
             newText[this.stringIndex] = (newText[this.stringIndex] || '') + char;
             return newText;

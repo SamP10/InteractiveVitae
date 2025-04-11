@@ -10,8 +10,8 @@ export default function ResponseMessageTemplate({ text }: { text: string }) {
         hasTyped.current = true;
 
         new TypeEffect(setTypedText).startTyping(text, 50);
-    }, [TypeEffect, text]);
-    
+    }, []);
+
     return (
         <div
             className="p-5 rounded-lg text-left float-left clear-both"

@@ -10,7 +10,7 @@ export default function RequestMessageTemplate({ text }: { text: string }) {
         hasTyped.current = true;
 
         new TypeEffect(setTypedText).startTyping(text, 50);
-    }, [TypeEffect, text]);
+    }, []);
 
     return (
         <div

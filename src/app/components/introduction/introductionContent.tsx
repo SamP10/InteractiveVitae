@@ -3,9 +3,17 @@ import OllamaInput from '../ollama/OllamaInput';
 import ResponseMessageTemplate from './responseMessageTemplate';
 import RequestMessageTemplate from './requestMessageTemplate';
 
+
 export default function IntroductionContent() {
-    const [request, setRequest] = useState('');
-    const [response, setResponse] = useState('');
+    const [chatComponents, setChatComponents] = useState<typeof ResponseMessageTemplate[]|
+    typeof RequestMessageTemplate[]>([
+        <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />
+    ]);
+
+    const addChatComponent = (component: typeof ResponseMessageTemplate|
+        typeof RequestMessageTemplate) => {
+        setChatComponents((prev) => [...prev, component]);
+    };
 
     return (
         <div className="relative top-100 left-0 w-full h-full flex justify-center items-center mt-20">
@@ -16,11 +24,12 @@ export default function IntroductionContent() {
                     href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
                     rel="stylesheet"
                 />
-                <ResponseMessageTemplate text={'So you want to get to know me...?'} />
-                {request && <RequestMessageTemplate text={request} />}
-                {response && <ResponseMessageTemplate text={response} />}
-
-                <OllamaInput setRequest={setRequest} setResponse={setResponse} />
+                {chatComponents.map((Component, index) => (
+                    <div key={index}>
+                        {Component}
+                    </div>
+                ))}
+                <OllamaInput addChatComponent={addChatComponent}/>
             </div>
         </div>
     );

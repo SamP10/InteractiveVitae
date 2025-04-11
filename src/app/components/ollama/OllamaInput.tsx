@@ -1,12 +1,17 @@
 import { useState, FormEvent } from 'react';
 import { generateWithOllama } from '../../utils/ollamaIntegration';
+import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
+import RequestMessageTemplate from '../introduction/requestMessageTemplate';
 
 interface OllamaInputProps {
-    setRequest: (input: string) => void;
-    setResponse: (response: string) => void;
+    addChatComponent: (
+        component: (typeof ResponseMessageTemplate)[] | typeof RequestMessageTemplate
+    ) => void;
 }
 
-export default function OllamaInput({ setRequest, setResponse }: OllamaInputProps) {
+export default function OllamaInput({
+    addChatComponent
+}: OllamaInputProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [localInput, setLocalInput] = useState('');
@@ -15,13 +20,12 @@ export default function OllamaInput({ setRequest, setResponse }: OllamaInputProp
         event.preventDefault();
         setLoading(true);
         setError('');
-        setResponse('');
-        setRequest(localInput);
+        addChatComponent(<RequestMessageTemplate key="user-request" text={localInput} />);
         setLocalInput('');
 
         try {
             const response = await generateWithOllama({ prompt: localInput });
-            setResponse(response);
+            addChatComponent(<ResponseMessageTemplate key="ollama-response" text={response} />);
         } catch (error) {
             setError(String(error));
         } finally {
