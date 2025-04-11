@@ -1,4 +1,17 @@
+import { useState, useEffect, useRef } from 'react';
+import { TypeEffect } from '@/app/utils/typeEffectUtils';
+
 export default function RequestMessageTemplate({ text }: { text: string }) {
+    const hasTyped = useRef(false);
+    const [typedText, setTypedText] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (hasTyped.current) return;
+        hasTyped.current = true;
+
+        new TypeEffect(setTypedText).startTyping(text, 50);
+    }, [TypeEffect, text]);
+
     return (
         <div
             className="p-5 rounded-lg text-right float-right clear-both"
@@ -12,7 +25,7 @@ export default function RequestMessageTemplate({ text }: { text: string }) {
             }}>
             <p>
                 <strong>You: </strong>
-                {text}
+                {typedText}
             </p>
         </div>
     );

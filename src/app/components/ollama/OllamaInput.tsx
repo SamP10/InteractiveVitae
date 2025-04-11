@@ -2,11 +2,11 @@ import { useState, FormEvent } from 'react';
 import { generateWithOllama } from '../../utils/ollamaIntegration';
 
 interface OllamaInputProps {
-    setInput: (input: string) => void;
+    setRequest: (input: string) => void;
     setResponse: (response: string) => void;
 }
 
-export default function OllamaInput({ setInput, setResponse }: OllamaInputProps) {
+export default function OllamaInput({ setRequest, setResponse }: OllamaInputProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [localInput, setLocalInput] = useState('');
@@ -16,14 +16,14 @@ export default function OllamaInput({ setInput, setResponse }: OllamaInputProps)
         setLoading(true);
         setError('');
         setResponse('');
-        setInput(localInput);
+        setRequest(localInput);
         setLocalInput('');
 
         try {
             const response = await generateWithOllama({ prompt: localInput });
             setResponse(response);
         } catch (error) {
-            setError('Failed to generate text with Ollama.' + error);
+            setError(String(error));
         } finally {
             setLoading(false);
         }

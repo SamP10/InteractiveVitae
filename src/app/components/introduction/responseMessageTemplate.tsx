@@ -1,4 +1,17 @@
-export default function ResponseMessageTemplate({ text }: { text: string[] }) {
+import { useState, useEffect, useRef } from 'react';
+import { TypeEffect } from '@/app/utils/typeEffectUtils';
+
+export default function ResponseMessageTemplate({ text }: { text: string }) {
+    const hasTyped = useRef(false);
+    const [typedText, setTypedText] = useState<string[]>([]);
+
+    useEffect(() => {
+        if (hasTyped.current) return;
+        hasTyped.current = true;
+
+        new TypeEffect(setTypedText).startTyping(text, 50);
+    }, [TypeEffect, text]);
+    
     return (
         <div
             className="p-5 rounded-lg text-left float-left clear-both"
@@ -12,7 +25,7 @@ export default function ResponseMessageTemplate({ text }: { text: string[] }) {
             }}>
             <p>
                 <strong>Sam: </strong>
-                {text}
+                {typedText}
             </p>
         </div>
     );
