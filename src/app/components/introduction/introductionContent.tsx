@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import OllamaInput from '../ollama/OllamaInput';
+import RequestPillContainer from './requestPillContainer';
 import ResponseMessageTemplate from './responseMessageTemplate';
 
 
@@ -26,7 +26,7 @@ export default function IntroductionContent() {
                         {Component}
                     </div>
                 ))}
-                <OllamaInput addChatComponent={addChatComponent}/>
+                <RequestPillContainer addChatComponent={addChatComponent}/>
             </div>
         </div>
     );
