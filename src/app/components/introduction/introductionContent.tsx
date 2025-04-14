@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import OllamaInput from '../ollama/OllamaInput';
 import ResponseMessageTemplate from './responseMessageTemplate';
-import RequestMessageTemplate from './requestMessageTemplate';
 
 
 export default function IntroductionContent() {
-    const [chatComponents, setChatComponents] = useState<typeof ResponseMessageTemplate[]|
-    typeof RequestMessageTemplate[]>([
+    const [chatComponents, setChatComponents] = useState<React.ReactNode[]>([
         <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />
     ]);
 
-    const addChatComponent = (component: typeof ResponseMessageTemplate|
-        typeof RequestMessageTemplate) => {
+    const addChatComponent = (component: React.ReactNode) => {
         setChatComponents((prev) => [...prev, component]);
     };
 

@@ -5,9 +5,9 @@ import RequestMessageTemplate from '../introduction/requestMessageTemplate';
 import { SYSTEM_PROMPT } from './constants';
 
 interface OllamaInputProps {
-    addChatComponent: (
-        component: (typeof ResponseMessageTemplate)[] | typeof RequestMessageTemplate
-    ) => void;
+    addChatComponent(
+        component: React.ReactNode
+    ): void;
 }
 
 export default function OllamaInput({ addChatComponent }: OllamaInputProps) {
