@@ -11,6 +11,7 @@ import {
     Body
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
+import { initialiseOllama } from '../utils/ollamaIntegration';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
 
@@ -66,6 +67,8 @@ export default function WorldContent() {
         };
 
         runner();
+
+        initialiseOllama();
 
         return () => {
             World.clear(engine.current.world, false);

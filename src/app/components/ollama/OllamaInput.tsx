@@ -1,7 +1,8 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useRef } from 'react';
 import { generateWithOllama } from '../../utils/ollamaIntegration';
 import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
 import RequestMessageTemplate from '../introduction/requestMessageTemplate';
+import { SYSTEM_PROMPT } from './constants';
 
 interface OllamaInputProps {
     addChatComponent: (
@@ -9,12 +10,13 @@ interface OllamaInputProps {
     ) => void;
 }
 
-export default function OllamaInput({
-    addChatComponent
-}: OllamaInputProps) {
+export default function OllamaInput({ addChatComponent }: OllamaInputProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [localInput, setLocalInput] = useState('');
+    const messageHistory = useRef<{ role: string; content: string }[]>([
+        {role: 'system', content: SYSTEM_PROMPT}
+    ]);
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -24,7 +26,14 @@ export default function OllamaInput({
         setLocalInput('');
 
         try {
-            const response = await generateWithOllama({ prompt: localInput });
+            const response = await generateWithOllama({
+                messageHistory: messageHistory.current,
+                prompt: localInput
+            });
+
+            messageHistory.current.push({ role: 'user', content: localInput });
+            messageHistory.current.push({ role: 'assistant', content: response });
+
             addChatComponent(<ResponseMessageTemplate key="ollama-response" text={response} />);
         } catch (error) {
             setError(String(error));

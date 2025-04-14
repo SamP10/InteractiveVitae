@@ -21,7 +21,8 @@ export default function ResponseMessageTemplate({ text }: { text: string }) {
                 color: 'white',
                 backgroundColor: 'rgba(80, 80, 80, 0.7)',
                 fontWeight: 900,
-                display: 'inline-block'
+                display: 'inline-block',
+                maxWidth: '80%'
             }}>
             <p>
                 <strong>Sam: </strong>
