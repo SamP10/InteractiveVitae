@@ -15,7 +15,7 @@ export default function OllamaInput({ addChatComponent }: OllamaInputProps) {
     const [error, setError] = useState('');
     const [localInput, setLocalInput] = useState('');
     const messageHistory = useRef<{ role: string; content: string }[]>([
-        {role: 'system', content: SYSTEM_PROMPT}
+        { role: 'system', content: SYSTEM_PROMPT }
     ]);
 
     const handleSubmit = async (event: FormEvent) => {
