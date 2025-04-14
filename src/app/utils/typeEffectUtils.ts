@@ -2,8 +2,11 @@ export class TypeEffect {
     private index = 0;
     private stringIndex = 0;
     private hasTyped = false;
+    private setText: (updater: (prev: string[]) => string[]) => void;
 
-    constructor(private setText: (text: string[]) => void) {}
+    constructor(setText: (updater: (prev: string[]) => string[]) => void) {
+        this.setText = setText;
+    }
 
     public startTyping(text: string, speed: number = 50) {
         if (this.hasTyped) return;
