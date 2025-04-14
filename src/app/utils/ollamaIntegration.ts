@@ -6,7 +6,6 @@ const OLLAMA_API_URL = 'http://localhost:11434/api/chat';
 interface OllamaRequest {
     messageHistory: { role: string; content: string }[];
     prompt: string;
-    options?: Record<string, unknown>;
 }
 
 export async function initialiseOllama() {
@@ -29,16 +28,14 @@ export async function initialiseOllama() {
 
 export async function chatWithOllama({
     messageHistory,
-    prompt,
-    options = {}
+    prompt
 }: OllamaRequest): Promise<string> {
     try {
         const response = await axios.post(
             OLLAMA_API_URL,
             {
                 model: 'llama3:latest',
-                messages: [...messageHistory, { role: 'user', content: prompt }],
-                ...options
+                messages: [...messageHistory, { role: 'user', content: prompt }]
             },
             {
                 responseType: 'json'
