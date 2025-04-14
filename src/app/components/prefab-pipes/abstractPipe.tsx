@@ -25,6 +25,7 @@ export default abstract class AbstractPipe {
         '#5E35B1',
         '#039BE5'
     ];
+    private ballInterval: NodeJS.Timeout | null = null;
 
     constructor(
         positionX: number,
@@ -75,7 +76,22 @@ export default abstract class AbstractPipe {
     }
 
     protected createBalls(interval: number = 500): void {
-        setInterval(() => this.createBall(), interval);
+        const createBall = () => {
+            if (document.visibilityState === 'visible') {
+                this.createBall();
+            }
+        };
+
+        this.ballInterval = setInterval(createBall, interval);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden' && this.ballInterval) {
+                clearInterval(this.ballInterval);
+                this.ballInterval = null;
+            } else if (document.visibilityState === 'visible' && !this.ballInterval) {
+                this.ballInterval = setInterval(createBall, interval);
+            }
+        });
     }
 
     private enableCollisions(): void {

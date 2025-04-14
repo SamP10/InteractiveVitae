@@ -19,6 +19,7 @@ class HorizontalDown1 extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[3];
 
         PipeFactory.vertical({
@@ -69,8 +70,8 @@ class HorizontalDown1 extends AbstractPipe {
         });
 
         PipeFactory.quarterPipe({
-            x: (x += this.diameter + 15 + innerRadius),
-            y: (y += this.diameter + 15 + innerRadius),
+            x: (x += offset),
+            y: (y += offset),
             startAngle: ANGLES[270],
             radius: this.diameter + 17,
             innerRadius,
@@ -90,7 +91,7 @@ class HorizontalDown1 extends AbstractPipe {
         y = this.composite.bodies[this.composite.bodies.length - 1].position.y;
 
         PipeFactory.quarterPipe({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             startAngle: ANGLES[90],
             radius: this.diameter + 17,
@@ -127,7 +128,7 @@ class HorizontalDown1 extends AbstractPipe {
 
         PipeFactory.uBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[90], ANGLES[180]],
             radius: this.diameter + 17,
             innerRadius,
@@ -138,7 +139,7 @@ class HorizontalDown1 extends AbstractPipe {
 
         PipeFactory.quarterPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             startAngle: ANGLES[270],
             radius: this.diameter + 17,
             innerRadius,

@@ -19,6 +19,7 @@ class Horizontal2 extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[4];
 
         PipeFactory.vertical({
@@ -68,7 +69,7 @@ class Horizontal2 extends AbstractPipe {
 
         PipeFactory.uBendPipe({
             x,
-            y: (y += this.diameter + 15 + innerRadius),
+            y: (y += offset),
             angles: [ANGLES[270], ANGLES[360]],
             radius: this.diameter + 17,
             innerRadius,

@@ -19,6 +19,7 @@ class Horizontal1 extends AbstractPipe {
         const innerRadius = 10;
         let x = this.positionX - this.radius;
         let y = this.positionY;
+        const offset = this.diameter + 15 + innerRadius;
         const pipeColor = this.pipeColors[2];
 
         PipeFactory.vertical({
@@ -33,7 +34,7 @@ class Horizontal1 extends AbstractPipe {
         y = this.composite.bodies[this.composite.bodies.length - 1].position.y;
 
         PipeFactory.quarterPipe({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             startAngle: ANGLES[90],
             radius: this.diameter + 17,
@@ -69,7 +70,7 @@ class Horizontal1 extends AbstractPipe {
         });
 
         comp = PipeFactory.horizontal({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             offset: this.diameter + 17,
             numSegments: 25,
@@ -94,7 +95,7 @@ class Horizontal1 extends AbstractPipe {
         });
 
         PipeFactory.horizontal({
-            x: (x += this.diameter + 15 + innerRadius),
+            x: (x += offset),
             y,
             offset: this.diameter + 17,
             numSegments: this.windowSize.windowX/10,
