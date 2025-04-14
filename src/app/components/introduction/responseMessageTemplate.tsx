@@ -17,7 +17,7 @@ export default function ResponseMessageTemplate({ text }: { text: string }) {
             className="p-5 rounded-lg text-left float-left clear-both"
             style={{
                 fontFamily: 'Doto',
-                fontSize: 25,
+                fontSize: 20,
                 color: 'white',
                 backgroundColor: 'rgba(80, 80, 80, 0.7)',
                 fontWeight: 900,

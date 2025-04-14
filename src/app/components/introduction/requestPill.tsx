@@ -3,21 +3,25 @@ import React from 'react';
 interface RequestPillProps {
     label: string;
     onClick: () => void;
+    disabled: boolean;
 }
 
-export default function RequestPill({ label, onClick }: RequestPillProps) {
+export default function RequestPill({ label, onClick, disabled }: RequestPillProps) {
     return (
         <button
             onClick={onClick}
-            className="px-4 py-2 rounded-full text-white font-bold transition-transform transform hover:scale-105 active:scale-95"
+            className="px-4 py-2 m-1 rounded-full text-white font-bold transition-transform transform hover:scale-105 active:scale-90"
             style={{
-                backgroundColor: 'rgba(80, 80, 80, 0.7)',
+                backgroundColor: '#800080',
                 fontFamily: 'Doto',
-                fontSize: 18,
-                boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                fontSize: 15,
+                fontWeight: 900,
+                transition: 'background-color 0.8s ease',
             }}
-        >
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#9370DB')}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#800080')}
+            disabled={disabled}>
             {label}
         </button>
     );
-};
+}

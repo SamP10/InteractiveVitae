@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SYSTEM_PROMPT } from '../components/ollama/constants';
+import { SYSTEM_PROMPT } from '../components/introduction/constants';
 
 const OLLAMA_API_URL = 'http://localhost:11434/api/chat';
 
