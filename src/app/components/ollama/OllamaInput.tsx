@@ -1,5 +1,5 @@
 import { useState, FormEvent, useRef } from 'react';
-import { generateWithOllama } from '../../utils/ollamaIntegration';
+import { chatWithOllama } from '../../utils/ollamaIntegration';
 import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
 import RequestMessageTemplate from '../introduction/requestMessageTemplate';
 import { SYSTEM_PROMPT } from './constants';
@@ -26,7 +26,7 @@ export default function OllamaInput({ addChatComponent }: OllamaInputProps) {
         setLocalInput('');
 
         try {
-            const response = await generateWithOllama({
+            const response = await chatWithOllama({
                 messageHistory: messageHistory.current,
                 prompt: localInput
             });

@@ -27,7 +27,7 @@ export async function initialiseOllama() {
     }
 }
 
-export async function generateWithOllama({
+export async function chatWithOllama({
     messageHistory,
     prompt,
     options = {}
