@@ -6,7 +6,7 @@ const OLLAMA_API_URL = 'http://localhost:11434/api/chat';
 interface OllamaRequest {
     messageHistory: { role: string; content: string }[];
     prompt: string;
-    options?: Record<string, any>;
+    options?: Record<string, unknown>;
 }
 
 export async function initialiseOllama() {
