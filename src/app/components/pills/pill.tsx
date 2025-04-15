@@ -1,12 +1,12 @@
 import React from 'react';
 
-interface RequestPillProps {
+interface PillProps {
     label: string;
     onClick: () => void;
     disabled: boolean;
 }
 
-export default function RequestPill({ label, onClick, disabled }: RequestPillProps) {
+export default function Pill({ label, onClick, disabled }: PillProps) {
     return (
         <button
             onClick={onClick}
@@ -16,10 +16,9 @@ export default function RequestPill({ label, onClick, disabled }: RequestPillPro
                 fontFamily: 'Doto',
                 fontSize: 15,
                 fontWeight: 900,
-                transition: 'background-color 0.8s ease',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#9370DB')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#800080')}
+            onMouseEnter={(event) => (event.currentTarget.style.backgroundColor = '#9370DB')}
+            onMouseLeave={(event) => (event.currentTarget.style.backgroundColor = '#800080')}
             disabled={disabled}>
             {label}
         </button>

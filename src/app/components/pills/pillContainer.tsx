@@ -1,15 +1,15 @@
-import Pill from './requestPill';
-import { useState, FormEvent, useRef } from 'react';
+import Pill from './pill';
+import { useState, useRef } from 'react';
 import { chatWithOllama } from '../../utils/ollamaIntegration';
 import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
 import RequestMessageTemplate from '../introduction/requestMessageTemplate';
-import { SYSTEM_PROMPT } from './constants';
+import { SYSTEM_PROMPT } from '../introduction/constants';
 
-interface RequestPillContainerProps {
+interface PillContainerProps {
     addChatComponent(component: React.ReactNode): void;
 }
 
-export default function RequestPillContainer({ addChatComponent }: RequestPillContainerProps) {
+export default function PillContainer({ addChatComponent }: PillContainerProps) {
     const [prompts, setPrompts] = useState([
         'What is this?',
         'Are you a robot?',
