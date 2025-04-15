@@ -8,7 +8,7 @@ export class TypeEffect {
         this.setText = setText;
     }
 
-    public startTyping(text: string, speed: number = 50) {
+    public startTyping(text: string, speed: number = 2) {
         if (this.hasTyped) return;
         this.hasTyped = true;
         this.typeEffect(text, speed);
