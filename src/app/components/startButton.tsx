@@ -29,7 +29,6 @@ export default function StartButton({
                 wireframes: false,
                 background: 'black',
                 showStats: true
-
             }
         });
 
@@ -63,7 +62,7 @@ export default function StartButton({
                 restitution: 0.9,
                 friction: 0.005,
                 render: {
-                    fillStyle: '#3B82F6'
+                    fillStyle: '#9370DB'
                 }
             });
 
@@ -97,14 +96,26 @@ export default function StartButton({
             {!dropBall && (
                 <button
                     ref={buttonRef}
-                    className={`bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-full transform transition-all duration-300 
+                    className={`text-white font-bold rounded-full transform transition-all duration-300 
                         ${
                             buttonClicked
                                 ? 'md:h-10 md:w-10 sm:h-10 sm:w-10'
                                 : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
                         }  
                         focus:outline-none z-10`}
-                    onClick={handleClick}>
+                    style={{
+                        fontFamily: 'Doto',
+                        fontSize: 20,
+                        fontWeight: 900,
+                        backgroundColor: '#800080'
+                    }}
+                    onClick={handleClick}
+                    onMouseEnter={(event) =>
+                        (event.currentTarget.style.backgroundColor = '#9370DB')
+                    }
+                    onMouseLeave={(event) =>
+                        (event.currentTarget.style.backgroundColor = '#800080')
+                    }>
                     {!buttonClicked && (
                         <span
                             className={`transition-opacity duration-300 md:text-base sm:test-sm${

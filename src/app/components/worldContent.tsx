@@ -98,6 +98,12 @@ export default function WorldContent() {
 
     return (
         <div>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+                rel="stylesheet"
+            />
             <div ref={scene} className="absolute" />
             {currentPage === PAGE_STATE.START && (
                 <StartButton
