@@ -28,6 +28,9 @@ export default function ResponseMessageTemplate({ text }: { text: string }) {
                 <strong>Sam: </strong>
                 {typedText}
             </p>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '5px' }}>
+                <span style={{ fontSize: '12px', color: 'green' }}>✓✓ Read</span>
+            </div>
         </div>
     );
 }
