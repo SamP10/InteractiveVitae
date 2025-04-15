@@ -22,7 +22,7 @@ export default function RequestMessageTemplate({ text }: { text: string }) {
                 backgroundColor: 'rgba(80, 80, 80, 0.7)',
                 fontWeight: 900,
                 display: 'inline-block',
-                maxWidth: '80%'
+                maxWidth: '70%'
             }}>
             <p className='text-left'>
                 <strong>You: </strong>
