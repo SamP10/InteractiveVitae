@@ -13,7 +13,7 @@ import { IPillBallConfig } from '../types/components';
 export default function PillBall({
     pillRef,
     setDropBall,
-    ballConfig: { scene, engine, width, height, onAddBodies, onSetRadius, onBallRemove }
+    ballConfig: { scene, engine, width, height, onAddBodies, onSetRadius, radius, onBallRemove }
 }: IPillBallConfig) {
     const [ball, setBall] = useState<IBodyDefinition | null>(null);
     const hasRun = useRef(false);
@@ -49,16 +49,19 @@ export default function PillBall({
             const rect = pillRef.getBoundingClientRect();
             const cx = rect.left + rect.width / 2;
             const cy = rect.top + rect.height / 2;
-            let radius;
 
-            if (window.innerWidth < 768) {
-                radius = 15;
-            } else {
-                radius = rect.width / 2;
+            let calculatedRadius = 15;
+            if(!radius) {
+                if (window.innerWidth < 768) {
+                    calculatedRadius = 15;
+                } else {
+                    calculatedRadius = rect.width / 2;
+                }
+                onSetRadius(calculatedRadius);
             }
-            onSetRadius(radius);
 
-            const circle = Bodies.circle(cx, cy, radius, {
+
+            const circle = Bodies.circle(cx, cy, radius ?? calculatedRadius, {
                 restitution: 0.9,
                 friction: 0.005,
                 render: {
@@ -73,7 +76,7 @@ export default function PillBall({
             setBall(circle);
         }, 300);
 
-    }, [ball, pillRef, onSetRadius, onAddBodies, setDropBall]);
+    }, []);
 
     useEffect(() => {
         if (!ball || ball.position == undefined) return;

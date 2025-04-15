@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import PillContainer from '../pills/pillContainer';
 import ResponseMessageTemplate from './responseMessageTemplate';
+import { IBallConfig } from '../types/components';
 
-
-export default function IntroductionContent() {
+export default function IntroductionContent(ballConfig: IBallConfig) {
     const [chatComponents, setChatComponents] = useState<React.ReactNode[]>([
         <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />
     ]);
@@ -20,7 +20,7 @@ export default function IntroductionContent() {
                         {Component}
                     </div>
                 ))}
-                <PillContainer addChatComponent={addChatComponent}/>
+                <PillContainer addChatComponent={addChatComponent} ballConfig={ballConfig}/>
             </div>
         </div>
     );

@@ -4,12 +4,14 @@ import { chatWithOllama } from '../../utils/ollamaIntegration';
 import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
 import RequestMessageTemplate from '../introduction/requestMessageTemplate';
 import { SYSTEM_PROMPT } from '../introduction/constants';
+import { IBallConfig } from '../types/components';
 
 interface PillContainerProps {
     addChatComponent(component: React.ReactNode): void;
+    ballConfig: IBallConfig
 }
 
-export default function PillContainer({ addChatComponent }: PillContainerProps) {
+export default function PillContainer({ addChatComponent, ballConfig }: PillContainerProps) {
     const [prompts, setPrompts] = useState([
         'What is this?',
         'Are you a robot?',
@@ -31,7 +33,7 @@ export default function PillContainer({ addChatComponent }: PillContainerProps) 
         setLoading(true);
         setError('');
         addChatComponent(<RequestMessageTemplate key={`user-request-${event}`} text={event} />);
-        setPrompts((prevPrompts) => prevPrompts.filter((prompt) => prompt !== event));
+        // setPrompts((prevPrompts) => prevPrompts.filter((prompt) => prompt !== event));
 
         try {
             const response: string = await chatWithOllama({
@@ -81,6 +83,7 @@ export default function PillContainer({ addChatComponent }: PillContainerProps) 
                         label={prompt}
                         onClick={() => onClick(prompt)}
                         disabled={loading}
+                        ballConfig={ballConfig}
                     />
                 ))}
             </div>
