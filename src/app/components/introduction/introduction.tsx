@@ -22,8 +22,7 @@ export default function Introduction({
                 width: width,
                 height: height,
                 wireframes: false,
-                background: 'black',
-                showStats: true
+                background: 'black'
             }
         });
 
@@ -45,7 +44,14 @@ export default function Introduction({
                     height={height}
                     engine={engine}
                 />
-                <IntroductionContent />
+                <IntroductionContent
+                    onAddBodies={onAddBodies}
+                    width={width}
+                    height={height}
+                    engine={engine}
+                    scene={scene}
+                    radius={radius}
+                />
             </div>
         </div>
     );
