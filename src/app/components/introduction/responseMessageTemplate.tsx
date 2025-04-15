@@ -14,7 +14,7 @@ export default function ResponseMessageTemplate({ text }: { text: string }) {
 
     return (
         <div
-            className="p-5 rounded-lg text-left float-left clear-both"
+            className="m-2 p-2 rounded-lg text-left float-left clear-both"
             style={{
                 fontFamily: 'Doto',
                 fontSize: 20,

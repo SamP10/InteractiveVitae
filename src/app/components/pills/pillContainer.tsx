@@ -12,12 +12,12 @@ interface PillContainerProps {
 }
 
 export default function PillContainer({ addChatComponent, ballConfig }: PillContainerProps) {
-    const [prompts, setPrompts] = useState([
+    const prompts = [
         'What is this?',
         'Are you a robot?',
         'Who are you?',
         'What do you do for fun?'
-    ]);
+    ];
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -35,7 +35,6 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
         setLoading(true);
         setError('');
         addChatComponent(<RequestMessageTemplate key={`user-request-${event}`} text={event} />);
-        // setPrompts((prevPrompts) => prevPrompts.filter((prompt) => prompt !== event));
 
         try {
             const response: string = await chatWithOllama({
@@ -69,23 +68,14 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
                     display: 'inline-block'
                 }}>Generating...</div>
             )}
-            <div
-                className="p-5 m-2 rounded-lg  float-right clear-both"
-                style={{
-                    fontFamily: 'Doto',
-                    fontSize: 20,
-                    color: 'white',
-                    fontWeight: 900,
-                    display: 'inline-block',
-                    maxWidth: '40%',
-                }}>
+            <div className="flex flex-wrap gap-4 p-4 justify-center float-right clear-both">
                 {prompts.map((prompt) => (
                     <Pill
                         key={prompt}
                         label={prompt}
                         onClick={() => onClick(prompt)}
-                        // disabled={loading}
-                        ballConfig={ballConfig}
+                        disabled={loading}
+                        ballConfig={{ ...ballConfig, onBallRemove: () => {} }}
                     />
                 ))}
             </div>

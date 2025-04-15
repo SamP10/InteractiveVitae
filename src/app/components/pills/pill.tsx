@@ -29,8 +29,7 @@ export default function Pill({ label, onClick, disabled = false, ballConfig }: P
                             clicked
                                 ? 'md:h-10 md:w-10 sm:h-10 sm:w-10'
                                 : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
-                        }  
-                        focus:outline-none z-10`}
+                        } `}
                 style={{
                     backgroundColor: 'rgba(66, 133, 244, 0.7)',
                     fontFamily: 'Doto',

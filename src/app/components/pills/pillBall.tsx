@@ -61,12 +61,12 @@ export default function PillBall({
 
         const intervalId = setInterval(() => {
             if (ball.position!.y > height) {
-                onBallRemove();
                 World.remove(
                     engine.world,
                     ball as (Composite | Matter.Body | Constraint | MouseConstraint)[]
                 );
                 clearInterval(intervalId);
+                onBallRemove();
             }
         }, 700);
 
