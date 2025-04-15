@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
 import {
-    Render,
     Bodies,
     IBodyDefinition,
     Composite,
@@ -13,31 +12,10 @@ import { IPillBallConfig } from '../types/components';
 export default function PillBall({
     pillRef,
     setDropBall,
-    ballConfig: { scene, engine, width, height, onAddBodies, onSetRadius, radius, onBallRemove }
+    ballConfig: { engine,  height, onAddBodies, onSetRadius, radius, onBallRemove }
 }: IPillBallConfig) {
     const [ball, setBall] = useState<IBodyDefinition | null>(null);
     const hasRun = useRef(false);
-
-    useEffect(() => {
-        const render = Render.create({
-            element: scene as HTMLDivElement,
-            engine: engine,
-            options: {
-                width: width,
-                height: height,
-                wireframes: false,
-                background: 'black',
-                showStats: true
-            }
-        });
-
-        Render.run(render);
-
-        return () => {
-            Render.stop(render);
-            render.canvas.remove();
-        };
-    }, [engine, width, height, scene]);
 
     useEffect(() => {
         if (hasRun.current) return;

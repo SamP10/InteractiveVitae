@@ -30,6 +30,8 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
     }
 
     const onClick: OnClickEvent = async (event) => {
+        if (loading) return; 
+
         setLoading(true);
         setError('');
         addChatComponent(<RequestMessageTemplate key={`user-request-${event}`} text={event} />);
@@ -82,7 +84,7 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
                         key={prompt}
                         label={prompt}
                         onClick={() => onClick(prompt)}
-                        disabled={loading}
+                        // disabled={loading}
                         ballConfig={ballConfig}
                     />
                 ))}
