@@ -11,9 +11,7 @@ Creative Vitae is a project aimed at showcasing my creative portfolio.
 
 ## Demo
 <img width="1512" alt="Screenshot 2025-04-16 at 00 02 16" src="https://github.com/user-attachments/assets/3cbfb673-98e4-4fde-9039-fe28a140bb68" />
-[![DEMO VIDEO](](https://youtu.be/A4xv6ymWnHE)
-
-
+[DEMO VIDEO](https://youtu.be/A4xv6ymWnHE)
 
 ## Installation
 
