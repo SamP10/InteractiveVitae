@@ -27,8 +27,7 @@ export default function StartButton({
                 width: width,
                 height: height,
                 wireframes: false,
-                background: 'black',
-                showStats: true
+                background: 'black'
             }
         });
 
