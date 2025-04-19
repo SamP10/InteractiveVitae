@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { IIntroductionConfig } from '../types/components';
+import { IComponentConfig } from '../types/components';
 import { Render } from 'matter-js';
 import IntroductionPipes from './introductionPipes';
 import IntroductionContent from './introductionContent';
@@ -14,7 +14,7 @@ export default function Introduction({
     height,
     engine,
     scene
-}: IIntroductionConfig) {
+}: IComponentConfig) {
     useEffect(() => {
         const render = Render.create({
             element: scene as HTMLDivElement,

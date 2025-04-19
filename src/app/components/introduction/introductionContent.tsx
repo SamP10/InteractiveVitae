@@ -9,7 +9,7 @@ export default function IntroductionContent({
     onMovePageState
 }: {
     ballConfig: IBallConfig;
-    onMovePageState: OnMovePageState;
+    onMovePageState: typeof OnMovePageState;
 }) {
     const [chatComponents, setChatComponents] = useState<React.ReactNode[]>([
         <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />

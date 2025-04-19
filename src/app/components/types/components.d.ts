@@ -4,7 +4,7 @@ export function AddBodiesFunction(bodiesToAdd: Bodies[]): void;
 export function OnSetRadius(radius: number): void;
 export function OnMovePageState(): void;
 
-export interface IIntroductionConfig {
+export interface IComponentConfig {
     onAddBodies: AddBodiesFunction;
     onMovePageState?: OnMovePageState;
     radius: number;
