@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { IIntroductionConfig } from '../types/components';
+import { IComponentConfig } from '../types/components';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
@@ -17,7 +17,7 @@ export default function IntroductionPipes({
     radius,
     width,
     height
-}: IIntroductionConfig) {
+}: IComponentConfig) {
     const addedPipes = useRef(false);
 
     useEffect(() => {
