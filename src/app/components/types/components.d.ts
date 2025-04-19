@@ -6,6 +6,7 @@ export function OnMovePageState(): void;
 
 export interface IIntroductionConfig {
     onAddBodies: AddBodiesFunction;
+    onMovePageState?: OnMovePageState;
     radius: number;
     width: number;
     height: number;

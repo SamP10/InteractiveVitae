@@ -119,6 +119,7 @@ export default function WorldContent() {
             {currentPage === PAGE_STATE.INTRO && (
                 <Introduction
                     onAddBodies={addBodies}
+                    onMovePageState={movePageState}
                     radius={radius}
                     width={innerWidth}
                     height={innerHeight * 2}
