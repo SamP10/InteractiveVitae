@@ -14,6 +14,7 @@ import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
+import Qualifications from './qualifications/qualifications';
 
 enum PAGE_STATE {
     START = 'START',
@@ -127,7 +128,15 @@ export default function WorldContent() {
                     scene={scene.current}
                 />
             )}
-            {currentPage === PAGE_STATE.QUALIFICATIONS && <p></p>}
+            {currentPage === PAGE_STATE.QUALIFICATIONS && <Qualifications 
+                                onAddBodies={addBodies}
+                                onMovePageState={movePageState}
+                                radius={radius}
+                                width={innerWidth}
+                                height={innerHeight * 2}
+                                engine={engine.current}
+                                scene={scene.current}
+                                />}
             {currentPage === PAGE_STATE.PROJECTS && <p></p>}
         </div>
     );
