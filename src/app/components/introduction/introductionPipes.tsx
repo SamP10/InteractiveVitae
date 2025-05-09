@@ -32,14 +32,17 @@ export default function IntroductionPipes({
                     windowY: height
                 }
             );
+
             new CurvyHorizontalPipe((Math.random() * width) / 2, -20, radius, onAddBodies, {
                 windowX: width,
                 windowY: height
             });
+
             new SuperWigglyPipe((Math.random() * width) / 2, -20, radius - 10, onAddBodies, {
                 windowX: width,
                 windowY: height
             });
+
             new WigglyStraightPipe(
                 Math.random() * width * 0.25 + width * 0.75,
                 -10,
@@ -50,6 +53,7 @@ export default function IntroductionPipes({
                     windowY: height
                 }
             );
+
             new Horizontal1(
                 -60,
                 Math.random() * width * 0.45 + width * 0.35,
@@ -60,6 +64,7 @@ export default function IntroductionPipes({
                     windowY: height
                 }
             );
+
             new Horizontal2(
                 width + 30,
                 Math.random() * width * 0.45 + width * 0.35,
@@ -70,6 +75,7 @@ export default function IntroductionPipes({
                     windowY: height
                 }
             );
+
             new HorizontalDown1(
                 -35,
                 Math.random() * height * 0.2 + height * 0.2,
@@ -79,13 +85,13 @@ export default function IntroductionPipes({
                     windowX: width,
                     windowY: height
                 }
-            )
+            );
 
             addedPipes.current = true;
         }
 
         return () => {};
-    }, [onAddBodies, radius, width, height]);
+    }, [addedPipes, height, onAddBodies, radius, width]);
 
     return <div></div>;
 }

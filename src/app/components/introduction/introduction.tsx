@@ -23,7 +23,7 @@ export default function Introduction({
                 width: width,
                 height: height,
                 wireframes: false,
-                background: 'black'
+                background: 'black',
             }
         });
 
