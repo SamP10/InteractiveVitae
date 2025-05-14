@@ -58,6 +58,13 @@ export default abstract class AbstractPipe {
         return this.pipe;
     }
 
+    public stopBallCreation(): void {
+        if (this.ballInterval) {
+            clearInterval(this.ballInterval);
+            this.ballInterval = null;
+        }
+    }
+
     private createBall(): void {
         const ball = Bodies.circle(this.positionX, this.positionY, this.radius, {
             restitution: 0,
@@ -82,16 +89,16 @@ export default abstract class AbstractPipe {
             }
         };
 
-        this.ballInterval = setInterval(createBall, interval);
+        // this.ballVisibilityChangeHandler = () => {
+        //     if (document.visibilityState === 'hidden' && this.ballInterval) {
+        //         clearInterval(this.ballInterval);
+        //         this.ballInterval = null;
+        //     } else if (document.visibilityState === 'visible' && !this.ballInterval) {
+        //         this.ballInterval = setInterval(createBall, interval);
+        //     }
+        // };
 
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'hidden' && this.ballInterval) {
-                clearInterval(this.ballInterval);
-                this.ballInterval = null;
-            } else if (document.visibilityState === 'visible' && !this.ballInterval) {
-                this.ballInterval = setInterval(createBall, interval);
-            }
-        });
+        this.ballInterval = setInterval(createBall, interval);
     }
 
     private enableCollisions(): void {

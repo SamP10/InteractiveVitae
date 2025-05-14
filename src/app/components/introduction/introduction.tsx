@@ -1,19 +1,20 @@
 'use client';
 
 import { useEffect } from 'react';
-import { IIntroductionConfig } from '../types/components';
+import { IComponentConfig } from '../types/components';
 import { Render } from 'matter-js';
 import IntroductionPipes from './introductionPipes';
 import IntroductionContent from './introductionContent';
 
 export default function Introduction({
     onAddBodies,
+    onMovePageState,
     radius,
     width,
     height,
     engine,
     scene
-}: IIntroductionConfig) {
+}: IComponentConfig) {
     useEffect(() => {
         const render = Render.create({
             element: scene as HTMLDivElement,
@@ -22,7 +23,7 @@ export default function Introduction({
                 width: width,
                 height: height,
                 wireframes: false,
-                background: 'black'
+                background: 'black',
             }
         });
 
@@ -45,12 +46,8 @@ export default function Introduction({
                     engine={engine}
                 />
                 <IntroductionContent
-                    onAddBodies={onAddBodies}
-                    width={width}
-                    height={height}
-                    engine={engine}
-                    scene={scene}
-                    radius={radius}
+                    ballConfig={{ onAddBodies, radius, width, height, engine }}
+                    onMovePageState={onMovePageState}
                 />
             </div>
         </div>
