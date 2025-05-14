@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import {
     Engine,
     World,
@@ -12,22 +13,12 @@ import {
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
-import StartButton from './startButton';
-import Introduction from './introduction/introduction';
-import Qualifications from './qualifications/qualifications';
-
-enum PAGE_STATE {
-    START = 'START',
-    INTRO = 'INTRO',
-    QUALIFICATIONS = 'QUALIFICATIONS',
-    PROJECTS = 'PROJECTS'
-}
+import WorldRouter from './worldRouter';
 
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);
     const engine = useRef(Engine.create());
     const bodiesRef = useRef<(Composite | Body)[]>([]);
-    const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
     const [radius, setRadius] = useState(0);
 
     const [{ innerHeight, innerWidth }, setInnerWidthHeight] = useState({
@@ -85,54 +76,26 @@ export default function WorldContent() {
         );
     };
 
-    const movePageState = () => {
-        setCurrentPage((previousPageState) => {
-            engine.current = Engine.create();
-            const pageStates = Object.values(PAGE_STATE);
-            const currentIndex = pageStates.indexOf(previousPageState);
-
-            if (currentIndex < pageStates.length - 1) {
-                return pageStates[currentIndex + 1];
-            }
-            return previousPageState;
-        });
-    };
-
     return (
-        <div>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-                href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-                rel="stylesheet"
-            />
-            <div ref={scene} className="absolute" />
-            {currentPage === PAGE_STATE.START && (
-                <StartButton
-                    onAddBodies={addBodies}
-                    onSetRadius={setRadius}
-                    onMovePageState={movePageState}
-                    width={innerWidth}
-                    height={innerHeight}
-                    engine={engine.current}
-                    scene={scene.current}
+        <Router>
+            <div>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+                    rel="stylesheet"
                 />
-            )}
-            {currentPage === PAGE_STATE.INTRO && (
-                <Introduction
-                    onAddBodies={addBodies}
-                    onMovePageState={movePageState}
+                <div ref={scene} className="absolute" />
+                <WorldRouter
+                    scene={scene}
+                    engine={engine}
+                    addBodies={addBodies}
+                    setRadius={setRadius}
                     radius={radius}
-                    width={innerWidth}
-                    height={innerHeight * 2}
-                    engine={engine.current}
-                    scene={scene.current}
+                    innerWidth={innerWidth}
+                    innerHeight={innerHeight}
                 />
-            )}
-            {currentPage === PAGE_STATE.QUALIFICATIONS && (
-                <Qualifications/>
-            )}
-            {currentPage === PAGE_STATE.PROJECTS && <p></p>}
-        </div>
+            </div>
+        </Router>
     );
 }
