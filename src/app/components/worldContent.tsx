@@ -130,15 +130,7 @@ export default function WorldContent() {
                 />
             )}
             {currentPage === PAGE_STATE.QUALIFICATIONS && (
-                <Qualifications
-                    onAddBodies={addBodies}
-                    onMovePageState={movePageState}
-                    radius={radius}
-                    width={innerWidth}
-                    height={innerHeight * 2}
-                    engine={engine.current}
-                    scene={scene.current}
-                />
+                <Qualifications/>
             )}
             {currentPage === PAGE_STATE.PROJECTS && <p></p>}
         </div>
