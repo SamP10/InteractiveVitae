@@ -1,6 +1,6 @@
 'use client';
 
-import { IStartButtonConfig } from './types/components';
+import { IComponentConfig } from './types/components';
 import { useEffect } from 'react';
 import {
     Render
@@ -16,7 +16,7 @@ export default function StartButton({
     height,
     engine,
     scene
-}: IStartButtonConfig) {
+}: IComponentConfig) {
     const label = 'Get to know me';
 
     useEffect(() => {

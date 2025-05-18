@@ -5,26 +5,17 @@ import StartButton from './startButton';
 import Introduction from './introduction/introduction';
 import Qualifications from './qualifications/qualifications';
 import BackgroundPipes from './introduction/BackgroundPipes';
-import { AddBodiesFunction } from './types/components';
-import { Engine } from 'matter-js';
+import { IComponentConfig } from './types/components';
 
 export default function WorldContentInner({
     scene,
     engine,
-    addBodies,
-    setRadius,
+    onAddBodies,
+    onSetRadius,
     radius,
-    innerWidth,
-    innerHeight
-}: {
-    scene: React.RefObject<HTMLDivElement | null>;
-    engine: React.RefObject<Engine>;
-    addBodies:  typeof AddBodiesFunction;
-    setRadius: React.Dispatch<React.SetStateAction<number>>;
-    radius: number;
-    innerWidth: number;
-    innerHeight: number;
-}) {
+    width,
+    height
+}: IComponentConfig) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -39,11 +30,11 @@ export default function WorldContentInner({
                     path="/"
                     element={
                         <StartButton
-                            onAddBodies={addBodies}
-                            onSetRadius={setRadius}
+                            onAddBodies={onAddBodies}
+                            onSetRadius={onSetRadius}
                             onMovePageState={() => movePageState('/intro')}
-                            width={innerWidth}
-                            height={innerHeight}
+                            width={width}
+                            height={height}
                             engine={engine}
                             scene={scene}
                         />
@@ -53,11 +44,11 @@ export default function WorldContentInner({
                     path="/intro"
                     element={
                         <Introduction
-                            onAddBodies={addBodies}
+                            onAddBodies={onAddBodies}
                             onMovePageState={() => movePageState('/qualifications')}
                             radius={radius}
-                            width={innerWidth}
-                            height={innerHeight * 2}
+                            width={width}
+                            height={height * 2}
                             engine={engine}
                             scene={scene}
                         />
@@ -69,12 +60,12 @@ export default function WorldContentInner({
             </Routes>
             {location.pathname !== '/' && (
                 <BackgroundPipes
-                    onAddBodies={addBodies}
+                    onAddBodies={onAddBodies}
                     scene={scene}
                     engine={engine}
                     radius={radius}
-                    width={innerWidth}
-                    height={innerHeight}
+                    width={width}
+                    height={height}
                 />
             )}
         </>

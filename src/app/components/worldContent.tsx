@@ -89,11 +89,11 @@ export default function WorldContent() {
                 <WorldRouter
                     scene={scene.current}
                     engine={engine.current}
-                    addBodies={addBodies}
-                    setRadius={setRadius}
+                    onAddBodies={addBodies}
+                    onSetRadius={setRadius}
                     radius={radius}
-                    innerWidth={innerWidth}
-                    innerHeight={innerHeight}
+                    width={innerWidth}
+                    height={innerHeight}
                 />
             </div>
         </Router>

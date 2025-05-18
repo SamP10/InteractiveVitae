@@ -6,6 +6,7 @@ export function OnMovePageState(): void;
 
 export interface IComponentConfig {
     onAddBodies: AddBodiesFunction;
+    onSetRadius?: OnSetRadius;
     onMovePageState?: OnMovePageState;
     radius: number;
     width: number;
@@ -13,17 +14,6 @@ export interface IComponentConfig {
     engine: Engine;
     scene?: HTMLDivElement | undefined | null;
 };
-
-export interface IStartButtonConfig {
-    onAddBodies: AddBodiesFunction;
-    onSetRadius: OnSetRadius;
-    onMovePageState: OnMovePageState;
-    width: number;
-    height: number;
-    engine: Engine;
-    scene?: HTMLDivElement | undefined | null;
-}
-
 
 export interface IPillBallConfig {
     pillRef?: HTMLButtonElement | undefined | null;
