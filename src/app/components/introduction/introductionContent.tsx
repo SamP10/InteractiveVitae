@@ -44,12 +44,9 @@ export default function IntroductionContent({
                                 viewBox="0 0 15 24"
                                 strokeWidth={2}
                                 stroke="currentColor"
-                                className="w-6 h-6 flex">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M9 4l8 8-8 8V4z"
-                                />
+                                className="w-6 h-6 flex"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 4l8 8-8 8V4z" />
                             </svg>
                         }
                     />

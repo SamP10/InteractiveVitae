@@ -98,7 +98,7 @@ class Horizontal1 extends AbstractPipe {
             x: (x += offset),
             y,
             offset: this.diameter + 17,
-            numSegments: this.windowSize.windowX / 10,
+            numSegments: this.windowSize.windowX/10,
             segmentLength: 15,
             composite: this.composite,
             color: pipeColor,

@@ -89,6 +89,15 @@ export default abstract class AbstractPipe {
             }
         };
 
+        // this.ballVisibilityChangeHandler = () => {
+        //     if (document.visibilityState === 'hidden' && this.ballInterval) {
+        //         clearInterval(this.ballInterval);
+        //         this.ballInterval = null;
+        //     } else if (document.visibilityState === 'visible' && !this.ballInterval) {
+        //         this.ballInterval = setInterval(createBall, interval);
+        //     }
+        // };
+
         this.ballInterval = setInterval(createBall, interval);
     }
 

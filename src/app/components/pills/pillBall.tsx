@@ -1,11 +1,18 @@
 import { useEffect, useState, useRef } from 'react';
-import { Bodies, IBodyDefinition, Composite, Constraint, MouseConstraint, World } from 'matter-js';
+import {
+    Bodies,
+    IBodyDefinition,
+    Composite,
+    Constraint,
+    MouseConstraint,
+    World
+} from 'matter-js';
 import { IPillBallConfig } from '../types/components';
 
 export default function PillBall({
     pillRef,
     setDropBall,
-    ballConfig: { engine, height, onAddBodies, onSetRadius = () => {}, radius, onBallRemove }
+    ballConfig: { engine,  height, onAddBodies, onSetRadius, radius, onBallRemove }
 }: IPillBallConfig) {
     const [ball, setBall] = useState<IBodyDefinition | null>(null);
     const hasRun = useRef(false);
@@ -22,7 +29,7 @@ export default function PillBall({
             const cy = rect.top + rect.height / 2;
 
             let calculatedRadius = 15;
-            if (!radius) {
+            if(!radius) {
                 if (window.innerWidth < 768) {
                     calculatedRadius = 15;
                 } else {
@@ -30,6 +37,7 @@ export default function PillBall({
                 }
                 onSetRadius(calculatedRadius);
             }
+
 
             const circle = Bodies.circle(cx, cy, radius ?? calculatedRadius, {
                 restitution: 0.9,
@@ -45,6 +53,7 @@ export default function PillBall({
 
             setBall(circle);
         }, 300);
+
     }, []);
 
     useEffect(() => {

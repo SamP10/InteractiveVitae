@@ -1,8 +1,10 @@
 'use client';
 
-import { IComponentConfig } from './types/components';
+import { IStartButtonConfig } from './types/components';
 import { useEffect } from 'react';
-import { Render } from 'matter-js';
+import {
+    Render
+} from 'matter-js';
 
 import Pill from './pills/pill';
 
@@ -10,12 +12,11 @@ export default function StartButton({
     onAddBodies,
     onSetRadius,
     onMovePageState,
-    radius,
     width,
     height,
     engine,
     scene
-}: IComponentConfig) {
+}: IStartButtonConfig) {
     const label = 'Get to know me';
 
     useEffect(() => {
@@ -40,20 +41,19 @@ export default function StartButton({
 
     return (
         <div className="flex items-center justify-center w-full h-screen">
-            <Pill
-                label={label}
-                onClick={() => {}}
-                ballConfig={{
-                    onAddBodies,
-                    onBallRemove: onMovePageState,
-                    onSetRadius,
-                    radius,
-                    width,
-                    height,
-                    engine,
-                    scene
-                }}
-            />
+                <Pill
+                    label={label}
+                    onClick={() => {}}
+                    ballConfig={{
+                        onAddBodies,
+                        onBallRemove: onMovePageState,
+                        onSetRadius,
+                        width,
+                        height,
+                        engine,
+                        scene
+                    }}
+                />
         </div>
     );
 }
