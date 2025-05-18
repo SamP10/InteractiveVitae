@@ -10,8 +10,8 @@ import {
     Horizontal2,
     HorizontalDown1
 } from '../prefab-pipes';
-import { Render, Engine } from 'matter-js';
-import { AddBodiesFunction } from '../types/components';
+import { Render } from 'matter-js';
+import { IComponentConfig } from '../types/components';
 
 export default function BackgroundPipes({
     onAddBodies,
@@ -20,14 +20,7 @@ export default function BackgroundPipes({
     radius,
     width,
     height
-}: {
-    onAddBodies: typeof AddBodiesFunction;
-    scene: HTMLDivElement | null;
-    engine: Engine;
-    radius: number;
-    width: number;
-    height: number;
-}) {
+}: IComponentConfig) {
     const addedPipes = useRef(false);
     const pipes = useRef<
         (

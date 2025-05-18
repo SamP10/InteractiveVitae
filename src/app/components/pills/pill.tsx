@@ -1,16 +1,14 @@
 import { useState, useRef } from 'react';
-import { IBallConfig } from '../types/components';
+import { IPillProps } from '../types/components';
 import PillBall from './pillBall';
 
-interface PillProps {
-    label: string;
-    onClick: () => void;
-    disabled?: boolean;
-    ballConfig: IBallConfig;
-    svgIcon?: React.ReactNode;
-}
-
-export default function Pill({ label, onClick, disabled = false, ballConfig, svgIcon }: PillProps) {
+export default function Pill({
+    label,
+    onClick,
+    ballConfig,
+    disabled = false,
+    svgIcon
+}: IPillProps) {
     const [clicked, setClicked] = useState(false);
     const [dropBall, setDropBall] = useState(false);
     const pillRef = useRef<HTMLButtonElement | null>(null);
@@ -38,18 +36,28 @@ export default function Pill({ label, onClick, disabled = false, ballConfig, svg
                         fontSize: 15,
                         fontWeight: 900
                     }}
-                    onMouseEnter={(event) => (event.currentTarget.style.backgroundColor = '#4285F4')}
+                    onMouseEnter={(event) =>
+                        (event.currentTarget.style.backgroundColor = '#4285F4')
+                    }
                     onMouseLeave={(event) =>
                         (event.currentTarget.style.backgroundColor = 'rgba(66, 133, 244, 0.7)')
                     }
                     disabled={disabled}>
-                    {!clicked && <div className="flex items-center justify-center">
-                        <span>{label}</span>
-                        {svgIcon && <span className="inline-block">{svgIcon}</span>}
-                    </div>}
+                    {!clicked && (
+                        <div className="flex items-center justify-center">
+                            <span>{label}</span>
+                            {svgIcon && <span className="inline-block">{svgIcon}</span>}
+                        </div>
+                    )}
                 </button>
             )}
-            {clicked && <PillBall ballConfig={ballConfig} pillRef={pillRef.current} setDropBall={setDropBall} />}
+            {clicked && (
+                <PillBall
+                    ballConfig={ballConfig}
+                    pillRef={pillRef.current}
+                    setDropBall={setDropBall}
+                />
+            )}
         </div>
     );
 }
