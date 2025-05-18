@@ -5,8 +5,8 @@ import PillBall from './pillBall';
 interface PillProps {
     label: string;
     onClick: () => void;
-    disabled?: boolean;
     ballConfig: IBallConfig;
+    disabled?: boolean;
     svgIcon?: React.ReactNode;
 }
 

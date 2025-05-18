@@ -33,6 +33,7 @@ export default function WorldContentInner({
                             onAddBodies={onAddBodies}
                             onSetRadius={onSetRadius}
                             onMovePageState={() => movePageState('/intro')}
+                            radius={radius}
                             width={width}
                             height={height}
                             engine={engine}
