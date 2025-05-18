@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { AddBodiesFunction } from '../types/components';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
@@ -11,23 +10,36 @@ import {
     Horizontal2,
     HorizontalDown1
 } from '../prefab-pipes';
-import { Render } from 'matter-js';
+import { Render, Engine } from 'matter-js';
+import { AddBodiesFunction } from '../types/components';
 
 export default function BackgroundPipes({
     onAddBodies,
-    scene, 
+    scene,
     engine,
     radius,
     width,
     height
 }: {
     onAddBodies: typeof AddBodiesFunction;
+    scene: HTMLDivElement | null;
+    engine: Engine;
     radius: number;
     width: number;
     height: number;
 }) {
     const addedPipes = useRef(false);
-    const pipes = useRef<(CurvyDownPipe | SuperWigglyPipe | WigglyStraightPipe | CurvyHorizontalPipe | Horizontal1 | Horizontal2 | HorizontalDown1)[]>([]);
+    const pipes = useRef<
+        (
+            | CurvyDownPipe
+            | SuperWigglyPipe
+            | WigglyStraightPipe
+            | CurvyHorizontalPipe
+            | Horizontal1
+            | Horizontal2
+            | HorizontalDown1
+        )[]
+    >([]);
 
     useEffect(() => {
         const render = Render.create({
@@ -37,7 +49,7 @@ export default function BackgroundPipes({
                 width: width,
                 height: height,
                 wireframes: false,
-                background: 'black',
+                background: 'black'
             }
         });
 
