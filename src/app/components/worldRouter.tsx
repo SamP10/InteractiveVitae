@@ -44,8 +44,8 @@ export default function WorldContentInner({
                             onMovePageState={() => movePageState('/intro')}
                             width={innerWidth}
                             height={innerHeight}
-                            engine={engine.current}
-                            scene={scene.current}
+                            engine={engine}
+                            scene={scene}
                         />
                     }
                 />
@@ -58,8 +58,8 @@ export default function WorldContentInner({
                             radius={radius}
                             width={innerWidth}
                             height={innerHeight * 2}
-                            engine={engine.current}
-                            scene={scene.current}
+                            engine={engine}
+                            scene={scene}
                         />
                     }
                 />
@@ -70,8 +70,8 @@ export default function WorldContentInner({
             {location.pathname !== '/' && (
                 <BackgroundPipes
                     onAddBodies={addBodies}
-                    scene={scene.current}
-                    engine={engine.current}
+                    scene={scene}
+                    engine={engine}
                     radius={radius}
                     width={innerWidth}
                     height={innerHeight}

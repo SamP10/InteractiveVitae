@@ -87,8 +87,8 @@ export default function WorldContent() {
                 />
                 <div ref={scene} className="absolute" />
                 <WorldRouter
-                    scene={scene}
-                    engine={engine}
+                    scene={scene.current}
+                    engine={engine.current}
                     addBodies={addBodies}
                     setRadius={setRadius}
                     radius={radius}
