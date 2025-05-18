@@ -3,7 +3,14 @@ import { ICarConfig } from './types/Car';
 
 export default class Car {
     carComposite: Composite;
-    constructor({ startX, startY, bodyWidth, bodyHeight, wheelRadius, wheelBase = 20 }: ICarConfig) {
+    constructor({
+        startX,
+        startY,
+        bodyWidth,
+        bodyHeight,
+        wheelRadius,
+        wheelBase = 20
+    }: ICarConfig) {
         const group = Body.nextGroup(true),
             wheelAOffset = -bodyWidth * 0.5 + wheelBase,
             wheelBOffset = bodyWidth * 0.5 - wheelBase,
@@ -60,6 +67,6 @@ export default class Car {
     }
 
     getCar(): Composite {
-        return this.carComposite
+        return this.carComposite;
     }
 }
