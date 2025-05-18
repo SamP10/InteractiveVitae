@@ -14,7 +14,7 @@ class CurvyDownPipe extends AbstractPipe {
         super(positionX, positionY, radius, onAddBodies, windowSize);
         this.createBalls(400);
     }
-    
+
     createPipe(): void {
         const innerRadius = 10;
         const x = this.positionX + this.radius;
@@ -32,7 +32,7 @@ class CurvyDownPipe extends AbstractPipe {
             color: pipeColor
         });
 
-        while (y < (this.windowSize.windowY - this.radius)) {
+        while (y < this.windowSize.windowY - this.radius) {
             PipeFactory.uBendPipe({
                 x,
                 y: (y += offset),
