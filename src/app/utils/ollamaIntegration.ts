@@ -26,7 +26,10 @@ export async function initialiseOllama() {
     }
 }
 
-export async function chatWithOllama({ messageHistory, prompt }: OllamaRequest): Promise<string> {
+export async function chatWithOllama({
+    messageHistory,
+    prompt
+}: OllamaRequest): Promise<string> {
     try {
         const response = await axios.post(
             OLLAMA_API_URL,
