@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { AddBodiesFunction } from '../types/components';
+import { IComponentConfig } from '../types/components';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
@@ -20,12 +20,7 @@ export default function BackgroundPipes({
     radius,
     width,
     height
-}: {
-    onAddBodies: typeof AddBodiesFunction;
-    radius: number;
-    width: number;
-    height: number;
-}) {
+}: IComponentConfig) {
     const addedPipes = useRef(false);
     const pipes = useRef<(CurvyDownPipe | SuperWigglyPipe | WigglyStraightPipe | CurvyHorizontalPipe | Horizontal1 | Horizontal2 | HorizontalDown1)[]>([]);
 
