@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { IComponentConfig } from '../types/components';
+import { AddBodiesFunction } from '../types/components';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
@@ -11,15 +11,43 @@ import {
     Horizontal2,
     HorizontalDown1
 } from '../prefab-pipes';
+import { Render } from 'matter-js';
 
-export default function IntroductionPipes({
+export default function BackgroundPipes({
     onAddBodies,
+    scene, 
+    engine,
     radius,
     width,
     height
-}: IComponentConfig) {
+}: {
+    onAddBodies: typeof AddBodiesFunction;
+    radius: number;
+    width: number;
+    height: number;
+}) {
     const addedPipes = useRef(false);
     const pipes = useRef<(CurvyDownPipe | SuperWigglyPipe | WigglyStraightPipe | CurvyHorizontalPipe | Horizontal1 | Horizontal2 | HorizontalDown1)[]>([]);
+
+    useEffect(() => {
+        const render = Render.create({
+            element: scene as HTMLDivElement,
+            engine: engine,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: 'black',
+            }
+        });
+
+        Render.run(render);
+
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, scene, width, height]);
 
     useEffect(() => {
         if (!addedPipes.current) {
@@ -91,9 +119,10 @@ export default function IntroductionPipes({
             ];
 
             addedPipes.current = true;
-            console.log('creating pipes');
 
-            return () => {};
+            return () => {
+                console.log('mounting pipes');
+            };
         }
 
         return () => {
