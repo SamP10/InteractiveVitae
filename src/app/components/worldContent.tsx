@@ -14,6 +14,7 @@ import {
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
 import WorldRouter from './worldRouter';
+import NavigationBar from './navigationBar'; // Import the new navigation bar component
 
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);
@@ -46,7 +47,7 @@ export default function WorldContent() {
     };
 
     useEffect(() => {
-        setInnerWidthHeight({ innerWidth: window.innerWidth, innerHeight: window.innerHeight });
+        setInnerWidthHeight({ innerWidth: window.innerWidth, innerHeight: window.innerHeight * 2 });
     }, []);
 
     useEffect(() => {
@@ -86,6 +87,7 @@ export default function WorldContent() {
                     rel="stylesheet"
                 />
                 <div ref={scene} className="absolute" />
+                <NavigationBar /> {/* Add the navigation bar */}
                 <WorldRouter
                     scene={scene.current}
                     engine={engine.current}

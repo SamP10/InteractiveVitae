@@ -5,7 +5,6 @@ import IntroductionContent from './introductionContent';
 
 export default function Introduction({
     onAddBodies,
-    onMovePageState,
     radius,
     width,
     height,
@@ -16,7 +15,6 @@ export default function Introduction({
             <div>
                 <IntroductionContent
                     ballConfig={{ onAddBodies, radius, width, height, engine }}
-                    onMovePageState={onMovePageState}
                 />
             </div>
         </div>

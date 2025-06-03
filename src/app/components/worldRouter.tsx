@@ -46,7 +46,6 @@ export default function WorldContentInner({
                     element={
                         <Introduction
                             onAddBodies={onAddBodies}
-                            onMovePageState={() => movePageState('/qualifications')}
                             radius={radius}
                             width={width}
                             height={height * 2}
