@@ -25,6 +25,7 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
 
         setLoading(true);
         setError('');
+        setPrompt(''); 
         addChatComponent(<RequestMessageTemplate key={`user-request-${event}`} text={event} />);
 
         try {
@@ -68,7 +69,7 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
                     <input
                         type="text"
                         placeholder="What would you like to ask?"
-                        className="border rounded p-2 w-100"
+                        className="border rounded p-2 w-200"
                         style={{
                             fontFamily: 'Doto',
                             color: 'black',
@@ -78,10 +79,15 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
                         }}
                         value={prompt}
                         onChange={(e) => setPrompt(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' && !loading) {
+                                onClick(prompt);
+                            }
+                        }}
                     />
                     <Pill
                         key={pillKey}
-                        label="Submit"
+                        label="Ask!"
                         onClick={() => onClick(prompt)}
                         disabled={loading}
                         ballConfig={{ ...ballConfig, onBallRemove: () => {} }}
