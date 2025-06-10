@@ -29,10 +29,10 @@ export default function BackgroundPipes({
             element: scene as HTMLDivElement,
             engine: engine,
             options: {
-                width: width,
-                height: height,
-                wireframes: false,
-                background: 'black',
+            width: width,
+            height: height * 2,
+            wireframes: false,
+            background: 'black',
             }
         });
 
@@ -127,5 +127,8 @@ export default function BackgroundPipes({
         };
     }, [addedPipes, height, onAddBodies, radius, width]);
 
-    return <div></div>;
+    return (
+        <div
+        ></div>
+    );
 }

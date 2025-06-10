@@ -58,7 +58,7 @@ export default function WorldContentInner({
                 <Route path="/projects" element={<p>Projects Page</p>} />
                 <Route path="*" element={<Navigate to="/" />} />
             </Routes>
-            {location.pathname !== '/' && (
+            {/* {location.pathname !== '/' && (
                 <BackgroundPipes
                     onAddBodies={onAddBodies}
                     scene={scene}
@@ -67,7 +67,7 @@ export default function WorldContentInner({
                     width={width}
                     height={height}
                 />
-            )}
+            )} */}
         </>
     );
 }
