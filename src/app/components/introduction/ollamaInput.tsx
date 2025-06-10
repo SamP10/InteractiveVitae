@@ -15,15 +15,12 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [prompt, setPrompt] = useState('');
+    const [pillKey, setPillKey] = useState(0); // Add a key state for the Pill component
     const messageHistory = useRef<{ role: string; content: string }[]>([
         { role: 'system', content: SYSTEM_PROMPT }
     ]);
 
-    interface OnClickEvent {
-        (event: string): Promise<void>;
-    }
-
-    const onClick: OnClickEvent = async (event) => {
+    const onClick = async (event: string) => {
         if (loading) return;
 
         setLoading(true);
@@ -46,6 +43,7 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
             setError(String(error));
         } finally {
             setLoading(false);
+            setPillKey((prevKey) => prevKey + 1);
         }
     };
 
@@ -65,29 +63,32 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
                     Generating...
                 </div>
             )}
-            <div className="flex items-center gap-4 p-4 justify-center fixed bottom-4 left-1/2 transform -translate-x-1/2">
-                <input
-                    type="text"
-                    placeholder="What would you like to ask?"
-                    className="border rounded p-2 w-100"
-                    style={{
-                        fontFamily: 'Doto',
-                        color: 'black',
-                        backgroundColor: 'white',
-                        fontSize: 15,
-                        fontWeight: 900
-                    }}
-                    value={prompt}
-                    onChange={(e) => setPrompt(e.target.value)}
-                />
+            <div className="fixed bottom-0 left-0 w-full p-4 shadow-lg">
+                <div className="flex items-center gap-4 justify-center">
+                    <input
+                        type="text"
+                        placeholder="What would you like to ask?"
+                        className="border rounded p-2 w-100"
+                        style={{
+                            fontFamily: 'Doto',
+                            color: 'black',
+                            backgroundColor: 'white',
+                            fontSize: 15,
+                            fontWeight: 900
+                        }}
+                        value={prompt}
+                        onChange={(e) => setPrompt(e.target.value)}
+                    />
                     <Pill
+                        key={pillKey}
                         label="Submit"
                         onClick={() => onClick(prompt)}
                         disabled={loading}
                         ballConfig={{ ...ballConfig, onBallRemove: () => {} }}
                     />
+                </div>
+                {error && <p className="text-red-500 mt-4">{error}</p>}
             </div>
-            {error && <p className="text-red-500 mt-4">{error}</p>}
         </div>
     );
 }

@@ -1,10 +1,6 @@
 'use client';
 
 import { IComponentConfig } from './types/components';
-import { useEffect } from 'react';
-import {
-    Render
-} from 'matter-js';
 
 import Pill from './pills/pill';
 

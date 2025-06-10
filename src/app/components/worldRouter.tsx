@@ -4,7 +4,7 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
 import Qualifications from './qualifications/qualifications';
-import BackgroundPipes from './introduction/BackgroundPipes';
+// import BackgroundPipes from './introduction/BackgroundPipes';
 import { IComponentConfig } from './types/components';
 import NavigationBar from './navigation/navigationBar';
 
@@ -28,25 +28,24 @@ export default function WorldContentInner({
         <>
             <div className="flex">
                 {location.pathname !== '/' && <NavigationBar />}
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <StartButton
-                                onAddBodies={onAddBodies}
-                                onSetRadius={onSetRadius}
-                                onMovePageState={() => movePageState('/intro')}
-                                radius={radius}
-                                width={width}
-                                height={height}
-                                engine={engine}
-                                scene={scene}
-                            />
-                        }
-                    />
-                </Routes>
-                <div className="flex-1 ml-[10rem]">
+                <div className="flex-1 ml-40">
                     <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <StartButton
+                                    onAddBodies={onAddBodies}
+                                    onSetRadius={onSetRadius}
+                                    onMovePageState={() => movePageState('/intro')}
+                                    radius={radius}
+                                    width={width}
+                                    height={height}
+                                    engine={engine}
+                                    scene={scene}
+                                />
+                            }
+                        />
+
                         <Route
                             path="/intro"
                             element={
@@ -54,7 +53,7 @@ export default function WorldContentInner({
                                     onAddBodies={onAddBodies}
                                     radius={radius}
                                     width={width}
-                                    height={height * 2}
+                                    height={height}
                                     engine={engine}
                                     scene={scene}
                                 />

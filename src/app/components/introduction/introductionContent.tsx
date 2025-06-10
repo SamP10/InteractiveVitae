@@ -13,13 +13,13 @@ export default function IntroductionContent({ ballConfig }: { ballConfig: IBallC
     };
 
     return (
-        <div className="relative top-100 left-0 w-full h-full flex justify-center items-center mt-20">
-            <div className="w-11/12 space-y-4">
+        <div className="relative w-full h-full flex flex-col items-center mt-20">
+            <div className="w-11/12 space-y-4 mb-20">
                 {chatComponents.map((Component, index) => (
                     <div key={index}>{Component}</div>
                 ))}
-                <OllamaInput addChatComponent={addChatComponent} ballConfig={ballConfig} />
             </div>
+            <OllamaInput addChatComponent={addChatComponent} ballConfig={ballConfig} />
         </div>
     );
 }

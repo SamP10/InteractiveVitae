@@ -77,7 +77,7 @@ export default function WorldContent() {
     };
 
     return (
-        <div className="bg-black text-white h-screen overflow-hidden relative">
+        <div className="bg-black text-white h-screen">
             <Router>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
