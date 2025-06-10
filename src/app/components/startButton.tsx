@@ -19,26 +19,6 @@ export default function StartButton({
 }: IComponentConfig) {
     const label = 'Get to know me';
 
-    useEffect(() => {
-        const render = Render.create({
-            element: scene as HTMLDivElement,
-            engine: engine,
-            options: {
-                width: width,
-                height: height,
-                wireframes: false,
-                background: 'black'
-            }
-        });
-
-        Render.run(render);
-
-        return () => {
-            Render.stop(render);
-            render.canvas.remove();
-        };
-    }, [engine, scene, width, height]);
-
     return (
         <div className="flex items-center justify-center w-full h-screen">
                 <Pill

@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import PillContainer from '../pills/pillContainer';
 import ResponseMessageTemplate from './responseMessageTemplate';
 import { IBallConfig } from '../types/components';
+import OllamaInput from './ollamaInput';
 
-export default function IntroductionContent({
-    ballConfig
-}: {
-    ballConfig: IBallConfig;
-}) {
+export default function IntroductionContent({ ballConfig }: { ballConfig: IBallConfig }) {
     const [chatComponents, setChatComponents] = useState<React.ReactNode[]>([
         <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />
     ]);
@@ -22,7 +18,7 @@ export default function IntroductionContent({
                 {chatComponents.map((Component, index) => (
                     <div key={index}>{Component}</div>
                 ))}
-                <PillContainer addChatComponent={addChatComponent} ballConfig={ballConfig} />
+                <OllamaInput addChatComponent={addChatComponent} ballConfig={ballConfig} />
             </div>
         </div>
     );

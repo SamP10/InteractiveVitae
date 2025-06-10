@@ -8,14 +8,35 @@ import {
     World
 } from 'matter-js';
 import { IPillBallConfig } from '../types/components';
+import { Render } from 'matter-js';
 
 export default function PillBall({
     pillRef,
     setDropBall,
-    ballConfig: { engine,  height, onAddBodies, onSetRadius, radius, onBallRemove }
+    ballConfig: { engine,  width, height, onAddBodies, onSetRadius, radius, scene, onBallRemove }
 }: IPillBallConfig) {
     const [ball, setBall] = useState<IBodyDefinition | null>(null);
     const hasRun = useRef(false);
+    
+    useEffect(() => {
+        const render = Render.create({
+            element: scene as HTMLDivElement,
+            engine: engine,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: 'black'
+            }
+        });
+
+        Render.run(render);
+
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, scene, width, height]);
 
     useEffect(() => {
         if (hasRun.current) return;

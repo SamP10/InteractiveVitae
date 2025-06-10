@@ -28,23 +28,25 @@ export default function WorldContentInner({
         <>
             <div className="flex">
                 {location.pathname !== '/' && <NavigationBar />}
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <StartButton
+                                onAddBodies={onAddBodies}
+                                onSetRadius={onSetRadius}
+                                onMovePageState={() => movePageState('/intro')}
+                                radius={radius}
+                                width={width}
+                                height={height}
+                                engine={engine}
+                                scene={scene}
+                            />
+                        }
+                    />
+                </Routes>
                 <div className="flex-1 ml-[10rem]">
                     <Routes>
-                        <Route
-                            path="/"
-                            element={
-                                <StartButton
-                                    onAddBodies={onAddBodies}
-                                    onSetRadius={onSetRadius}
-                                    onMovePageState={() => movePageState('/intro')}
-                                    radius={radius}
-                                    width={width}
-                                    height={height}
-                                    engine={engine}
-                                    scene={scene}
-                                />
-                            }
-                        />
                         <Route
                             path="/intro"
                             element={
@@ -62,7 +64,8 @@ export default function WorldContentInner({
                         <Route path="/projects" element={<p>Projects Page</p>} />
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
-                    {/* {location.pathname !== '/' && (
+                </div>
+                {/* {location.pathname !== '/' && (
                 <BackgroundPipes
                     onAddBodies={onAddBodies}
                     scene={scene}
@@ -72,7 +75,6 @@ export default function WorldContentInner({
                     height={height}
                 />
             )} */}
-                </div>
             </div>
         </>
     );

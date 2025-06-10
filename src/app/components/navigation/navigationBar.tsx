@@ -15,7 +15,7 @@ export default function NavigationBar() {
                 <div className="flex flex-col justify-start mt-10">
                     <NavButton label="Home" onClick={() => navigate('/home')} />
                     <NavButton label="Projects" onClick={() => navigate('/projects')} />
-                    <NavButton label="Contact" onClick={() => navigate('/contact')} />
+                    <NavButton label="Intro" onClick={() => navigate('/intro')} />
                 </div>
             </div>
         </nav>

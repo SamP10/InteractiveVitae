@@ -77,23 +77,25 @@ export default function WorldContent() {
     };
 
     return (
-        <Router>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-                href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-                rel="stylesheet"
-            />
-            <div ref={scene} className="absolute" />
-            <WorldRouter
-                scene={scene.current}
-                engine={engine.current}
-                onAddBodies={addBodies}
-                onSetRadius={setRadius}
-                radius={radius}
-                width={innerWidth}
-                height={innerHeight}
-            />
-        </Router>
+        <div className="bg-black text-white h-screen overflow-hidden relative">
+            <Router>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+                    rel="stylesheet"
+                />
+                <div ref={scene} className="absolute" />
+                <WorldRouter
+                    scene={scene.current}
+                    engine={engine.current}
+                    onAddBodies={addBodies}
+                    onSetRadius={setRadius}
+                    radius={radius}
+                    width={innerWidth}
+                    height={innerHeight}
+                />
+            </Router>
+        </div>
     );
 }

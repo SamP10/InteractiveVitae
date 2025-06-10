@@ -8,14 +8,13 @@ export default function Introduction({
     radius,
     width,
     height,
-    engine
+    engine,
+    scene
 }: IComponentConfig) {
     return (
         <div className="overflow-y-auto max-h-full">
             <div>
-                <IntroductionContent
-                    ballConfig={{ onAddBodies, radius, width, height, engine }}
-                />
+                <IntroductionContent ballConfig={{ onAddBodies, radius, width, height, engine, scene }} />
             </div>
         </div>
     );
