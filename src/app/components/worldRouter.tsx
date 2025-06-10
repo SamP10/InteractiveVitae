@@ -6,6 +6,7 @@ import Introduction from './introduction/introduction';
 import Qualifications from './qualifications/qualifications';
 import BackgroundPipes from './introduction/BackgroundPipes';
 import { IComponentConfig } from './types/components';
+import NavigationBar from './navigation/navigationBar';
 
 export default function WorldContentInner({
     scene,
@@ -25,40 +26,43 @@ export default function WorldContentInner({
 
     return (
         <>
-            <Routes>
-                <Route
-                    path="/"
-                    element={
-                        <StartButton
-                            onAddBodies={onAddBodies}
-                            onSetRadius={onSetRadius}
-                            onMovePageState={() => movePageState('/intro')}
-                            radius={radius}
-                            width={width}
-                            height={height}
-                            engine={engine}
-                            scene={scene}
+            <div className="flex">
+                {location.pathname !== '/' && <NavigationBar />}
+                <div className="flex-1 ml-[10rem]">
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <StartButton
+                                    onAddBodies={onAddBodies}
+                                    onSetRadius={onSetRadius}
+                                    onMovePageState={() => movePageState('/intro')}
+                                    radius={radius}
+                                    width={width}
+                                    height={height}
+                                    engine={engine}
+                                    scene={scene}
+                                />
+                            }
                         />
-                    }
-                />
-                <Route
-                    path="/intro"
-                    element={
-                        <Introduction
-                            onAddBodies={onAddBodies}
-                            radius={radius}
-                            width={width}
-                            height={height * 2}
-                            engine={engine}
-                            scene={scene}
+                        <Route
+                            path="/intro"
+                            element={
+                                <Introduction
+                                    onAddBodies={onAddBodies}
+                                    radius={radius}
+                                    width={width}
+                                    height={height * 2}
+                                    engine={engine}
+                                    scene={scene}
+                                />
+                            }
                         />
-                    }
-                />
-                <Route path="/qualifications" element={<Qualifications />} />
-                <Route path="/projects" element={<p>Projects Page</p>} />
-                <Route path="*" element={<Navigate to="/" />} />
-            </Routes>
-            {/* {location.pathname !== '/' && (
+                        <Route path="/qualifications" element={<Qualifications />} />
+                        <Route path="/projects" element={<p>Projects Page</p>} />
+                        <Route path="*" element={<Navigate to="/" />} />
+                    </Routes>
+                    {/* {location.pathname !== '/' && (
                 <BackgroundPipes
                     onAddBodies={onAddBodies}
                     scene={scene}
@@ -68,6 +72,8 @@ export default function WorldContentInner({
                     height={height}
                 />
             )} */}
+                </div>
+            </div>
         </>
     );
 }

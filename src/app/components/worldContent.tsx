@@ -14,7 +14,6 @@ import {
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
 import WorldRouter from './worldRouter';
-import NavigationBar from './navigation/navigationBar';
 
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);
@@ -79,25 +78,22 @@ export default function WorldContent() {
 
     return (
         <Router>
-            <div>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-                    rel="stylesheet"
-                />
-                <div ref={scene} className="absolute" />
-                <NavigationBar />
-                <WorldRouter
-                    scene={scene.current}
-                    engine={engine.current}
-                    onAddBodies={addBodies}
-                    onSetRadius={setRadius}
-                    radius={radius}
-                    width={innerWidth}
-                    height={innerHeight}
-                />
-            </div>
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link
+                href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+                rel="stylesheet"
+            />
+            <div ref={scene} className="absolute" />
+            <WorldRouter
+                scene={scene.current}
+                engine={engine.current}
+                onAddBodies={addBodies}
+                onSetRadius={setRadius}
+                radius={radius}
+                width={innerWidth}
+                height={innerHeight}
+            />
         </Router>
     );
 }
