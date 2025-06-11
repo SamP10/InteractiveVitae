@@ -5,8 +5,8 @@ import PillBall from './pillBall';
 interface PillProps {
     label: string;
     onClick: () => void;
-    disabled?: boolean;
     ballConfig: IBallConfig;
+    disabled?: boolean;
     svgIcon?: React.ReactNode;
 }
 
@@ -33,14 +33,14 @@ export default function Pill({ label, onClick, disabled = false, ballConfig, svg
                                 : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
                         } `}
                     style={{
-                        backgroundColor: 'rgba(66, 133, 244, 0.7)',
+                        backgroundColor: 'rgba(22, 163, 74, 0.7)',
                         fontFamily: 'Doto',
                         fontSize: 15,
                         fontWeight: 900
                     }}
-                    onMouseEnter={(event) => (event.currentTarget.style.backgroundColor = '#4285F4')}
+                    onMouseEnter={(event) => (event.currentTarget.style.backgroundColor = 'rgba(17, 155, 68, 1)')}
                     onMouseLeave={(event) =>
-                        (event.currentTarget.style.backgroundColor = 'rgba(66, 133, 244, 0.7)')
+                        (event.currentTarget.style.backgroundColor = 'rgba(22, 163, 74, 0.7)')
                     }
                     disabled={disabled}>
                     {!clicked && <div className="flex items-center justify-center">

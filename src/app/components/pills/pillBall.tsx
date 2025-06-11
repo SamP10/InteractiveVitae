@@ -43,7 +43,7 @@ export default function PillBall({
                 restitution: 0.9,
                 friction: 0.005,
                 render: {
-                    fillStyle: '#4285F4'
+                    fillStyle: '#16A34A'
                 }
             });
 

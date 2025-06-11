@@ -1,11 +1,12 @@
-import { Bodies, Engine } from 'matter-js';
+import { Engine } from 'matter-js';
 
-export function AddBodiesFunction(bodiesToAdd: Bodies[]): void;
+export function AddBodiesFunction(bodiesToAdd: Array<Body | Composite>): void;
 export function OnSetRadius(radius: number): void;
 export function OnMovePageState(): void;
 
 export interface IComponentConfig {
     onAddBodies: AddBodiesFunction;
+    onSetRadius?: OnSetRadius;
     onMovePageState?: OnMovePageState;
     radius: number;
     width: number;
@@ -13,17 +14,6 @@ export interface IComponentConfig {
     engine: Engine;
     scene?: HTMLDivElement | undefined | null;
 };
-
-export interface IStartButtonConfig {
-    onAddBodies: AddBodiesFunction;
-    onSetRadius: OnSetRadius;
-    onMovePageState: OnMovePageState;
-    width: number;
-    height: number;
-    engine: Engine;
-    scene?: HTMLDivElement | undefined | null;
-}
-
 
 export interface IPillBallConfig {
     pillRef?: HTMLButtonElement | undefined | null;

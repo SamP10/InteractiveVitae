@@ -1,8 +1,10 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import {
     Engine,
+    Render,
     World,
     Constraint,
     MouseConstraint,
@@ -12,28 +14,40 @@ import {
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
-import StartButton from './startButton';
-import Introduction from './introduction/introduction';
-import Qualifications from './qualifications/qualifications';
-
-enum PAGE_STATE {
-    START = 'START',
-    INTRO = 'INTRO',
-    QUALIFICATIONS = 'QUALIFICATIONS',
-    PROJECTS = 'PROJECTS'
-}
+import WorldRouter from './worldRouter';
 
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);
     const engine = useRef(Engine.create());
     const bodiesRef = useRef<(Composite | Body)[]>([]);
-    const [currentPage, setCurrentPage] = useState(PAGE_STATE.START);
     const [radius, setRadius] = useState(0);
 
     const [{ innerHeight, innerWidth }, setInnerWidthHeight] = useState({
         innerWidth: 0,
         innerHeight: 0
     });
+
+    useEffect(() => {
+        if(!scene.current) return;
+
+        const render = Render.create({
+            element: scene.current,
+            engine: engine.current,
+            options: {
+                width: innerWidth,
+                height: innerHeight,
+                wireframes: false,
+                background: 'black'
+            }
+        });
+
+        Render.run(render);
+
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, scene, innerWidth, innerHeight]);
 
     const isOutOfBound = (body: IBodyDefinition) => {
         return (
@@ -85,62 +99,26 @@ export default function WorldContent() {
         );
     };
 
-    const movePageState = () => {
-        setCurrentPage((previousPageState) => {
-            engine.current = Engine.create();
-            const pageStates = Object.values(PAGE_STATE);
-            const currentIndex = pageStates.indexOf(previousPageState);
-
-            if (currentIndex < pageStates.length - 1) {
-                return pageStates[currentIndex + 1];
-            }
-            return previousPageState;
-        });
-    };
-
     return (
-        <div>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" />
-            <link
-                href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-                rel="stylesheet"
-            />
-            <div ref={scene} className="absolute" />
-            {currentPage === PAGE_STATE.START && (
-                <StartButton
+        <div className="bg-black text-white h-screen">
+            <Router>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
+                    rel="stylesheet"
+                />
+                <div ref={scene} className="absolute" />
+                <WorldRouter
+                    scene={scene.current}
+                    engine={engine.current}
                     onAddBodies={addBodies}
                     onSetRadius={setRadius}
-                    onMovePageState={movePageState}
+                    radius={radius}
                     width={innerWidth}
                     height={innerHeight}
-                    engine={engine.current}
-                    scene={scene.current}
                 />
-            )}
-            {currentPage === PAGE_STATE.INTRO && (
-                <Introduction
-                    onAddBodies={addBodies}
-                    onMovePageState={movePageState}
-                    radius={radius}
-                    width={innerWidth}
-                    height={innerHeight * 2}
-                    engine={engine.current}
-                    scene={scene.current}
-                />
-            )}
-            {currentPage === PAGE_STATE.QUALIFICATIONS && (
-                <Qualifications
-                    onAddBodies={addBodies}
-                    onMovePageState={movePageState}
-                    radius={radius}
-                    width={innerWidth}
-                    height={innerHeight * 2}
-                    engine={engine.current}
-                    scene={scene.current}
-                />
-            )}
-            {currentPage === PAGE_STATE.PROJECTS && <p></p>}
+            </Router>
         </div>
     );
 }
