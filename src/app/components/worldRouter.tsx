@@ -27,42 +27,56 @@ export default function WorldContentInner({
         <>
             <div className="flex">
                 {location.pathname !== '/' && <NavigationBar />}
-                <div className="flex-1 ml-40">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={
-                                <StartButton
-                                    onAddBodies={onAddBodies}
-                                    onSetRadius={onSetRadius}
-                                    onMovePageState={() => movePageState('/intro')}
-                                    radius={radius}
-                                    width={width}
-                                    height={height}
-                                    engine={engine}
-                                    scene={scene}
-                                />
-                            }
-                        />
 
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <StartButton
+                                onAddBodies={onAddBodies}
+                                onSetRadius={onSetRadius}
+                                onMovePageState={() => movePageState('/intro')}
+                                radius={radius}
+                                width={width}
+                                height={height}
+                                engine={engine}
+                                scene={scene}
+                            />
+                        }
+                    />
                         <Route
                             path="/intro"
                             element={
-                                <Introduction
-                                    onAddBodies={onAddBodies}
-                                    radius={radius}
-                                    width={width}
-                                    height={height}
-                                    engine={engine}
-                                    scene={scene}
-                                />
+                                <div className="flex-1 ml-40">
+                                    <Introduction
+                                        onAddBodies={onAddBodies}
+                                        radius={radius}
+                                        width={width}
+                                        height={height}
+                                        engine={engine}
+                                        scene={scene}
+                                    />
+                                </div>
                             }
                         />
-                        <Route path="/qualifications" element={<Qualifications />} />
-                        <Route path="/projects" element={<p>Projects Page</p>} />
+                        <Route
+                            path="/qualifications"
+                            element={
+                                <div className="flex-1 ml-40">
+                                    <Qualifications />
+                                </div>
+                            }
+                        />
+                        <Route
+                            path="/projects"
+                            element={
+                                <div className="flex-1 ml-40">
+                                    <p>Projects Page</p>
+                                </div>
+                            }
+                        />
                         <Route path="*" element={<Navigate to="/" />} />
-                    </Routes>
-                </div>
+                </Routes>
             </div>
         </>
     );

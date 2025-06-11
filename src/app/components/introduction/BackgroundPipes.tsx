@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { IComponentConfig } from '../types/components';
+import { World } from 'matter-js';
 import {
     CurvyDownPipe,
     SuperWigglyPipe,
@@ -15,6 +16,7 @@ import {
 export default function BackgroundPipes({
     onAddBodies,
     radius,
+    engine,
     width,
     height
 }: IComponentConfig) {
@@ -93,14 +95,18 @@ export default function BackgroundPipes({
             addedPipes.current = true;
 
             return () => {
-                console.log('mounting pipes');
             };
         }
 
         return () => {
             pipes.current.forEach((pipe) => {
                 pipe.stopBallCreation();
+                World.remove(engine.world, pipe.getComposite());
+                pipe.getBalls().forEach((ball) => {
+                    World.remove(engine.world, ball);
+                });
             });
+
         };
     }, [addedPipes, height, onAddBodies, radius, width]);
 

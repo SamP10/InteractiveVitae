@@ -29,14 +29,14 @@ export default function Introduction({
                     scene
                 }}
             />
-            {location.pathname == 'intro' && (<BackgroundPipes
+            <BackgroundPipes
                 onAddBodies={onAddBodies}
                 scene={scene}
                 engine={engine}
                 radius={radius}
                 width={width}
                 height={height}
-            />) }
+            />
         </div>
     );
 }
