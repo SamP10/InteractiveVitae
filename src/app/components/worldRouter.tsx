@@ -35,7 +35,7 @@ export default function WorldContentInner({
                             <StartButton
                                 onAddBodies={onAddBodies}
                                 onSetRadius={onSetRadius}
-                                onMovePageState={() => movePageState('/intro')}
+                                onMovePageState={() => movePageState('/getToKnow')}
                                 radius={radius}
                                 width={width}
                                 height={height}
@@ -45,7 +45,7 @@ export default function WorldContentInner({
                         }
                     />
                         <Route
-                            path="/intro"
+                            path="/getToKnow"
                             element={
                                 <div className="flex-1 ml-40">
                                     <Introduction
