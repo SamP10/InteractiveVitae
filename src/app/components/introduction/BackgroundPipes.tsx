@@ -11,38 +11,15 @@ import {
     Horizontal2,
     HorizontalDown1
 } from '../prefab-pipes';
-import { Render } from 'matter-js';
 
 export default function BackgroundPipes({
     onAddBodies,
-    scene, 
-    engine,
     radius,
     width,
     height
 }: IComponentConfig) {
     const addedPipes = useRef(false);
     const pipes = useRef<(CurvyDownPipe | SuperWigglyPipe | WigglyStraightPipe | CurvyHorizontalPipe | Horizontal1 | Horizontal2 | HorizontalDown1)[]>([]);
-
-    useEffect(() => {
-        const render = Render.create({
-            element: scene as HTMLDivElement,
-            engine: engine,
-            options: {
-            width: width,
-            height: height * 2,
-            wireframes: false,
-            background: 'black',
-            }
-        });
-
-        Render.run(render);
-
-        return () => {
-            Render.stop(render);
-            render.canvas.remove();
-        };
-    }, [engine, scene, width, height]);
 
     useEffect(() => {
         if (!addedPipes.current) {

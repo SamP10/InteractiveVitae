@@ -4,7 +4,6 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import StartButton from './startButton';
 import Introduction from './introduction/introduction';
 import Qualifications from './qualifications/qualifications';
-// import BackgroundPipes from './introduction/BackgroundPipes';
 import { IComponentConfig } from './types/components';
 import NavigationBar from './navigation/navigationBar';
 
@@ -64,16 +63,6 @@ export default function WorldContentInner({
                         <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </div>
-                {/* {location.pathname !== '/' && (
-                <BackgroundPipes
-                    onAddBodies={onAddBodies}
-                    scene={scene}
-                    engine={engine}
-                    radius={radius}
-                    width={width}
-                    height={height}
-                />
-            )} */}
             </div>
         </>
     );

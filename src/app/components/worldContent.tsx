@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {
     Engine,
+    Render,
     World,
     Constraint,
     MouseConstraint,
@@ -25,6 +26,28 @@ export default function WorldContent() {
         innerWidth: 0,
         innerHeight: 0
     });
+
+    useEffect(() => {
+        if(!scene.current) return;
+
+        const render = Render.create({
+            element: scene.current,
+            engine: engine.current,
+            options: {
+                width: innerWidth,
+                height: innerHeight,
+                wireframes: false,
+                background: 'black'
+            }
+        });
+
+        Render.run(render);
+
+        return () => {
+            Render.stop(render);
+            render.canvas.remove();
+        };
+    }, [engine, scene, innerWidth, innerHeight]);
 
     const isOutOfBound = (body: IBodyDefinition) => {
         return (

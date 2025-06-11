@@ -2,6 +2,7 @@
 
 import { IComponentConfig } from './types/components';
 
+
 import Pill from './pills/pill';
 
 export default function StartButton({
