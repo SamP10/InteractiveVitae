@@ -1,4 +1,3 @@
-'use client';
 import { Bodies, Composite, Body } from 'matter-js';
 import { BALL_LABEL } from '../constants';
 

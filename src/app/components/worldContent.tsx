@@ -1,5 +1,4 @@
 'use client';
-
 import { useRef, useEffect, useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {
@@ -14,6 +13,7 @@ import {
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
+
 import WorldRouter from './worldRouter';
 
 export default function WorldContent() {

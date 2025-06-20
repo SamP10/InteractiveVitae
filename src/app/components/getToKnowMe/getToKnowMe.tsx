@@ -1,5 +1,3 @@
-'use client';
-
 import { IComponentConfig } from '../types/components';
 
 import GetToKnowMeContent from './getToKnowMeContent';
