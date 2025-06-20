@@ -1,5 +1,3 @@
-'use client';
-
 import { useNavigate } from 'react-router-dom';
 import NavButton from './navButton';
 import Image from 'next/image';

@@ -151,7 +151,7 @@ class HorizontalDown1 extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowY/10,
+            numSegments: this.windowSize.windowY / 10,
             segmentLength: 11,
             composite: this.composite,
             color: pipeColor

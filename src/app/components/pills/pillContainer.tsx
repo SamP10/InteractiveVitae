@@ -1,14 +1,15 @@
-import Pill from './pill';
-import { useState, useRef } from 'react';
-import { chatWithOllama } from '../../utils/ollamaIntegration';
-import ResponseMessageTemplate from '../getToKnowMe/responseMessageTemplate';
-import RequestMessageTemplate from '../getToKnowMe/requestMessageTemplate';
+import { useState, useRef, ReactNode } from 'react';
 import { SYSTEM_PROMPT } from '../getToKnowMe/constants';
+import { chatWithOllama } from '../../utils/ollamaIntegration';
 import { IBallConfig } from '../types/components';
 
+import Pill from './pill';
+import ResponseMessageTemplate from '../getToKnowMe/responseMessageTemplate';
+import RequestMessageTemplate from '../getToKnowMe/requestMessageTemplate';
+
 interface PillContainerProps {
-    addChatComponent(component: React.ReactNode): void;
-    ballConfig: IBallConfig
+    addChatComponent(component: ReactNode): void;
+    ballConfig: IBallConfig;
 }
 
 export default function PillContainer({ addChatComponent, ballConfig }: PillContainerProps) {
@@ -30,7 +31,7 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
     }
 
     const onClick: OnClickEvent = async (event) => {
-        if (loading) return; 
+        if (loading) return;
 
         setLoading(true);
         setError('');
@@ -58,15 +59,18 @@ export default function PillContainer({ addChatComponent, ballConfig }: PillCont
     return (
         <div>
             {loading && (
-                <div className="text-white text-lg font-bold animate-pulse p-5 space-x-4 rounded-lg text-left float-left clear-both"
-                style={{
-                    fontFamily: 'Doto',
-                    fontSize: 20,
-                    color: 'white',
-                    backgroundColor: 'rgba(80, 80, 80, 0.7)',
-                    fontWeight: 900,
-                    display: 'inline-block'
-                }}>Generating...</div>
+                <div
+                    className="text-white text-lg font-bold animate-pulse p-5 space-x-4 rounded-lg text-left float-left clear-both"
+                    style={{
+                        fontFamily: 'Doto',
+                        fontSize: 20,
+                        color: 'white',
+                        backgroundColor: 'rgba(80, 80, 80, 0.7)',
+                        fontWeight: 900,
+                        display: 'inline-block'
+                    }}>
+                    Generating...
+                </div>
             )}
             <div className="flex flex-wrap gap-4 p-4 justify-center float-right clear-both">
                 {prompts.map((prompt) => (

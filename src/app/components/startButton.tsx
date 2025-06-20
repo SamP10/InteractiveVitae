@@ -2,7 +2,6 @@
 
 import { IComponentConfig } from './types/components';
 
-
 import Pill from './pills/pill';
 
 export default function StartButton({
@@ -18,19 +17,19 @@ export default function StartButton({
 
     return (
         <div className="flex items-center justify-center w-full h-screen">
-                <Pill
-                    label={label}
-                    onClick={() => {}}
-                    ballConfig={{
-                        onAddBodies,
-                        onBallRemove: onMovePageState,
-                        onSetRadius,
-                        width,
-                        height,
-                        engine,
-                        scene
-                    }}
-                />
+            <Pill
+                label={label}
+                onClick={() => {}}
+                ballConfig={{
+                    onAddBodies,
+                    onBallRemove: onMovePageState,
+                    onSetRadius,
+                    width,
+                    height,
+                    engine,
+                    scene
+                }}
+            />
         </div>
     );
 }

@@ -53,25 +53,23 @@ export default function WorldContentInner({
                                         Welcome to My Professional Portfolio
                                     </h1>
                                     <p className="text-lg text-gray-700 mb-6">
-                                        Explore my qualifications, projects, and get to know me better.
+                                        Explore my qualifications, projects, and get to know me
+                                        better.
                                     </p>
                                     <div className="flex space-x-4">
                                         <button
                                             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                                            onClick={() => navigate('/get-to-know-me')}
-                                        >
+                                            onClick={() => navigate('/get-to-know-me')}>
                                             Get to Know Me
                                         </button>
                                         <button
                                             className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                                            onClick={() => navigate('/qualifications')}
-                                        >
+                                            onClick={() => navigate('/qualifications')}>
                                             Qualifications
                                         </button>
                                         <button
                                             className="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
-                                            onClick={() => navigate('/projects')}
-                                        >
+                                            onClick={() => navigate('/projects')}>
                                             Projects
                                         </button>
                                     </div>

@@ -81,7 +81,7 @@ class WigglyStraightPipe extends AbstractPipe {
             x,
             y,
             offset: this.diameter + 15,
-            numSegments: this.windowSize.windowX/10,
+            numSegments: this.windowSize.windowX / 10,
             segmentLength: 10,
             composite: this.composite,
             color: pipeColor

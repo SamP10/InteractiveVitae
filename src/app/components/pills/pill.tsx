@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, ReactNode } from 'react';
 import { IBallConfig } from '../types/components';
 import PillBall from './pillBall';
 
@@ -7,7 +7,7 @@ interface PillProps {
     onClick: () => void;
     ballConfig: IBallConfig;
     disabled?: boolean;
-    svgIcon?: React.ReactNode;
+    svgIcon?: ReactNode;
 }
 
 export default function Pill({ label, onClick, disabled = false, ballConfig, svgIcon }: PillProps) {
@@ -38,18 +38,28 @@ export default function Pill({ label, onClick, disabled = false, ballConfig, svg
                         fontSize: 15,
                         fontWeight: 900
                     }}
-                    onMouseEnter={(event) => (event.currentTarget.style.backgroundColor = 'rgba(17, 155, 68, 1)')}
+                    onMouseEnter={(event) =>
+                        (event.currentTarget.style.backgroundColor = 'rgba(17, 155, 68, 1)')
+                    }
                     onMouseLeave={(event) =>
                         (event.currentTarget.style.backgroundColor = 'rgba(22, 163, 74, 0.7)')
                     }
                     disabled={disabled}>
-                    {!clicked && <div className="flex items-center justify-center">
-                        <span>{label}</span>
-                        {svgIcon && <span className="inline-block">{svgIcon}</span>}
-                    </div>}
+                    {!clicked && (
+                        <div className="flex items-center justify-center">
+                            <span>{label}</span>
+                            {svgIcon && <span className="inline-block">{svgIcon}</span>}
+                        </div>
+                    )}
                 </button>
             )}
-            {clicked && <PillBall ballConfig={ballConfig} pillRef={pillRef.current} setDropBall={setDropBall} />}
+            {clicked && (
+                <PillBall
+                    ballConfig={ballConfig}
+                    pillRef={pillRef.current}
+                    setDropBall={setDropBall}
+                />
+            )}
         </div>
     );
 }

@@ -1,5 +1,4 @@
 export default function Qualifications() {
-
     return (
         <div className="relative">
             <div className="relative z-10 p-4">

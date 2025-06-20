@@ -28,7 +28,7 @@ export default function WorldContent() {
     });
 
     useEffect(() => {
-        if(!scene.current) return;
+        if (!scene.current) return;
 
         const render = Render.create({
             element: scene.current,

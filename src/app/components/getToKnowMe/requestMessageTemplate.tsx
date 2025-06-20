@@ -14,7 +14,7 @@ export default function RequestMessageTemplate({ text }: { text: string }) {
     }, []);
 
     useEffect(() => {
-        const timeout = setTimeout(() => setIsRead(true), 1500); 
+        const timeout = setTimeout(() => setIsRead(true), 1500);
         return () => clearTimeout(timeout);
     }, []);
 
@@ -30,7 +30,7 @@ export default function RequestMessageTemplate({ text }: { text: string }) {
                 display: 'inline-block',
                 maxWidth: '70%'
             }}>
-            <p className='text-left'>
+            <p className="text-left">
                 <strong>You: </strong>
                 {typedText}
             </p>

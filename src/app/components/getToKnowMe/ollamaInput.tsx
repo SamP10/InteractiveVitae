@@ -1,13 +1,14 @@
 import Pill from '../pills/pill';
-import { useState, useRef } from 'react';
-import { chatWithOllama } from '../../utils/ollamaIntegration';
 import ResponseMessageTemplate from './responseMessageTemplate';
 import RequestMessageTemplate from './requestMessageTemplate';
+
+import { useState, useRef, ReactNode } from 'react';
+import { chatWithOllama } from '../../utils/ollamaIntegration';
 import { SYSTEM_PROMPT } from './constants';
 import { IBallConfig } from '../types/components';
 
 interface PillContainerProps {
-    addChatComponent(component: React.ReactNode): void;
+    addChatComponent(component: ReactNode): void;
     ballConfig: IBallConfig;
 }
 
@@ -25,7 +26,7 @@ export default function OllamaInput({ addChatComponent, ballConfig }: PillContai
 
         setLoading(true);
         setError('');
-        setPrompt(''); 
+        setPrompt('');
         addChatComponent(<RequestMessageTemplate key={`user-request-${event}`} text={event} />);
 
         try {

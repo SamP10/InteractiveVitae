@@ -21,7 +21,17 @@ export default function BackgroundPipes({
     height
 }: IComponentConfig) {
     const addedPipes = useRef(false);
-    const pipes = useRef<(CurvyDownPipe | SuperWigglyPipe | WigglyStraightPipe | CurvyHorizontalPipe | Horizontal1 | Horizontal2 | HorizontalDown1)[]>([]);
+    const pipes = useRef<
+        (
+            | CurvyDownPipe
+            | SuperWigglyPipe
+            | WigglyStraightPipe
+            | CurvyHorizontalPipe
+            | Horizontal1
+            | Horizontal2
+            | HorizontalDown1
+        )[]
+    >([]);
 
     useEffect(() => {
         if (!addedPipes.current) {
@@ -94,8 +104,7 @@ export default function BackgroundPipes({
 
             addedPipes.current = true;
 
-            return () => {
-            };
+            return () => {};
         }
 
         return () => {
@@ -106,12 +115,8 @@ export default function BackgroundPipes({
                     World.remove(engine.world, ball);
                 });
             });
-
         };
     }, [addedPipes, height, onAddBodies, radius, width]);
 
-    return (
-        <div
-        ></div>
-    );
+    return <div></div>;
 }
