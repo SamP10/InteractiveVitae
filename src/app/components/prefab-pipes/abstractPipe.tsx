@@ -49,7 +49,7 @@ export default abstract class AbstractPipe {
         return this.composite;
     }
 
-    public getBalls(): Bodies[] {
+    public getBalls(): Body[] {
         return this.balls;
     }
 
