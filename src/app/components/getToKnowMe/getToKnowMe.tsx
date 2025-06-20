@@ -2,10 +2,10 @@
 
 import { IComponentConfig } from '../types/components';
 
-import IntroductionContent from './introductionContent';
+import GetToKnowMeContent from './getToKnowMeContent';
 import BackgroundPipes from './backgroundPipes';
 
-export default function Introduction({
+export default function GetToKnowMe({
     onAddBodies,
     radius,
     width,
@@ -15,7 +15,7 @@ export default function Introduction({
 }: IComponentConfig) {
     return (
         <div className="overflow-y-auto max-h-full">
-            <IntroductionContent
+            <GetToKnowMeContent
                 ballConfig={{
                     onAddBodies,
                     radius,

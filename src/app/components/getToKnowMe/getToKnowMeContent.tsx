@@ -3,7 +3,7 @@ import ResponseMessageTemplate from './responseMessageTemplate';
 import { IBallConfig } from '../types/components';
 import OllamaInput from './ollamaInput';
 
-export default function IntroductionContent({ ballConfig }: { ballConfig: IBallConfig }) {
+export default function GetToKnowMeContent({ ballConfig }: { ballConfig: IBallConfig }) {
     const [chatComponents, setChatComponents] = useState<React.ReactNode[]>([
         <ResponseMessageTemplate key="intro-message" text={'So you want to get to know me...?'} />
     ]);

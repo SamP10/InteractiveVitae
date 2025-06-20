@@ -2,7 +2,7 @@
 
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import StartButton from './startButton';
-import Introduction from './introduction/introduction';
+import GetToKnowMe from './getToKnowMe/getToKnowMe';
 import Qualifications from './qualifications/qualifications';
 import { IComponentConfig } from './types/components';
 import NavigationBar from './navigation/navigationBar';
@@ -83,7 +83,7 @@ export default function WorldContentInner({
                         path="/get-to-know-me"
                         element={
                             <div className="flex-1 ml-40">
-                                <Introduction
+                                <GetToKnowMe
                                     onAddBodies={onAddBodies}
                                     radius={radius}
                                     width={width}

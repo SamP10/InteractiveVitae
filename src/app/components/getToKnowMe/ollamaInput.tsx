@@ -1,9 +1,9 @@
 import Pill from '../pills/pill';
 import { useState, useRef } from 'react';
 import { chatWithOllama } from '../../utils/ollamaIntegration';
-import ResponseMessageTemplate from '../introduction/responseMessageTemplate';
-import RequestMessageTemplate from '../introduction/requestMessageTemplate';
-import { SYSTEM_PROMPT } from '../introduction/constants';
+import ResponseMessageTemplate from './responseMessageTemplate';
+import RequestMessageTemplate from './requestMessageTemplate';
+import { SYSTEM_PROMPT } from './constants';
 import { IBallConfig } from '../types/components';
 
 interface PillContainerProps {
