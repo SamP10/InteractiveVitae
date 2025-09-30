@@ -107,12 +107,10 @@ export default function WorldContent() {
     return (
         <div className="bg-white text-white h-screen">
             <Router>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap"
-                    rel="stylesheet"
-                />
+            <link rel="preconnect" href="https://fonts.googleapis.com" />
+            <link rel="preconnect" href="https://fonts.gstatic.com" />
+            <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet" />
+
                 <div ref={scene} className="absolute" />
                 <WorldRouter
                     scene={scene.current}

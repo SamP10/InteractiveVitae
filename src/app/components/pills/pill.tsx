@@ -33,16 +33,16 @@ export default function Pill({ label, onClick, disabled = false, ballConfig, svg
                                 : 'md:h-12 md:w-40 sm:h-100 sm:w-20'
                         } `}
                     style={{
-                        backgroundColor: 'rgba(22, 163, 74, 0.7)',
+                        backgroundColor: 'rgb(0, 120, 43)',
                         fontFamily: 'Doto',
                         fontSize: 15,
                         fontWeight: 900
                     }}
                     onMouseEnter={(event) =>
-                        (event.currentTarget.style.backgroundColor = 'rgba(17, 155, 68, 1)')
+                        (event.currentTarget.style.backgroundColor = 'rgb(0, 100, 35)')
                     }
                     onMouseLeave={(event) =>
-                        (event.currentTarget.style.backgroundColor = 'rgba(22, 163, 74, 0.7)')
+                        (event.currentTarget.style.backgroundColor = 'rgb(0, 120, 43)')
                     }
                     disabled={disabled}>
                     {!clicked && (
