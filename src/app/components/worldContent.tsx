@@ -13,6 +13,7 @@ import {
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
 import { initialiseOllama } from '../utils/ollamaIntegration';
+import retroBg from '../assets/images/Background.png';
 
 import WorldRouter from './worldRouter';
 
@@ -37,9 +38,13 @@ export default function WorldContent() {
                 width: innerWidth,
                 height: innerHeight,
                 wireframes: false,
-                background: 'linear-gradient(135deg, #c4ffd6, #f0fdf4)'
+                background: `url(${retroBg.src})`
             }
         });
+
+        render.canvas.style.backgroundSize = 'cover';
+        render.canvas.style.backgroundPosition = 'center';
+        render.canvas.style.backgroundRepeat = 'no-repeat';
 
         Render.run(render);
 
