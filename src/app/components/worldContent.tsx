@@ -37,7 +37,7 @@ export default function WorldContent() {
                 width: innerWidth,
                 height: innerHeight,
                 wireframes: false,
-                background: 'black'
+                background: 'linear-gradient(135deg, #c4ffd6, #f0fdf4)'
             }
         });
 
@@ -100,7 +100,7 @@ export default function WorldContent() {
     };
 
     return (
-        <div className="bg-black text-white h-screen">
+        <div className="bg-white text-white h-screen">
             <Router>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
