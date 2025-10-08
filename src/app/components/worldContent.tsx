@@ -110,6 +110,7 @@ export default function WorldContent() {
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link rel="preconnect" href="https://fonts.gstatic.com" />
             <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Notable&display=swap" rel="stylesheet"></link>
 
                 <div ref={scene} className="absolute" />
                 <WorldRouter

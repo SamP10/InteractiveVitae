@@ -28,7 +28,7 @@ export default function WorldContentInner({
     return (
         <>
             <div className="flex">
-                {location.pathname !== '/' && <NavigationBar />}
+                {/* {location.pathname !== '/' && <NavigationBar />} */}
 
                 <Routes>
                     <Route
