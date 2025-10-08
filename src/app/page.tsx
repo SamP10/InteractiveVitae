@@ -1,4 +1,4 @@
-import WorldContent from "./components/worldContent";
+import Homepage from "./components/homepage/homepage";
 export default function StartPage() {
-  return <WorldContent></WorldContent>;
+  return <Homepage></Homepage>;
 }
