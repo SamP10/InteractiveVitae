@@ -12,6 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         cream: "var(--cream)",
+        moss: "var(--moss)",
+        lilyPad: "var(--lily-pad)",
+        pine: "var(--pine)",
+        darkPine: "var(--darkPine)",
         primary: "var(--primary)",
       },
       fontFamily: {
