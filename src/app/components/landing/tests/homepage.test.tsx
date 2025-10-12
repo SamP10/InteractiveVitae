@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Homepage from '../homepage';
+import Homepage from '../landing';
 
 describe('Homepage', () => {
   it('should render without crashing', () => {

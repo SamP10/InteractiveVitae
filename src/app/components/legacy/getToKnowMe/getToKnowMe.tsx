@@ -1,4 +1,4 @@
-import { IComponentConfig } from '../types/components';
+import { IComponentConfig } from '../../types/components';
 
 import GetToKnowMeContent from './getToKnowMeContent';
 import BackgroundPipes from './backgroundPipes';

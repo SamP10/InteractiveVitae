@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WorldRouter from '../worldRouter';
+import WorldRouter from '../legacy/worldRouter';
 
 describe('WorldRouter', () => {
   it('should render without crashing', () => {

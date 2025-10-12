@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { Bodies, IBodyDefinition, Composite, Constraint, MouseConstraint, World } from 'matter-js';
-import { IPillBallConfig } from '../types/components';
+import { IPillBallConfig } from '../../types/components';
 
 export default function PillBall({
     pillRef,

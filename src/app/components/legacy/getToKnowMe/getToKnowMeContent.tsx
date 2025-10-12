@@ -1,5 +1,5 @@
 import { useState, ReactNode } from 'react';
-import { IBallConfig } from '../types/components';
+import { IBallConfig } from '../../types/components';
 
 import ResponseMessageTemplate from './responseMessageTemplate';
 import OllamaInput from './ollamaInput';

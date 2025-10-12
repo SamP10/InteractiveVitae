@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import WorldContent from '../worldContent';
+import WorldContent from '../legacy/worldContent';
 
 describe('WorldContent', () => {
   it('should render without crashing', () => {

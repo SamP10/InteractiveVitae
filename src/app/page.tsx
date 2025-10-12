@@ -1,4 +1,4 @@
-import Homepage from "./components/homepage/homepage";
+import Homepage from "./components/landing/landing";
 export default function StartPage() {
   return <Homepage></Homepage>;
 }

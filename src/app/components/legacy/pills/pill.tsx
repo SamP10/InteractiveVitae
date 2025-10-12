@@ -1,5 +1,5 @@
 import { useState, useRef, ReactNode } from 'react';
-import { IBallConfig } from '../types/components';
+import { IBallConfig } from '../../types/components';
 import PillBall from './pillBall';
 
 interface PillProps {

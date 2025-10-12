@@ -1,5 +1,5 @@
 import { Bodies, Composite, Body } from 'matter-js';
-import { BALL_LABEL } from '../constants';
+import { BALL_LABEL } from '../../constants';
 
 export default abstract class AbstractPipe {
     protected balls: Body[] = [];

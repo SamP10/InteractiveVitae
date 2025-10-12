@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { IComponentConfig } from '../types/components';
+import { IComponentConfig } from '../../types/components';
 import { World } from 'matter-js';
 import {
     CurvyDownPipe,
