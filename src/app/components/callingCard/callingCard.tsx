@@ -4,11 +4,11 @@ import { SPACING, TYPOGRAPHY } from '../constants';
 
 export default function CallingCard() {
     return (
-        <div className="flex overflow-hidden">
+        <div className="flex">
             <div className="flex-shrink ml-6 mt-6">
                 <Image src={Logo} alt="A cartoon characture of Sam Plant" width={80} />
             </div>
-            <div className="flex flex-col max-w-full max-h-full mt-6 ml-6">
+            <div className="flex flex-col max-w-full max-h-full mt-6 ml-6 pr-6">
                 <u className={`text-lily-pad`}>
                     <h1
                         className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.title} animate-slide-in-right-0_8Second opacity-0 text-cream`}>
