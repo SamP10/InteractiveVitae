@@ -11,6 +11,13 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cream: "var(--cream)",
+        primary: "var(--primary)",
+      },
+      fontFamily: {
+        'young-serif': ['Young Serif', 'serif'],
+        'notable': ['Notable', 'sans-serif'],
+        'limelight': ['Limelight', 'sans-serif'],
       },
     },
   },

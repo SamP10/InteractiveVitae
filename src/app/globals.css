@@ -3,15 +3,26 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #EEEEEE;
   --foreground: #171717;
+  --cream: #EFE3C2;
+  --primary: #00782b;
+  --pine: #123524;
+  --moss: #3E7B27;
+  --lily-pad: #3E7B27;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #123524;
+    --foreground: #EEEEEE;
   }
+}
+
+html, body {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
@@ -22,7 +33,19 @@ body {
 
 @keyframes slideInFromLeft {
   from {
-    transform: translateX(-100vw);
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
     opacity: 0;
   }
   to {
@@ -33,7 +56,7 @@ body {
 
 @keyframes slideInFromBottom {
   from {
-    transform: translateY(100vh);
+    transform: translateY(100%);
     opacity: 0;
   }
   to {
@@ -52,21 +75,30 @@ body {
   }  
   .vertical-rl { writing-mode: vertical-rl; text-orientation: mixed; }
   .text-shadow-subtle { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 6px rgba(0, 0, 0, 0.12); }
-  .text-border-black { 
-    text-shadow: 
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000,
-      0 -1px 0 #000,
-      0 1px 0 #000,
-      -1px 0 0 #000,
-      1px 0 0 #000;
-  }
   .animate-slide-in-left {
     animation: slideInFromLeft 1.2s ease-out forwards;
   }
-  .animate-slide-in-bottom {
-    animation: slideInFromBottom 1.2s ease-out 0.6s forwards;
+  .animate-slide-in-right-0_8Second{
+    animation: slideInFromRight 0.8s ease-out forwards;
   }
+  .animate-slide-in-right-0_8Second-with_0_12s-delay {
+    animation: slideInFromRight 0.8s ease-out 0.12s forwards;
+  }
+  .animate-slide-in-right-0_8Second-with_0_17s-delay {
+    animation: slideInFromRight 0.8s ease-out 0.24s forwards;
+  }
+  .animate-slide-in-bottom {
+    animation: slideInFromBottom 0.5s ease-out forwards;
+  }
+  .font-young-serif-regular {
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .text-cream { color: var(--cream); }
+  .text-lime { color: var(--lime); }
+  .text-lily-pad { color: var(--lily-pad); }
+  .bg-cream { background-color: var(--cream); }
+  .text-primary { color: var(--primary); }
+  .bg-primary { background-color: var(--primary); }
 }
