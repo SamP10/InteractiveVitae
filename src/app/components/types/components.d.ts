@@ -13,7 +13,7 @@ export interface IComponentConfig {
     height: number;
     engine: Engine;
     scene?: HTMLDivElement | undefined | null;
-};
+}
 
 export interface IPillBallConfig {
     pillRef?: HTMLButtonElement | undefined | null;

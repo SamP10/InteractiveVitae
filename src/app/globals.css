@@ -3,19 +3,144 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #EEEEEE;
   --foreground: #171717;
+  --cream: #EFE3C2;
+  --cream-hover: #f8eac5;
+  --primary: #00782b;
+  --darkPine: #0b2117;
+  --pine: #123524;
+  --moss: #3E7B27;
+  --lily-pad: #3E7B27;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #123524;
+    --foreground: #EEEEEE;
   }
 }
 
+html, body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: auto;
+  min-height: 100vh;
+  width: 100vw;
+}
+
 body {
-  color: var(--foreground);
+  color: var(--cream);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Young Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRightRotate {
+  from {
+    transform: translateX(100%) rotate(360deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@layer fonts {
+  .font-notable { font-family: 'Notable', sans-serif; }
+  .font-optima { font-family: 'Optima', 'Segoe UI', Candara, Calibri, Arial, sans-serif; }
+  .font-limelight {
+    font-family: "Limelight", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }  
+  .vertical-rl { writing-mode: vertical-rl; text-orientation: mixed; }
+  .font-young-serif-regular {
+    font-family: "Young Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+@layer colors {
+  .text-cream { color: var(--cream); }
+  .text-lime { color: var(--lime); }
+  .text-lily-pad { color: var(--lily-pad); }
+  .text-primary { color: var(--primary); }
+  .bg-primary { background-color: var(--primary); }
+  .bg-cream { background-color: var(--cream); }
+  .bg-cream-hover { background-color: var(--cream-hover); }
+  .bg-moss { background-color: var(--moss); }
+  .bg-lily-pad { background-color: var(--lily-pad); }
+  .bg-pine { background-color: var(--pine); }
+  .bg-darkPine { background-color: var(--darkPine); }
+}
+
+@layer animations {
+  /* Slide in animations */
+  .animate-slide-in-right-rotate-1Second {
+    animation: slideInFromRightRotate 1s ease-out forwards;
+  }
+  .animate-slide-in-right-rotate-1_5Second-with_0_8s-delay {
+    animation: slideInFromRightRotate 1.5s ease-out 0.8s forwards;
+  }
+  .animate-slide-in-right-rotate-1_5Second-with_1_1s-delay {
+    animation: slideInFromRightRotate 1.5s ease-out 1.1s forwards;
+  }
+  .animate-slide-in-right-rotate-1_5Second-with_1_4s-delay {
+    animation: slideInFromRightRotate 1.5s ease-out 1.4s forwards;
+  }
+
+  /* Slide in rotate animations */
+  .animate-slide-in-left {
+    animation: slideInFromLeft 1.2s ease-out forwards;
+  }
+  .animate-slide-in-right-0_8Second{
+    animation: slideInFromRight 0.8s ease-out forwards;
+  }
+  .animate-slide-in-right-0_8Second-with_0_12s-delay {
+    animation: slideInFromRight 0.8s ease-out 0.12s forwards;
+  }
+  .animate-slide-in-right-0_8Second-with_0_17s-delay {
+    animation: slideInFromRight 0.8s ease-out 0.24s forwards;
+  }
+  .animate-slide-in-bottom {
+    animation: slideInFromBottom 1s ease-out 2s forwards;
+  }
 }
