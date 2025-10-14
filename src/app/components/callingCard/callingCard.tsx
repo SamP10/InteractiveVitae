@@ -23,19 +23,24 @@ export default function CallingCard() {
                     className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.subtitle} animate-slide-in-right-0_8Second-with_0_17s-delay leading-none text-cream opacity-0 mt-2`}>
                     Software Engineer
                 </h2>
-                <div className="flex mt-4 space-x-3">
+                <div
+                    className="flex mt-4 space-x-3 pointer-events-none"
+                    onAnimationEnd={(e) => { e.currentTarget.style.pointerEvents = 'auto'; }}
+                    >
                     <a
                         href="https://github.com/SamP10"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub"
-                        className={`w-8 h-8 rounded-full bg-cream flex items-center justify-center text-lily-pad animate-slide-in-right-rotate-1_5Second-with_0_8s-delay opacity-0`}>
+                        className={`w-8 h-8 rounded-full bg-cream flex items-center justify-center text-lily-pad animate-slide-in-right-rotate-1_5Second-with_0_8s-delay opacity-0`}
+                        >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             className="w-5 h-5"
                             fill="#3E7B27"
-                            aria-hidden="true">
+                            aria-hidden="true"
+                            >
                             <path d="M12 .5C5.73.5.75 5.48.75 11.75c0 4.94 3.2 9.12 7.64 10.6.56.1.76-.24.76-.53 0-.26-.01-.95-.01-1.86-3.11.68-3.77-1.5-3.77-1.5-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.12.08 1.71 1.15 1.71 1.15 1.01 1.74 2.65 1.24 3.3.95.1-.74.39-1.24.71-1.53-2.48-.28-5.09-1.24-5.09-5.5 0-1.21.43-2.2 1.14-2.98-.12-.28-.5-1.4.11-2.92 0 0 .93-.3 3.05 1.13a10.6 10.6 0 0 1 2.78-.37c.94 0 1.9.12 2.78.36 2.12-1.44 3.05-1.13 3.05-1.13.62 1.53.24 2.64.12 2.92.71.78 1.14 1.77 1.14 2.98 0 4.27-2.62 5.21-5.11 5.49.4.35.76 1.05.76 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.64.77.53C19.06 20.86 22.25 16.68 22.25 11.75 22.25 5.48 17.27.5 12 .5z" />
                         </svg>
                     </a>

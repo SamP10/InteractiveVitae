@@ -1,3 +1,4 @@
+'use client';
 import CallingCard from '../callingCard/callingCard';
 
 export default function Landing() {
@@ -11,8 +12,10 @@ export default function Landing() {
                 {squares.map((_, i) => (
                     <button
                         key={i}
-                        aria-label={`Interactive square ${i + 1}`}
-                        className="w-full aspect-square bg-darkPine rounded-md flex animate-slide-in-bottom opacity-0"
+                        // disable pointer events while the entrance animation runs,
+                        // then re-enable on animation end so hover doesn't trigger early
+                        className="w-full aspect-square bg-darkPine hover:opacity-50 rounded-md flex animate-slide-in-bottom opacity-0 pointer-events-none"
+                        onAnimationEnd={(e) => { e.currentTarget.style.pointerEvents = 'auto'; }}
                     >
                     </button>
                 ))}

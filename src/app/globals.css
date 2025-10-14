@@ -22,7 +22,6 @@
 }
 
 html, body {
-  /* allow scrolling when page content exceeds the viewport */
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   height: auto;
