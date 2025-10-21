@@ -1,22 +1,53 @@
 'use client';
 import CallingCard from '../callingCard/callingCard';
+import { useState } from 'react';
 
 export default function Landing() {
     const squares = Array.from({ length: 6 });
+    const [showNav, setShowNav] = useState(false);
 
     return (
         <div>
             <CallingCard></CallingCard>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4">
-                {squares.map((_, i) => (
-                    <button
-                        key={i}
-                        className="w-full aspect-square bg-darkPine rounded-md flex animate-slide-in-bottom opacity-70 hover:opacity-100 pointer-events-none"
-                        onAnimationEnd={(e) => { e.currentTarget.style.pointerEvents = 'auto'; }}
-                    >
-                    </button>
-                ))}
+            <div className="bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2">
+                {showNav && (
+                    <div className="grid md:grid-cols-2 gap-2 p-2 mr-0">
+                        {squares.map((_, i) => (
+                            <button
+                                key={i}
+                                className="aspect-square w-10 bg-darkPine rounded-md flex opacity-70 hover:opacity-100"></button>
+                        ))}
+                    </div>
+                )}
+                <button
+                    className="w-10 h-10 rounded-r-md mt-2 mb-2"
+                    onClick={() => setShowNav(!showNav)}>
+                    {showNav ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="darkPine"
+                            className="w-6 h-6 ml-2">
+                            <path
+                                fillRule="evenodd"
+                                d="M15.78 19.78a.75.75 0 01-1.06 0l-7-7a.75.75 0 010-1.06l7-7a.75.75 0 111.06 1.06L9.31 12l6.47 6.47a.75.75 0 010 1.06z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="darkPine"
+                            className="w-6 h-6 ml-2">
+                            <path
+                                fillRule="evenodd"
+                                d="M8.22 4.22a.75.75 0 011.06 0l7 7a.75.75 0 010 1.06l-7 7a.75.75 0 11-1.06-1.06L14.69 12 8.22 5.53a.75.75 0 010-1.06z"
+                                clipRule="evenodd"
+                            />
+                        </svg>
+                    )}
+                </button>
             </div>
         </div>
     );
