@@ -67,7 +67,7 @@ body {
   }
   to {
     transform: translateY(0);
-    opacity: 1;
+    opacity: 100;
   }
 }
 
@@ -78,7 +78,7 @@ body {
   }
   to {
     transform: translateX(0) rotate(0deg);
-    opacity: 1;
+    opacity: 100;
   }
 }
 
@@ -141,6 +141,6 @@ body {
     animation: slideInFromRight 0.8s ease-out 0.24s forwards;
   }
   .animate-slide-in-bottom {
-    animation: slideInFromBottom 1s ease-out 2s forwards;
+    animation: slideInFromBottom 1s ease-out forwards;
   }
 }

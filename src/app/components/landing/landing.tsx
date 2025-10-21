@@ -12,9 +12,7 @@ export default function Landing() {
                 {squares.map((_, i) => (
                     <button
                         key={i}
-                        // disable pointer events while the entrance animation runs,
-                        // then re-enable on animation end so hover doesn't trigger early
-                        className="w-full aspect-square bg-darkPine hover:opacity-50 rounded-md flex animate-slide-in-bottom opacity-0 pointer-events-none"
+                        className="w-full aspect-square bg-darkPine rounded-md flex animate-slide-in-bottom opacity-70 hover:opacity-100 pointer-events-none"
                         onAnimationEnd={(e) => { e.currentTarget.style.pointerEvents = 'auto'; }}
                     >
                     </button>
