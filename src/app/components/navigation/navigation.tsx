@@ -8,22 +8,23 @@ export default function Navigation() {
     return (
         <div>
             <div
-                className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex ${
-                    showNav ? 'animate-slide-in-left' : 'animate-slide-in-left'
-                } transition-transform duration-300`}>
+                className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
-                    className={`grid grid-cols-2 gap-2 p-2 mr-0 ${
-                        showNav ? 'animate-slide-in-left' : 'animate-slide-out-right'
-                    } transition-transform duration-300`}>
+                    className={`grid grid-cols-2 gap-2 p-2 m-0 items-center justify-center ${
+                        showNav ? 'animate-slide-in-left w-28' : 'animate-slide-out-right w-0'
+                    } overflow-hidden transition-all duration-700`}
+                    >
                     {squares.map((_, i) => (
                         <button
                             key={i}
-                            className="aspect-square w-10 bg-darkPine rounded-md flex opacity-70 hover:opacity-100 animate-slide-in-left"></button>
+                            className={`aspect-square w-10 bg-darkPine rounded-md flex transition-opacity  hover:opacity-100 duration-700 ${
+                                showNav ? 'opacity-80' : 'opacity-0'
+                            }`}></button>
                     ))}
                 </div>
 
                 <button
-                    className={`ml-2 flex items-center justify-center`}
+                    className={`flex items-center justify-center`}
                     onClick={() => setShowNav(!showNav)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
