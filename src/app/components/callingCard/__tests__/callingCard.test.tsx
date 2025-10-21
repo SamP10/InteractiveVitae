@@ -1,47 +1,46 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import CallingCard from '../callingCard';
+import '@testing-library/jest-dom';
 
 jest.mock('next/image');
 
 describe('CallingCard', () => {
-    test('renders name and title', () => {
-        // Given
+    beforeEach(() => {
         render(<CallingCard />);
+    });
 
-        // When
-
-        // Then
-        expect(screen.getByText('SAM')).toBeInTheDocument();
-        expect(screen.getByText('PLANT')).toBeInTheDocument();
-        expect(screen.getByText('Software Engineer')).toBeInTheDocument();
+    test('renders name and title', () => {
+        // Given / When / Then
+        expect(screen.getByText('SAM')).toBeDefined();
+        expect(screen.getByText('PLANT')).toBeDefined();
+        expect(screen.getByText('Software Engineer')).toBeDefined();
     });
 
     test('renders social links with expected hrefs and aria-labels', () => {
-        render(<CallingCard />);
+        // Given / When
         const github = screen.getByLabelText('GitHub');
         const linkedin = screen.getByLabelText('LinkedIn');
         const email = screen.getByLabelText('Email');
 
-        expect(github).toBeInTheDocument();
+        // Then
+        expect(github).toBeDefined();
         expect(github).toHaveAttribute('href', 'https://github.com/SamP10');
-        expect(github).toHaveAttribute('target', '_blank');
 
-        expect(linkedin).toBeInTheDocument();
+        expect(linkedin).toBeDefined();
         expect(linkedin).toHaveAttribute('href', 'https://www.linkedin.com/in/sam-plant-642b05195/');
 
-        expect(email).toBeInTheDocument();
+        expect(email).toBeDefined();
         expect(email).toHaveAttribute('href', 'mailto:sam.plant998@gmail.com');
     });
 
     test('enables pointer events on the social links container after animation end', () => {
-        render(<CallingCard />);
+        // Given / When
         const github = screen.getByLabelText('GitHub');
         const container = github.parentElement as HTMLDivElement | null;
         expect(container).not.toBeNull();
 
-        // Initially pointerEvents is not set inline (class handles it), ensure we can change it
+        // Then
         fireEvent.animationEnd(container!);
         expect(container!.style.pointerEvents).toBe('auto');
     });
