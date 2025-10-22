@@ -11,20 +11,21 @@ export default function Navigation() {
                 className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
                     className={`grid grid-cols-1 md:grid-cols-2 gap-3 p-3 m-0 items-center justify-center ${
-                        showNav ? 'animate-slide-in-left w-20 md:w-72' : 'animate-slide-out-right w-0'
+                        showNav
+                            ? 'animate-slide-in-left w-20 md:w-72'
+                            : 'animate-slide-out-right w-0'
                     } overflow-hidden transition-all duration-700`}>
                     {squares.map((_, i) => (
                         <button
                             key={i}
                             className={`aspect-square bg-darkPine rounded-md flex transition-opacity transition-all duration-700 ${
-                                showNav ? 'opacity-90' : 'opacity-0'
+                                showNav ? 'opacity-100' : 'opacity-0'
                             }`}
                             style={{
-                                transitionDelay: 
-                                    i % 2 === 0
-                                        ? '300ms'
-                                        : '200ms'
-                            }}></button>
+                                transitionDelay: i % 2 === 0 ? '300ms' : '200ms'
+                            }}>
+                            <span className="items-center align-center m-auto">Some Content</span>
+                        </button>
                     ))}
                 </div>
 
