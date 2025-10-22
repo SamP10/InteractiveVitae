@@ -10,8 +10,8 @@ export default function Navigation() {
             <div
                 className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
-                    className={`grid grid-cols-2 gap-3 p-3 m-0 items-center justify-center ${
-                        showNav ? 'animate-slide-in-left w-48' : 'animate-slide-out-right w-0'
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-3 p-3 m-0 items-center justify-center ${
+                        showNav ? 'animate-slide-in-left w-20 md:w-72' : 'animate-slide-out-right w-0'
                     } overflow-hidden transition-all duration-700`}>
                     {squares.map((_, i) => (
                         <button
@@ -22,7 +22,7 @@ export default function Navigation() {
                             style={{
                                 transitionDelay: 
                                     i % 2 === 0
-                                        ? '400ms'
+                                        ? '300ms'
                                         : '200ms'
                             }}></button>
                     ))}
