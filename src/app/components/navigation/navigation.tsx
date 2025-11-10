@@ -10,9 +10,9 @@ export default function Navigation() {
             <div
                 className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
-                    className={`grid grid-cols-1 md:grid-cols-2 gap-3 p-3 m-0 items-center justify-center ${
+                    className={`grid grid-cols-1 md:grid-cols-2 gap-3 items-center justify-center ${
                         showNav
-                            ? 'animate-slide-in-left w-20 md:w-72'
+                            ? 'animate-slide-in-left w-20 md:w-72 p-3'
                             : 'animate-slide-out-right w-0'
                     } overflow-hidden transition-all duration-700`}>
                     {squares.map((_, i) => (
@@ -24,13 +24,21 @@ export default function Navigation() {
                             style={{
                                 transitionDelay: i % 2 === 0 ? '300ms' : '200ms'
                             }}>
-                            <span className="items-center align-center m-auto">Some Content</span>
+                            <span
+                                className={`items-center align-center m-auto text-cream text-xs transition-opacity duration-300 ${
+                                    showNav ? 'opacity-100' : 'opacity-0'
+                                }`}
+                                style={{
+                                    transitionDelay: showNav ? `700ms` : '0ms'
+                                }}>
+                                {`Item ${i + 1}`}
+                            </span>
                         </button>
                     ))}
                 </div>
 
                 <button
-                    className={`flex items-center justify-center`}
+                    className={`flex items-center justify-center rounded-r-md m-auto ${showNav ? 'h-4' : 'h-4'}`}
                     onClick={() => setShowNav(!showNav)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
