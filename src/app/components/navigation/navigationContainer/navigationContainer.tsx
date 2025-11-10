@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
+import NavigationItem from '../navigationItem/navigationItem';
 
-export default function Navigation() {
+export default function NavigationContainer() {
     const squares = Array.from({ length: 6 });
     const [showNav, setShowNav] = useState(false);
 
@@ -16,24 +17,7 @@ export default function Navigation() {
                             : 'animate-slide-out-right w-0'
                     } overflow-hidden transition-all duration-700`}>
                     {squares.map((_, i) => (
-                        <button
-                            key={i}
-                            className={`aspect-square bg-darkPine rounded-md flex transition-opacity transition-all duration-700 ${
-                                showNav ? 'opacity-100' : 'opacity-0'
-                            }`}
-                            style={{
-                                transitionDelay: i % 2 === 0 ? '300ms' : '200ms'
-                            }}>
-                            <span
-                                className={`items-center align-center m-auto text-cream text-xs transition-opacity duration-300 ${
-                                    showNav ? 'opacity-100' : 'opacity-0'
-                                }`}
-                                style={{
-                                    transitionDelay: showNav ? `700ms` : '0ms'
-                                }}>
-                                {`Item ${i + 1}`}
-                            </span>
-                        </button>
+                        <NavigationItem key={i} index={i} showNav={showNav} />
                     ))}
                 </div>
 
