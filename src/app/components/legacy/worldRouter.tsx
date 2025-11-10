@@ -1,7 +1,7 @@
 'use client';
 
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { IComponentConfig } from '../types/components';
+import { IComponentConfig } from './types/components';
 
 import StartButton from './startButton';
 import GetToKnowMe from './getToKnowMe/getToKnowMe';

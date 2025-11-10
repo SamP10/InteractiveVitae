@@ -5,7 +5,7 @@ import RequestMessageTemplate from './requestMessageTemplate';
 import { useState, useRef, ReactNode } from 'react';
 import { chatWithOllama } from '../../../utils/ollamaIntegration';
 import { SYSTEM_PROMPT } from './constants';
-import { IBallConfig } from '../../types/components';
+import { IBallConfig } from '../types/components';
 
 interface PillContainerProps {
     addChatComponent(component: ReactNode): void;

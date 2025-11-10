@@ -1,4 +1,14 @@
-import Homepage from "./components/landing/landing";
+'use client';
+import Landing from "./components/landing/landing";
+import CallingCard from './components/callingCard/callingCard';
+import NavigationContainer from "./components/navigation/navigationContainer/navigationContainer";
+
 export default function StartPage() {
-  return <Homepage></Homepage>;
+  return (
+    <div>
+    <CallingCard></CallingCard>
+    <NavigationContainer></NavigationContainer>
+    <Landing></Landing>
+    </div>
+);
 }

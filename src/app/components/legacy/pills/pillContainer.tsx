@@ -1,7 +1,7 @@
 import { useState, useRef, ReactNode } from 'react';
 import { SYSTEM_PROMPT } from '../getToKnowMe/constants';
 import { chatWithOllama } from '../../../utils/ollamaIntegration';
-import { IBallConfig } from '../../types/components';
+import { IBallConfig } from '../types/components';
 
 import Pill from './pill';
 import ResponseMessageTemplate from '../getToKnowMe/responseMessageTemplate';

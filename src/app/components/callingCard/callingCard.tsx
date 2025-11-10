@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Logo from '../../assets/images/Me.png';
-import { SPACING, TYPOGRAPHY } from '../constants';
+import { SPACING, TYPOGRAPHY } from '../legacy/constants';
 
 export default function CallingCard() {
     return (

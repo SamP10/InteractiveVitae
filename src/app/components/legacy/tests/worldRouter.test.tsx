@@ -1,12 +1,12 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Homepage from '../landing';
+import WorldRouter from '../worldRouter';
 
-describe('Homepage', () => {
+describe('WorldRouter', () => {
   it('should render without crashing', () => {
-    const { container } = render(<Homepage />);
+    const { container } = render(<WorldRouter />);
     expect(container).toBeInTheDocument();
   });
 
-  // Add more tests for Homepage functionality here
+  // Add more tests for WorldRouter functionality here
 });
