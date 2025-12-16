@@ -71,6 +71,17 @@ body {
   }
 }
 
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 @keyframes slideInFromBottom {
   from {
     transform: translateY(100%);
@@ -124,6 +135,12 @@ body {
 
 @layer animations {
   /* Slide in animations */
+  .animate-slide-in-right {
+    animation: slideInFromRight 0.7s ease-out forwards;
+  }
+  .animate-slide-out-to-right {
+    animation: slideOutToRight 0.7s ease-out forwards;
+  }
   .animate-slide-in-right-rotate-1Second {
     animation: slideInFromRightRotate 1s ease-out forwards;
   }
