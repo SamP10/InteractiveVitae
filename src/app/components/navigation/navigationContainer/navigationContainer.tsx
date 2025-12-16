@@ -8,12 +8,12 @@ export default function NavigationContainer() {
     return (
         <div>
             <div
-                className={`bg-cream rounded-l-md fixed z-10 top-1/2 right-0 -translate-y-1/2 inline-flex transition-transform duration-700`}>
+                className={`bg-cream rounded-r-md float-right fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
                     className={`grid grid-cols-2 gap-1 md:gap-2 items-center justify-center ${
                         showNav
-                            ? 'animate-slide-in-right w-40 md:w-56 p-1 '
-                            : 'animate-slide-out-to-right w-0'
+                            ? 'animate-slide-in-left w-40 md:w-56 p-1 '
+                            : 'animate-slide-out-right w-0'
                     } overflow-hidden transition-all duration-700`}>
                     {squares.map((_, i) => (
                         <NavigationItem key={i} index={i} showNav={showNav} />
@@ -21,7 +21,7 @@ export default function NavigationContainer() {
                 </div>
 
                 <button
-                    className={`flex items-center justify-center rounded-l-md m-auto`}
+                    className={`flex items-center justify-center rounded-r-md m-auto`}
                     onClick={() => setShowNav(!showNav)}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ export default function NavigationContainer() {
                         } transition-transform duration-700`}>
                         <path
                             fillRule="evenodd"
-                            d="M8.22 4.22a.75.75 0 011.06 0l7 7a.75.75 0 010 1.06l-7 7a.75.75 0 11-1.06-1.06L14.69 12 8.22 5.53a.75.75 0 010-1.06z"
+                            d="M15.78 19.78a.75.75 0 01-1.06 0l-7-7a.75.75 0 010-1.06l7-7a.75.75 0 111.06 1.06L9.31 12l6.47 6.47a.75.75 0 010 1.06z"
                             clipRule="evenodd"
                         />
                     </svg>

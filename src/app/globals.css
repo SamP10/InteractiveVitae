@@ -71,27 +71,6 @@ body {
   }
 }
 
-@keyframes slideOutToRight {
-  from {
-    transform: translateX(0%);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 @keyframes slideInFromRightRotate {
   from {
     transform: translateX(100%) rotate(360deg);
@@ -135,15 +114,6 @@ body {
 
 @layer animations {
   /* Slide in animations */
-  .animate-slide-in-right {
-    animation: slideInFromRight 0.7s ease-out forwards;
-  }
-  .animate-slide-out-to-right {
-    animation: slideOutToRight 0.7s ease-out forwards;
-  }
-  .animate-slide-in-right-rotate-1Second {
-    animation: slideInFromRightRotate 1s ease-out forwards;
-  }
   .animate-slide-in-right-rotate-1_5Second-with_0_8s-delay {
     animation: slideInFromRightRotate 1.5s ease-out 0.8s forwards;
   }
@@ -154,7 +124,7 @@ body {
     animation: slideInFromRightRotate 1.5s ease-out 1.4s forwards;
   }
 
-  /* Slide in rotate animations */
+  /* Slide in / out animations used in navigation & text */
   .animate-slide-in-left {
     animation: slideInFromLeft 0.7s ease-out forwards;
   }
@@ -169,8 +139,5 @@ body {
   }
   .animate-slide-in-right-0_8Second-with_0_17s-delay {
     animation: slideInFromRight 0.8s ease-out 0.24s forwards;
-  }
-  .animate-slide-in-bottom {
-    animation: slideInFromBottom 1s ease-out forwards;
   }
 }
