@@ -62,7 +62,7 @@ export default function CallingCard() {
                     </a>
 
                     <a
-                        href="mailto:sam.plant998@gmail.com"
+                        href="mailto:splant.enquiries@gmail.com"
                         aria-label="Email"
                         className={`w-8 h-8 rounded-full bg-cream flex items-center justify-center text-lily-pad animate-slide-in-right-rotate-1_5Second-with_1_4s-delay opacity-0`}>
                         <svg
