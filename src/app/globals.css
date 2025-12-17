@@ -71,16 +71,6 @@ body {
   }
 }
 
-@keyframes slideInFromBottom {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
 @keyframes slideInFromRightRotate {
   from {
     transform: translateX(100%) rotate(360deg);
@@ -124,9 +114,6 @@ body {
 
 @layer animations {
   /* Slide in animations */
-  .animate-slide-in-right-rotate-1Second {
-    animation: slideInFromRightRotate 1s ease-out forwards;
-  }
   .animate-slide-in-right-rotate-1_5Second-with_0_8s-delay {
     animation: slideInFromRightRotate 1.5s ease-out 0.8s forwards;
   }
@@ -137,7 +124,7 @@ body {
     animation: slideInFromRightRotate 1.5s ease-out 1.4s forwards;
   }
 
-  /* Slide in rotate animations */
+  /* Slide in / out animations used in navigation & text */
   .animate-slide-in-left {
     animation: slideInFromLeft 0.7s ease-out forwards;
   }
@@ -153,7 +140,57 @@ body {
   .animate-slide-in-right-0_8Second-with_0_17s-delay {
     animation: slideInFromRight 0.8s ease-out 0.24s forwards;
   }
-  .animate-slide-in-bottom {
-    animation: slideInFromBottom 1s ease-out forwards;
+
+  /* Navigation underline and pop-up animations */
+  @keyframes navPopUpBounce {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(-12px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes navUnderlineSequence {
+    /* expand, hold, then contract */
+    0% { transform: scaleX(0); }
+    30% { transform: scaleX(1); }
+    70% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+  }
+
+  .nav-underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px; /* slightly below the nav items */
+    height: 2px;
+    background-color: var(--cream);
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+
+  .animate-nav-pop-up {
+    animation-name: navPopUpBounce;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(.22,.7,.28,1);
+    animation-fill-mode: forwards;
+    transform-origin: bottom;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .animate-nav-underline {
+    animation-name: navUnderlineSequence;
+    animation-duration: 1.4s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
   }
 }

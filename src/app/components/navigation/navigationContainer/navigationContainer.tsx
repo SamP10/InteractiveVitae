@@ -8,7 +8,7 @@ export default function NavigationContainer() {
     return (
         <div>
             <div
-                className={`bg-cream rounded-r-md float-left fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
+                className={`bg-cream rounded-r-md float-right fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
                 <div
                     className={`grid grid-cols-2 gap-1 md:gap-2 items-center justify-center ${
                         showNav
