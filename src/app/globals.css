@@ -140,4 +140,57 @@ body {
   .animate-slide-in-right-0_8Second-with_0_17s-delay {
     animation: slideInFromRight 0.8s ease-out 0.24s forwards;
   }
+
+  /* Navigation underline and pop-up animations */
+  @keyframes navPopUpBounce {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    70% {
+      transform: translateY(-8px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes navUnderlineSequence {
+    /* expand, hold, then contract */
+    0% { transform: scaleX(0); }
+    30% { transform: scaleX(1); }
+    70% { transform: scaleX(1); }
+    100% { transform: scaleX(0); }
+  }
+
+  .nav-underline {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px; /* slightly below the nav items */
+    height: 2px;
+    background-color: var(--cream);
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+
+  .animate-nav-pop-up {
+    animation-name: navPopUpBounce;
+    animation-duration: 0.6s;
+    animation-timing-function: cubic-bezier(.22,.7,.28,1);
+    animation-fill-mode: forwards;
+    transform-origin: bottom;
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+
+  .animate-nav-underline {
+    animation-name: navUnderlineSequence;
+    animation-duration: 1.2s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
 }

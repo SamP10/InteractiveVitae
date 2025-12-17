@@ -1,13 +1,13 @@
 'use client';
 import Landing from "./components/landing/landing";
-import CallingCard from './components/callingCard/callingCard';
+import NavigationBar from "./components/navigation/navigationBar/navigationBar";
 import NavigationContainer from "./components/navigation/navigationContainer/navigationContainer";
 
 export default function StartPage() {
   return (
     <div>
-    <CallingCard></CallingCard>
-    <NavigationContainer></NavigationContainer>
+    <NavigationBar></NavigationBar>
+    {/* <NavigationContainer></NavigationContainer> */}
     <Landing></Landing>
     </div>
 );
