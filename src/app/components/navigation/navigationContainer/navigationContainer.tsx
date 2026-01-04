@@ -8,7 +8,7 @@ export default function NavigationContainer() {
     return (
         <div>
             <div
-                className={`bg-cream rounded-r-md float-right fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700`}>
+                className={`bg-cream rounded-r-md float-right fixed z-10 top-1/2 -translate-y-1/2 inline-flex transition-transform duration-700 border-darkPine border-t-2 border-r-2 border-b-2`}>
                 <div
                     className={`grid grid-cols-2 gap-1 md:gap-2 items-center justify-center ${
                         showNav
@@ -26,7 +26,7 @@ export default function NavigationContainer() {
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
-                        fill="#3E7B27"
+                        fill="#0b2117"
                         className={`w-6 h-6 md:w-8 md:h-8 ${
                             showNav ? 'rotate-180' : ''
                         } transition-transform duration-700`}>
