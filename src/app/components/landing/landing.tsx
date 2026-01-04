@@ -1,10 +1,45 @@
-export default function Landing() {
+import Image from 'next/image';
+import Logo from '../../assets/images/Logo.png';
 
+export default function Landing() {
     return (
-        <div>
-            <h1 className="align-center top-1/2" style={{ textAlign: 'center', position: 'absolute', top: '50%', transform: 'translateY(-50%)' }}>
-                Technical Skills
-            </h1>
+        <div className="m-4 flex items-center justify-center flex-col gap-12">
+            <main className="flex justify-center bg-cream text-darkPine w-4/5 rounded-lg p-8">
+                <Image
+                    src={Logo}
+                    alt="Hero Image"
+                    width={100}
+                    height={100}
+                    className="flex display inline"
+                />
+                <h2 className="text-3xl font-bold">
+                    &quot;Helping Software Companies to innovate during times of constant
+                    change.&quot;
+                    <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-{' '}
+                    <i>Myself</i>
+                </h2>
+                <p>
+                    Passionate developer, creative problem solver, and lifelong learner. I
+                    specialize in building innovative solutions that bridge the gap between
+                    technology and user experience.
+                </p>
+            </main>
+            <article className="flex justify-center bg-cream text-darkPine w-4/5 rounded-lg p-8">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </article>
+            <div className="flex gap-4">
+                {['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'Go', 'Ruby', 'PHP'].map(
+                    (language) => (
+                        <div
+                            key={language}
+                            className="bg-darkPine text-cream px-4 py-2 rounded-md text-sm font-medium">
+                            {language}
+                        </div>
+                    )
+                )}
+            </div>
         </div>
     );
 }
