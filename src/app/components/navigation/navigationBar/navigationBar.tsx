@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import CallingCard from '../../callingCard/callingCard';
 
 export default function NavigationBar() {
-    const navItems = useMemo(() => ['HOME', 'PROJECTS', 'SKILLS', 'EXPERIENCE', 'CONTACT'], []);
+    const navItems = useMemo(() => ['HOME', 'PROJECTS', 'EXPERIENCE', 'BLOG', 'CONTACT'], []);
 
     const baseDelay = 3.0;
     const stagger = 0.25;
@@ -20,7 +20,7 @@ export default function NavigationBar() {
                             <a
                                 className="text-cream text-sm md:text-md lg:text-lg animate-nav-pop-up"
                                 href="#"
-                                style={{ animationDelay: `${textDelay}s`}}>
+                                style={{ animationDelay: `${textDelay}s` }}>
                                 {label}
                             </a>
                             <div
