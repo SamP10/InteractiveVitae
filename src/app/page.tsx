@@ -1,14 +1,16 @@
 'use client';
-import Landing from "./components/landing/landing";
-import NavigationBar from "./components/navigation/navigationBar/navigationBar";
-import NavigationContainer from "./components/navigation/navigationContainer/navigationContainer";
+import Landing from './components/landing/landing';
+import NavigationBar from './components/navigation/navigationBar/navigationBar';
+import NavigationContainer from './components/navigation/navigationContainer/navigationContainer';
+import Footer from './components/footer/footer';
 
 export default function StartPage() {
-  return (
-    <div>
-    <NavigationBar></NavigationBar>
-    {/* <NavigationContainer></NavigationContainer> */}
-    <Landing></Landing>
-    </div>
-);
+    return (
+        <div>
+            <NavigationBar></NavigationBar>
+            <NavigationContainer></NavigationContainer>
+            <Landing></Landing>
+            <Footer></Footer>
+        </div>
+    );
 }
