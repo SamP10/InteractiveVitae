@@ -24,7 +24,7 @@ export default function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="GitHub"
-                                className="w-8 h-8 rounded-full bg-cream flex items-center justify-center text-lily-pad">
+                                className="w-8 h-8 rounded-full bg-cream flex items-center justify-center text-moss">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"
@@ -40,7 +40,7 @@ export default function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="LinkedIn"
-                                className="w-8 h-8 rounded-full bg-cream flex items-center justify-center text-lily-pad">
+                                className="w-8 h-8 rounded-full bg-cream flex items-center justify-center text-moss">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24"

@@ -11,7 +11,7 @@ export default function Landing() {
     const { baseDelay, stagger, animationClass } = getContentTiming(isInitialLoad);
 
     return (
-        <div className="m-4 flex items-center justify-center flex-col gap-12">
+        <div className="m-4 flex items-center justify-center flex-col gap-12 flex-1">
             <main
                 className={`flex justify-center bg-cream text-darkPine w-4/5 rounded-lg p-8 ${animationClass}`}
                 style={{ animationDelay: `${baseDelay}s` }}>

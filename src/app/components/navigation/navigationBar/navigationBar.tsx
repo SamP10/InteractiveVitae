@@ -13,7 +13,7 @@ export default function NavigationBar() {
         () => [
             { label: 'HOME', href: '/' },
             { label: 'PROJECTS', href: '/projects' },
-            { label: 'EXPERIENCE', href: '#' },
+            { label: 'EXPERIENCE', href: '/experience' },
             { label: 'BLOG', href: '#' },
             { label: 'CONTACT', href: '#' }
         ],
