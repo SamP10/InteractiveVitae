@@ -429,6 +429,25 @@ body {
     animation: countUp 0.5s ease-out forwards;
     opacity: 0;
   }
+
+  /* Radar chart fill animation */
+  @keyframes radarFill {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      transform-origin: center;
+    }
+  }
+
+  .animate-radar-fill {
+    animation: radarFill 0.8s ease-out forwards;
+    opacity: 0;
+  }
 }
 
 /* Respect user's OS-level reduced motion preference */

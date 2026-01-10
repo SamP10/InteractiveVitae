@@ -1,61 +1,56 @@
 'use client';
 
-import { useState } from 'react';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getSkillsTiming } from '@/app/constants/animations';
+import RadarChart from './RadarChart';
+import { SkillData } from './radarChartUtils';
 
-interface Skill {
+interface SkillCategory {
     name: string;
-    category: 'language' | 'framework' | 'tool';
-    proficiency: 'expert' | 'advanced' | 'intermediate';
+    color: 'amber' | 'teal' | 'slate';
+    skills: SkillData[];
 }
 
-const skills: Skill[] = [
-    // Languages
-    { name: 'TypeScript', category: 'language', proficiency: 'expert' },
-    { name: 'JavaScript', category: 'language', proficiency: 'expert' },
-    { name: 'Python', category: 'language', proficiency: 'advanced' },
-    { name: 'Swift', category: 'language', proficiency: 'intermediate' },
-    { name: 'Apex', category: 'language', proficiency: 'expert' },
-    { name: 'SQL', category: 'language', proficiency: 'advanced' },
-    // Frameworks
-    { name: 'React', category: 'framework', proficiency: 'expert' },
-    { name: 'Next.js', category: 'framework', proficiency: 'advanced' },
-    { name: 'TensorFlow', category: 'framework', proficiency: 'intermediate' },
-    { name: 'Tailwind', category: 'framework', proficiency: 'advanced' },
-    { name: 'LWC', category: 'framework', proficiency: 'expert' },
-    // Tools
-    { name: 'Docker', category: 'tool', proficiency: 'advanced' },
-    { name: 'Git', category: 'tool', proficiency: 'expert' },
-    { name: 'Salesforce', category: 'tool', proficiency: 'expert' },
-    { name: 'REST APIs', category: 'tool', proficiency: 'expert' },
-    { name: 'Node.js', category: 'tool', proficiency: 'advanced' }
+const skillCategories: SkillCategory[] = [
+    {
+        name: 'Languages',
+        color: 'amber',
+        skills: [
+            { name: 'TypeScript', level: 90 },
+            { name: 'JavaScript', level: 90 },
+            { name: 'Python', level: 70 },
+            { name: 'Apex', level: 85 },
+            { name: 'SQL', level: 75 },
+            { name: 'Swift', level: 50 }
+        ]
+    },
+    {
+        name: 'Frameworks',
+        color: 'teal',
+        skills: [
+            { name: 'React', level: 90 },
+            { name: 'Next.js', level: 80 },
+            { name: 'LWC', level: 85 },
+            { name: 'Tailwind', level: 85 },
+            { name: 'TensorFlow', level: 55 }
+        ]
+    },
+    {
+        name: 'Tools & Platforms',
+        color: 'slate',
+        skills: [
+            { name: 'Salesforce', level: 90 },
+            { name: 'Git', level: 85 },
+            { name: 'Docker', level: 70 },
+            { name: 'REST APIs', level: 90 },
+            { name: 'Node.js', level: 75 }
+        ]
+    }
 ];
-
-const categoryColors = {
-    language: 'bg-amber/80 hover:bg-amber',
-    framework: 'bg-teal/80 hover:bg-teal',
-    tool: 'bg-slate/80 hover:bg-slate'
-};
-
-const proficiencySize = {
-    expert: 'px-4 py-2 text-base',
-    advanced: 'px-3 py-1.5 text-sm',
-    intermediate: 'px-2.5 py-1 text-xs'
-};
-
-const categoryLabels = {
-    language: 'Languages',
-    framework: 'Frameworks',
-    tool: 'Tools & Platforms'
-};
 
 export default function SkillsShowcase() {
     const isInitialLoad = useInitialLoad();
-    const { baseDelay, bubbleStagger } = getSkillsTiming(isInitialLoad);
-    const [activeCategory, setActiveCategory] = useState<string | null>(null);
-
-    const categories = ['language', 'framework', 'tool'] as const;
+    const { baseDelay } = getSkillsTiming(isInitialLoad);
 
     return (
         <section className="py-16 px-4 bg-pine">
@@ -73,74 +68,34 @@ export default function SkillsShowcase() {
                     </p>
                 </div>
 
-                {/* Category legend */}
-                <div
-                    className="flex flex-wrap justify-center gap-4 mb-10 opacity-0 animate-text-reveal"
-                    style={{ animationDelay: `${baseDelay + 0.1}s` }}>
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            onClick={() =>
-                                setActiveCategory(activeCategory === category ? null : category)
-                            }
-                            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${
-                                activeCategory === category || activeCategory === null
-                                    ? 'opacity-100'
-                                    : 'opacity-40'
-                            }`}>
-                            <span
-                                className={`w-3 h-3 rounded-full ${categoryColors[category]}`}
-                            />
-                            <span className="text-cream text-sm">
-                                {categoryLabels[category]}
-                            </span>
-                        </button>
+                {/* Radar charts grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+                    {skillCategories.map((category, index) => (
+                        <RadarChart
+                            key={category.name}
+                            title={category.name}
+                            skills={category.skills}
+                            color={category.color}
+                            animationDelay={baseDelay + 0.2 + index * 0.2}
+                        />
                     ))}
                 </div>
 
-                {/* Skills bubbles */}
-                <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-                    {skills.map((skill, index) => {
-                        const isVisible =
-                            activeCategory === null || activeCategory === skill.category;
-
-                        return (
-                            <div
-                                key={skill.name}
-                                className={`
-                                    ${categoryColors[skill.category]}
-                                    ${proficiencySize[skill.proficiency]}
-                                    text-cream font-medium rounded-full cursor-default
-                                    transition-all duration-300 transform
-                                    hover:scale-110 hover:shadow-lg
-                                    opacity-0 animate-skill-pop
-                                    ${!isVisible ? '!opacity-20 scale-90' : ''}
-                                `}
-                                style={{
-                                    animationDelay: `${baseDelay + 0.2 + index * bubbleStagger}s`
-                                }}
-                                title={`${skill.name} - ${skill.proficiency}`}>
-                                {skill.name}
-                            </div>
-                        );
-                    })}
-                </div>
-
-                {/* Proficiency legend */}
+                {/* Legend */}
                 <div
-                    className="flex justify-center gap-6 mt-10 text-cream/60 text-sm opacity-0 animate-text-reveal"
+                    className="flex flex-wrap justify-center gap-6 mt-12 text-cream/60 text-sm opacity-0 animate-text-reveal"
                     style={{ animationDelay: `${baseDelay + 1}s` }}>
                     <span className="flex items-center gap-2">
-                        <span className="px-4 py-2 text-base bg-cream/20 rounded-full">Large</span>
-                        Expert
+                        <span className="w-3 h-3 rounded-full bg-amber" />
+                        Languages
                     </span>
                     <span className="flex items-center gap-2">
-                        <span className="px-3 py-1.5 text-sm bg-cream/20 rounded-full">Medium</span>
-                        Advanced
+                        <span className="w-3 h-3 rounded-full bg-teal" />
+                        Frameworks
                     </span>
                     <span className="flex items-center gap-2">
-                        <span className="px-2.5 py-1 text-xs bg-cream/20 rounded-full">Small</span>
-                        Intermediate
+                        <span className="w-3 h-3 rounded-full bg-slate" />
+                        Tools & Platforms
                     </span>
                 </div>
             </div>
