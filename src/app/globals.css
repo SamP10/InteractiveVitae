@@ -193,4 +193,41 @@ body {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
   }
+
+  /* Card fade-in animation for projects grid */
+  @keyframes cardFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-card-fade-in {
+    animation: cardFadeIn 0.6s ease-out forwards;
+  }
+
+  /* Content fade-in animation for page sections */
+  .animate-content-fade-in {
+    animation: cardFadeIn 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-content-fade-in-fast {
+    animation: cardFadeIn 0.3s ease-out forwards;
+    opacity: 0;
+  }
+}
+
+/* Respect user's OS-level reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
