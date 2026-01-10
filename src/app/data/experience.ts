@@ -174,7 +174,7 @@ export const categoryInfo: Record<
     TimelineCategory,
     { label: string; color: string; bgColor: string }
 > = {
-    work: { label: 'Work', color: 'text-moss', bgColor: 'bg-moss' },
-    project: { label: 'Project', color: 'text-pine', bgColor: 'bg-pine' },
-    education: { label: 'Education', color: 'text-lily-pad', bgColor: 'bg-lily-pad' }
+    work: { label: 'Work', color: 'text-amber', bgColor: 'bg-amber' },
+    project: { label: 'Project', color: 'text-slate', bgColor: 'bg-slate' },
+    education: { label: 'Education', color: 'text-teal', bgColor: 'bg-teal' }
 };

@@ -11,7 +11,10 @@
   --darkPine: #0b2117;
   --pine: #123524;
   --moss: #3E7B27;
-  --lily-pad: #3E7B27;
+  /* Timeline Category colors */
+  --amber: #B45309;
+  --teal: #0F766E;
+  --slate: #475569;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,15 +104,20 @@ body {
 @layer colors {
   .text-cream { color: var(--cream); }
   .text-lime { color: var(--lime); }
-  .text-lily-pad { color: var(--lily-pad); }
+  .text-moss { color: var(--moss); }
   .text-primary { color: var(--primary); }
+  .text-amber { color: var(--amber); }
+  .text-teal { color: var(--teal); }
+  .text-slate { color: var(--slate); }
   .bg-primary { background-color: var(--primary); }
   .bg-cream { background-color: var(--cream); }
   .bg-cream-hover { background-color: var(--cream-hover); }
   .bg-moss { background-color: var(--moss); }
-  .bg-lily-pad { background-color: var(--lily-pad); }
   .bg-pine { background-color: var(--pine); }
   .bg-darkPine { background-color: var(--darkPine); }
+  .bg-amber { background-color: var(--amber); }
+  .bg-teal { background-color: var(--teal); }
+  .bg-slate { background-color: var(--slate); }
 }
 
 @layer animations {
