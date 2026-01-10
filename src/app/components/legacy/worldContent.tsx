@@ -12,10 +12,10 @@ import {
     Body
 } from 'matter-js';
 import { BALL_LABEL } from './constants';
-import { initialiseOllama } from '../utils/ollamaIntegration';
-import retroBg from '../assets/images/Background.png';
+import { initialiseOllama } from './utils/ollamaIntegration';
+import retroBg from '../../assets/images/Background.png';
 
-import WorldRouter from '../worldRouter';
+import WorldRouter from './worldRouter';
 
 export default function WorldContent() {
     const scene = useRef<HTMLDivElement>(null);

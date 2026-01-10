@@ -1,10 +1,10 @@
 'use client';
 
-import { TimelineEntry, categoryInfo } from '@/app/data/experience';
+import { ITimelineEntry, categoryInfo } from '@/app/data/experience';
 import TimelineExpandableContent from './TimelineExpandableContent';
 
-interface TimelineItemProps {
-    entry: TimelineEntry;
+interface ITimelineItemProps {
+    entry: ITimelineEntry;
     index: number;
     isExpanded: boolean;
     onToggle: () => void;
@@ -19,7 +19,7 @@ export default function TimelineItem({
     onToggle,
     isInitialLoad,
     animationDelay
-}: TimelineItemProps) {
+}: ITimelineItemProps) {
     const isEven = index % 2 === 0;
     const isOngoing = entry.dateEnd === null;
     const categoryStyle = categoryInfo[entry.category];

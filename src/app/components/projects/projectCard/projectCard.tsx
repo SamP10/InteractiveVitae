@@ -1,16 +1,16 @@
 'use client';
 
 import LanguageBadge from '../languageBadge/languageBadge';
-import type { Project } from '@/app/data/projects';
+import type { IProject } from '@/app/data/projects';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getCardTiming } from '@/app/constants/animations';
 
-interface ProjectCardProps {
-    project: Project;
+interface IProjectCardProps {
+    project: IProject;
     index: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: IProjectCardProps) {
     const isInitialLoad = useInitialLoad();
     const { baseDelay, stagger } = getCardTiming(isInitialLoad);
     const animationDelay = baseDelay + index * stagger;
@@ -28,17 +28,25 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             {/* Placeholder Image Area */}
             <div className="relative h-40 bg-pine flex items-center justify-center">
                 <div className="text-cream text-6xl opacity-30 font-bold">
-                    {project.language.charAt(0)}
+                    A
                 </div>
             </div>
 
             {/* Card Content */}
             <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+                <p className="text-xs text-pine mb-2">
+                    {project.dates.start}
+                    {project.dates.end ? ` - ${project.dates.end}` : ' - Present'}
+                </p>
                 <p className="text-sm text-pine mb-4 line-clamp-2 min-h-[2.5rem]">
                     {project.description || 'No description available'}
                 </p>
-                <LanguageBadge language={project.language} color={project.languageColor} />
+                <div className="flex flex-wrap gap-2">
+                    {project.languages.map((language) => (
+                        <LanguageBadge key={language.id} language={language.name} color={language.color} />
+                    ))}
+                </div>
             </div>
         </a>
     );

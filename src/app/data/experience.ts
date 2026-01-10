@@ -1,6 +1,8 @@
+import { ISkill, SKILLS } from './skills';
+
 export type TimelineCategory = 'work' | 'project' | 'education';
 
-export interface TimelineEntry {
+export interface ITimelineEntry {
     id: number;
     category: TimelineCategory;
     title: string;
@@ -9,11 +11,12 @@ export interface TimelineEntry {
     dateEnd: string | null;
     summary: string;
     achievements: string[];
-    technologies?: string[];
+    technologies?: ISkill[];
     link?: string;
+    featured?: boolean;
 }
 
-export const experienceData: TimelineEntry[] = [
+export const experienceData: ITimelineEntry[] = [
     // Work Experience
     {
         id: 1,
@@ -34,7 +37,8 @@ export const experienceData: TimelineEntry[] = [
             'Applied software design principles and design patterns to create reusable, efficient code, leading to a 23% reduction in code execution time',
             'Practiced test driven development'
         ],
-        technologies: ['TypeScript', 'Salesforce', 'Apex', 'LWC', 'REST APIs']
+        technologies: [SKILLS.TYPESCRIPT, SKILLS.SALESFORCE, SKILLS.APEX, SKILLS.LWC, SKILLS.REST_APIS],
+        featured: true
     },
 
     // Education
@@ -50,7 +54,8 @@ export const experienceData: TimelineEntry[] = [
             'Graduated with Distinction',
             'Dissertation: AI-powered Intrusion Detection System achieving 79% accuracy on test data'
         ],
-        technologies: ['Python', 'TensorFlow', 'Scikit-learn', 'Docker']
+        technologies: [SKILLS.PYTHON, SKILLS.TENSORFLOW, SKILLS.SCIKIT_LEARN, SKILLS.DOCKER],
+        featured: true
     },
     {
         id: 3,
@@ -66,7 +71,7 @@ export const experienceData: TimelineEntry[] = [
             'Dissertation: Docker container vulnerability analysis focusing on CVE-2019-5736',
             'Featured on Episode 50 of Compromising Positions podcast for security research'
         ],
-        technologies: ['Python', 'Java', 'Docker', 'Laravel', 'SQL']
+        technologies: [SKILLS.PYTHON, SKILLS.JAVA, SKILLS.DOCKER, SKILLS.LARAVEL, SKILLS.SQL]
     },
 
     // Projects
@@ -84,8 +89,9 @@ export const experienceData: TimelineEntry[] = [
             'Utilizing Matter JS physics engine to generate animations',
             'Planning to deploy a Llama 3 model with persona of my experiences for interactive questions'
         ],
-        technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Matter.js'],
-        link: 'https://github.com/SamP10'
+        technologies: [SKILLS.REACT, SKILLS.NEXTJS, SKILLS.TYPESCRIPT, SKILLS.TAILWIND, SKILLS.MATTERJS],
+        link: 'https://github.com/SamP10',
+        featured: true
     },
     {
         id: 5,
@@ -101,8 +107,9 @@ export const experienceData: TimelineEntry[] = [
             'Allows users to select a card set and generates a random pack of cards',
             'Cards are added to a virtual collection'
         ],
-        technologies: ['Swift', 'SwiftUI', 'REST APIs'],
-        link: 'https://github.com/SamP10'
+        technologies: [SKILLS.SWIFT, SKILLS.SWIFTUI, SKILLS.REST_APIS],
+        link: 'https://github.com/SamP10',
+        featured: true
     },
     {
         id: 6,
@@ -117,7 +124,7 @@ export const experienceData: TimelineEntry[] = [
             'Enables deployment of large volumes of test data to developer sandboxes',
             'Used internally to speed up development workflows'
         ],
-        technologies: ['Node.js', 'TypeScript', 'Salesforce Bulk API']
+        technologies: [SKILLS.NODEJS, SKILLS.TYPESCRIPT, SKILLS.SALESFORCE_BULK_API]
     },
     {
         id: 7,
@@ -133,7 +140,7 @@ export const experienceData: TimelineEntry[] = [
             'Used Scikit-learn and TensorFlow to create and train prediction models',
             'Collaborated with a friend on feature engineering and model optimization'
         ],
-        technologies: ['Python', 'Scikit-learn', 'TensorFlow', 'Pandas']
+        technologies: [SKILLS.PYTHON, SKILLS.SCIKIT_LEARN, SKILLS.TENSORFLOW, SKILLS.PANDAS]
     },
     {
         id: 8,
@@ -149,7 +156,8 @@ export const experienceData: TimelineEntry[] = [
             'Built custom applications with SQL injection vulnerabilities for training data',
             'Achieved 79% accuracy on test data for detecting intrusions'
         ],
-        technologies: ['Python', 'Docker', 'TensorFlow', 'Keras', 'SQL']
+        technologies: [SKILLS.PYTHON, SKILLS.DOCKER, SKILLS.TENSORFLOW, SKILLS.KERAS, SKILLS.SQL],
+        featured: true
     },
     {
         id: 9,
@@ -166,7 +174,7 @@ export const experienceData: TimelineEntry[] = [
             'Created custom web applications with XSS and SQL injection vulnerabilities',
             'Featured on Episode 50 of Compromising Positions podcast'
         ],
-        technologies: ['Docker', 'Laravel', 'Python', 'Linux']
+        technologies: [SKILLS.DOCKER, SKILLS.LARAVEL, SKILLS.PYTHON, SKILLS.LINUX]
     }
 ];
 

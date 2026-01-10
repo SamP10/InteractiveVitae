@@ -2,7 +2,7 @@
 
 import { IComponentConfig } from './types/components';
 
-import Pill from './legacy/pills/pill';
+import Pill from './pills/pill';
 
 export default function StartButton({
     onAddBodies,

@@ -4,11 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build & Development Commands
 
+**Note:** The dev server is run manually by the user. Do not run `npm run dev`.
+
 ```bash
-# Development
-npm run dev          # Start dev server with Turbopack
 npm run build        # Production build
-npm start            # Start production server
 
 # Code Quality
 npm run lint         # Run ESLint
@@ -52,6 +51,7 @@ src/app/
 
 - Tailwind CSS with custom theme colors defined as CSS variables in `globals.css`
 - Custom colors: cream, moss, pine, lily-pad, darkPine
+- Do not use Tailwind opacity modifiers (e.g., `text-pine/70`) with custom colors - they don't work with CSS variables
 - Custom fonts: Young Serif, Notable, Limelight
 - Dark mode via `prefers-color-scheme` media query
 
