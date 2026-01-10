@@ -4,7 +4,7 @@ import CallingCard from '../../callingCard/callingCard';
 export default function NavigationBar() {
     const navItems = useMemo(() => ['HOME', 'PROJECTS', 'EXPERIENCE', 'BLOG', 'CONTACT'], []);
 
-    const baseDelay = 3.0;
+    const baseDelay = 0.8;
     const stagger = 0.25;
 
     return (
