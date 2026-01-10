@@ -36,8 +36,6 @@ src/app/
 │   ├── navigation/      # Nav components (bar, container, item)
 │   ├── footer/          # Footer with social links
 │   └── legacy/          # Deprecated implementations (reference only)
-├── config/
-│   └── animationsConfig.js  # Global animation toggle
 ├── assets/images/       # Static images
 ├── globals.css          # Tailwind + custom animations/colors
 ├── layout.tsx           # Root layout with fonts
@@ -46,8 +44,7 @@ src/app/
 
 ### Animation System
 
-- Global toggle: `src/app/config/animationsConfig.js` controls `ANIMATIONS_ENABLED`
-- `AnimationsController` component adds `animations-disabled` class when disabled
+- Respects `prefers-reduced-motion` OS setting via CSS media query in `globals.css`
 - Custom keyframes defined in `globals.css`: slideInFromLeft/Right, navPopUpBounce, etc.
 - Staggered animations use inline `animationDelay` styles
 
