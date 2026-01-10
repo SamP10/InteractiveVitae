@@ -20,18 +20,18 @@ export default function FeaturedProjectCard({ project, animationDelay }: Feature
                 <h3 className="text-xl font-bold text-darkPine group-hover:text-moss transition-colors">
                     {project.title}
                 </h3>
-                <p className="text-sm text-darkPine/60">
+                <p className="text-sm text-darkPine">
                     {project.dateStart}
                     {project.dateEnd ? ` - ${project.dateEnd}` : ' - Present'}
                 </p>
             </div>
 
             {/* Description */}
-            <p className="text-darkPine/80 text-sm mb-4 line-clamp-3">{project.summary}</p>
+            <p className="text-darkPine text-sm mb-4 line-clamp-3">{project.summary}</p>
 
             {/* Key achievement */}
             {project.achievements.length > 0 && (
-                <p className="text-darkPine/70 text-sm italic mb-4 line-clamp-2">
+                <p className="text-darkPine text-sm italic mb-4 line-clamp-2">
                     {project.achievements[0]}
                 </p>
             )}
