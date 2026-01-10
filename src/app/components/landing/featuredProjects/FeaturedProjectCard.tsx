@@ -1,9 +1,9 @@
 'use client';
 
-import { TimelineEntry } from '@/app/data/experience';
+import { Project } from '@/app/data/projects';
 
 interface FeaturedProjectCardProps {
-    project: TimelineEntry;
+    project: Project;
     animationDelay: number;
 }
 
@@ -15,44 +15,45 @@ export default function FeaturedProjectCard({ project, animationDelay }: Feature
             {/* Project header */}
             <div className="mb-4">
                 <span className="inline-block px-3 py-1 text-xs font-medium bg-moss/20 text-moss rounded-full mb-2">
-                    {project.subtitle}
+                    {project.name}
                 </span>
                 <h3 className="text-xl font-bold text-darkPine group-hover:text-moss transition-colors">
-                    {project.title}
+                    {project.name}
                 </h3>
-                <p className="text-sm text-darkPine">
+                {/* <p className="text-sm text-darkPine">
                     {project.dateStart}
                     {project.dateEnd ? ` - ${project.dateEnd}` : ' - Present'}
-                </p>
+                </p> */}
             </div>
 
             {/* Description */}
             <p className="text-darkPine text-sm mb-4 line-clamp-3">{project.summary}</p>
 
             {/* Key achievement */}
-            {project.achievements.length > 0 && (
+            {project.description && (
                 <p className="text-darkPine text-sm italic mb-4 line-clamp-2">
-                    {project.achievements[0]}
+                    {project.description}
                 </p>
             )}
 
             {/* Tech badges */}
-            {project.technologies && (
+            {project.languages && (
                 <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 4).map((tech) => (
+                    {project.languages.map((language) => (
                         <span
-                            key={tech}
-                            className="px-2 py-1 text-xs bg-darkPine text-cream rounded-md">
-                            {tech}
+                            key={language.id}
+                            className="px-2 py-1 text-xs bg-darkPine text-cream rounded-md"
+                            style={{ backgroundColor: language.color }}>
+                            {language.name}
                         </span>
                     ))}
                 </div>
             )}
 
             {/* View link */}
-            {project.link && (
+            {project.githubUrl && (
                 <a
-                    href={project.link}
+                    href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center text-moss hover:text-moss/80 font-medium text-sm transition-colors">
