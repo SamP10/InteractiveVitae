@@ -16,34 +16,42 @@ const skillCategories: SkillCategory[] = [
         name: 'Languages',
         color: 'amber',
         skills: [
-            { name: 'TypeScript', level: 90 },
-            { name: 'JavaScript', level: 90 },
-            { name: 'Python', level: 70 },
-            { name: 'Apex', level: 85 },
-            { name: 'SQL', level: 75 },
-            { name: 'Swift', level: 50 }
+            { name: 'Python', level: 60 },
+            { name: 'Apex', level: 100 },
+            { name: 'SQL', level: 55 },
+            { name: 'TypeScript', level: 85 },
+            { name: 'Swift', level: 50 },
+            { name: 'JavaScript', level: 98 },
+            { name: 'Java', level: 40 },
+            { name: 'C#', level: 75 },
+            { name: 'PHP', level: 50 }
         ]
     },
     {
         name: 'Frameworks',
         color: 'teal',
         skills: [
-            { name: 'React', level: 90 },
+            { name: 'React', level: 70 },
             { name: 'Next.js', level: 80 },
-            { name: 'LWC', level: 85 },
-            { name: 'Tailwind', level: 85 },
-            { name: 'TensorFlow', level: 55 }
+            { name: 'LWC', level: 100 },
+            { name: 'Tailwind', level: 70 },
+            { name: 'TensorFlow', level: 50 },
+            { name: 'Laravel', level: 50 },
+            { name: 'Bootstrap', level: 45 },
+            { name: 'Jest', level: 90 }
         ]
     },
     {
         name: 'Tools & Platforms',
         color: 'slate',
         skills: [
-            { name: 'Salesforce', level: 90 },
+            { name: 'Salesforce', level: 95 },
             { name: 'Git', level: 85 },
             { name: 'Docker', level: 70 },
-            { name: 'REST APIs', level: 90 },
-            { name: 'Node.js', level: 75 }
+            { name: 'REST APIs', level: 80 },
+            { name: 'Node.js', level: 80 },
+            { name: 'Jenkins', level: 80 },
+            { name: 'AI', level: 75 }
         ]
     }
 ];
