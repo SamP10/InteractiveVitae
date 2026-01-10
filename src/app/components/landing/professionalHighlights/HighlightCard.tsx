@@ -1,13 +1,13 @@
 'use client';
 
-import { TimelineEntry } from '@/app/data/experience';
+import { ITimelineEntry } from '@/app/data/experience';
 
-interface HighlightCardProps {
-    entry: TimelineEntry;
+interface IHighlightCardProps {
+    entry: ITimelineEntry;
     animationDelay: number;
 }
 
-export default function HighlightCard({ entry, animationDelay }: HighlightCardProps) {
+export default function HighlightCard({ entry, animationDelay }: IHighlightCardProps) {
     return (
         <div
             className="bg-cream/10 backdrop-blur-sm rounded-xl p-6 border border-cream/20 opacity-0 animate-card-fade-in"
@@ -27,9 +27,10 @@ export default function HighlightCard({ entry, animationDelay }: HighlightCardPr
                     <div className="flex flex-wrap gap-2">
                         {entry.technologies.slice(0, 4).map((tech) => (
                             <span
-                                key={tech}
-                                className="px-2 py-1 text-xs bg-moss/30 text-cream rounded-md">
-                                {tech}
+                                key={tech.id}
+                                className="px-2 py-1 text-xs text-cream rounded-md"
+                                style={{ backgroundColor: tech.color }}>
+                                {tech.name}
                             </span>
                         ))}
                     </div>

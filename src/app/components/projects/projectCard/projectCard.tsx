@@ -1,16 +1,16 @@
 'use client';
 
 import LanguageBadge from '../languageBadge/languageBadge';
-import type { Project } from '@/app/data/projects';
+import type { IProject } from '@/app/data/projects';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getCardTiming } from '@/app/constants/animations';
 
-interface ProjectCardProps {
-    project: Project;
+interface IProjectCardProps {
+    project: IProject;
     index: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: IProjectCardProps) {
     const isInitialLoad = useInitialLoad();
     const { baseDelay, stagger } = getCardTiming(isInitialLoad);
     const animationDelay = baseDelay + index * stagger;

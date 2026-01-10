@@ -51,7 +51,8 @@ const skillCategories: SkillCategory[] = [
             { name: 'REST APIs', level: 70 },
             { name: 'Node.js', level: 80 },
             { name: 'Jenkins', level: 80 },
-            { name: 'AI', level: 75 }
+            { name: 'AI', level: 75 },
+            { name: 'AWS', level: 30 }
         ]
     }
 ];

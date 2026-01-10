@@ -1,13 +1,13 @@
 'use client';
 
-import { Project } from '@/app/data/projects';
+import { IProject } from '@/app/data/projects';
 
-interface FeaturedProjectCardProps {
-    project: Project;
+interface IFeaturedProjectCardProps {
+    project: IProject;
     animationDelay: number;
 }
 
-export default function FeaturedProjectCard({ project, animationDelay }: FeaturedProjectCardProps) {
+export default function FeaturedProjectCard({ project, animationDelay }: IFeaturedProjectCardProps) {
     return (
         <div
             className="group relative bg-cream rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 animate-card-fade-in"

@@ -73,7 +73,7 @@ export default function WorkTogether() {
 
                 {/* Description */}
                 <p
-                    className="text-lg text-darkPine/80 max-w-2xl mx-auto mb-10 animate-text-reveal"
+                    className="text-lg text-darkPine max-w-2xl mx-auto mb-10 animate-text-reveal"
                     style={{ animationDelay: `${baseDelay + 0.2}s` }}>
                     I&apos;m open to freelance projects, contract work, and full-time opportunities.
                     Let&apos;s discuss how I can help bring your ideas to life.

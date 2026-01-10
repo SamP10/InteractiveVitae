@@ -1,16 +1,16 @@
 'use client';
 
-import type { TimelineEntry } from '@/app/data/experience';
+import type { ITimelineEntry } from '@/app/data/experience';
 
-interface TimelineExpandableContentProps {
-    entry: TimelineEntry;
+interface ITimelineExpandableContentProps {
+    entry: ITimelineEntry;
     isExpanded: boolean;
 }
 
 export default function TimelineExpandableContent({
     entry,
     isExpanded
-}: TimelineExpandableContentProps) {
+}: ITimelineExpandableContentProps) {
     if (!isExpanded) return null;
 
     return (
@@ -28,10 +28,11 @@ export default function TimelineExpandableContent({
                 <div className="flex flex-wrap gap-2 mt-4">
                     {entry.technologies.map((tech) => (
                         <span
-                            key={tech}
-                            className="text-xs px-2 py-1 bg-pine text-cream rounded-md"
+                            key={tech.id}
+                            className="text-xs px-2 py-1 text-cream rounded-md"
+                            style={{ backgroundColor: tech.color }}
                         >
-                            {tech}
+                            {tech.name}
                         </span>
                     ))}
                 </div>
