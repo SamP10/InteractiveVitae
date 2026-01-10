@@ -193,6 +193,22 @@ body {
     animation-timing-function: ease;
     animation-fill-mode: forwards;
   }
+
+  /* Card fade-in animation for projects grid */
+  @keyframes cardFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-card-fade-in {
+    animation: cardFadeIn 0.6s ease-out forwards;
+  }
 }
 
 /* Respect user's OS-level reduced motion preference */
