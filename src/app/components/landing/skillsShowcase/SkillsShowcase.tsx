@@ -47,8 +47,8 @@ const skillCategories: SkillCategory[] = [
         skills: [
             { name: 'Salesforce', level: 95 },
             { name: 'Git', level: 85 },
-            { name: 'Docker', level: 70 },
-            { name: 'REST APIs', level: 80 },
+            { name: 'Docker', level: 60 },
+            { name: 'REST APIs', level: 70 },
             { name: 'Node.js', level: 80 },
             { name: 'Jenkins', level: 80 },
             { name: 'AI', level: 75 }
