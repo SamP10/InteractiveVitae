@@ -16,6 +16,10 @@ export const ANIMATION_TIMING = {
             initial: 2.7, // Slightly after content starts
             subsequent: 0.1,
         },
+        timelineItems: {
+            initial: 2.7, // After header animation
+            subsequent: 0.1,
+        },
     },
 
     // Stagger intervals - time between sequential items
@@ -27,6 +31,10 @@ export const ANIMATION_TIMING = {
         },
         cards: {
             initial: 0.1,
+            subsequent: 0.05,
+        },
+        timeline: {
+            initial: 0.15, // Stagger between timeline items
             subsequent: 0.05,
         },
     },
@@ -66,5 +74,17 @@ export function getCardTiming(isInitialLoad: boolean) {
         stagger: isInitialLoad
             ? ANIMATION_TIMING.stagger.cards.initial
             : ANIMATION_TIMING.stagger.cards.subsequent,
+    };
+}
+
+// Helper to get timeline timing based on initial load state
+export function getTimelineTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.timelineItems.initial
+            : ANIMATION_TIMING.delays.timelineItems.subsequent,
+        stagger: isInitialLoad
+            ? ANIMATION_TIMING.stagger.timeline.initial
+            : ANIMATION_TIMING.stagger.timeline.subsequent,
     };
 }
