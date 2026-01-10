@@ -279,6 +279,8 @@ body {
 
   .animate-draw-timeline {
     animation: drawTimelineLine 1.5s ease-out forwards;
+    transform: scaleY(0);
+    transform-origin: top;
   }
 
   @keyframes slideInFromTimelineLeft {
