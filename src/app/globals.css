@@ -325,6 +325,110 @@ body {
   .animate-node-pulse {
     animation: timelineNodePulse 2s ease-in-out infinite;
   }
+
+  /* Hero section text reveal animation */
+  @keyframes textReveal {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-text-reveal {
+    animation: textReveal 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  /* Floating shapes for hero background */
+  @keyframes floatingShape {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  .animate-floating {
+    animation: floatingShape 6s ease-in-out infinite;
+  }
+
+  .animate-floating-delayed {
+    animation: floatingShape 8s ease-in-out 2s infinite;
+  }
+
+  .animate-floating-slow {
+    animation: floatingShape 10s ease-in-out 1s infinite;
+  }
+
+  /* Skill bubble pop-in animation */
+  @keyframes skillBubblePop {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    70% {
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-skill-pop {
+    animation: skillBubblePop 0.4s cubic-bezier(.22,.7,.28,1) forwards;
+    opacity: 0;
+  }
+
+  /* CTA button pulse animation */
+  @keyframes ctaPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(62, 123, 39, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 12px rgba(62, 123, 39, 0);
+    }
+  }
+
+  .animate-cta-pulse {
+    animation: ctaPulse 2s ease-in-out infinite;
+  }
+
+  /* Availability badge pulse */
+  @keyframes availabilityPulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(62, 123, 39, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(62, 123, 39, 0);
+    }
+  }
+
+  .animate-availability-pulse {
+    animation: availabilityPulse 2s ease-in-out infinite;
+  }
+
+  /* Counter number animation */
+  @keyframes countUp {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-count-up {
+    animation: countUp 0.5s ease-out forwards;
+    opacity: 0;
+  }
 }
 
 /* Respect user's OS-level reduced motion preference */

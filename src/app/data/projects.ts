@@ -5,6 +5,7 @@ export interface Project {
     language: string;
     languageColor: string;
     githubUrl: string;
+    featured?: boolean;
 }
 
 export const projects: Project[] = [
@@ -14,7 +15,8 @@ export const projects: Project[] = [
         description: 'A interactive curriculum vitae to be deployed onto a website',
         language: 'TypeScript',
         languageColor: '#3178C6',
-        githubUrl: 'https://github.com/SamP10/InteractiveVitae'
+        githubUrl: 'https://github.com/SamP10/InteractiveVitae',
+        featured: true
     },
     {
         id: 2,
@@ -22,7 +24,8 @@ export const projects: Project[] = [
         description: 'A Pokemon card pack opening simulator using TSC APIs for getting cards developed for iOS',
         language: 'Swift',
         languageColor: '#F05138',
-        githubUrl: 'https://github.com/SamP10/PokemonCardSim'
+        githubUrl: 'https://github.com/SamP10/PokemonCardSim',
+        featured: true
     },
     {
         id: 3,

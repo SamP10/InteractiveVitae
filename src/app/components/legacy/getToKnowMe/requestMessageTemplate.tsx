@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { TypeEffect } from '@/app/utils/typeEffectUtils';
+import { TypeEffect } from '../utils/typeEffectUtils';
 
 export default function RequestMessageTemplate({ text }: { text: string }) {
     const hasTyped = useRef(false);

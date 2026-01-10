@@ -1,12 +1,11 @@
 'use client';
 
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import { IComponentConfig } from './types/components';
 
 import StartButton from './startButton';
 import GetToKnowMe from './getToKnowMe/getToKnowMe';
 import Qualifications from './qualifications/qualifications';
-import NavigationBar from './navigation/navigationBar';
 import Homepage from '../landing/landing';
 
 export default function WorldContentInner({
@@ -19,7 +18,6 @@ export default function WorldContentInner({
     height
 }: IComponentConfig) {
     const navigate = useNavigate();
-    const location = useLocation();
 
     const movePageState = (route: string) => {
         navigate(route);

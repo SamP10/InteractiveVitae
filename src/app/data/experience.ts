@@ -11,6 +11,7 @@ export interface TimelineEntry {
     achievements: string[];
     technologies?: string[];
     link?: string;
+    featured?: boolean;
 }
 
 export const experienceData: TimelineEntry[] = [
@@ -34,7 +35,8 @@ export const experienceData: TimelineEntry[] = [
             'Applied software design principles and design patterns to create reusable, efficient code, leading to a 23% reduction in code execution time',
             'Practiced test driven development'
         ],
-        technologies: ['TypeScript', 'Salesforce', 'Apex', 'LWC', 'REST APIs']
+        technologies: ['TypeScript', 'Salesforce', 'Apex', 'LWC', 'REST APIs'],
+        featured: true
     },
 
     // Education
@@ -50,7 +52,8 @@ export const experienceData: TimelineEntry[] = [
             'Graduated with Distinction',
             'Dissertation: AI-powered Intrusion Detection System achieving 79% accuracy on test data'
         ],
-        technologies: ['Python', 'TensorFlow', 'Scikit-learn', 'Docker']
+        technologies: ['Python', 'TensorFlow', 'Scikit-learn', 'Docker'],
+        featured: true
     },
     {
         id: 3,
@@ -85,7 +88,8 @@ export const experienceData: TimelineEntry[] = [
             'Planning to deploy a Llama 3 model with persona of my experiences for interactive questions'
         ],
         technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Matter.js'],
-        link: 'https://github.com/SamP10'
+        link: 'https://github.com/SamP10',
+        featured: true
     },
     {
         id: 5,
@@ -102,7 +106,8 @@ export const experienceData: TimelineEntry[] = [
             'Cards are added to a virtual collection'
         ],
         technologies: ['Swift', 'SwiftUI', 'REST APIs'],
-        link: 'https://github.com/SamP10'
+        link: 'https://github.com/SamP10',
+        featured: true
     },
     {
         id: 6,
@@ -149,7 +154,8 @@ export const experienceData: TimelineEntry[] = [
             'Built custom applications with SQL injection vulnerabilities for training data',
             'Achieved 79% accuracy on test data for detecting intrusions'
         ],
-        technologies: ['Python', 'Docker', 'TensorFlow', 'Keras', 'SQL']
+        technologies: ['Python', 'Docker', 'TensorFlow', 'Keras', 'SQL'],
+        featured: true
     },
     {
         id: 9,

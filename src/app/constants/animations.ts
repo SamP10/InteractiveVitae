@@ -20,6 +20,27 @@ export const ANIMATION_TIMING = {
             initial: 2.7, // After header animation
             subsequent: 0.1,
         },
+        // Landing page sections
+        hero: {
+            initial: 2.3, // After nav completes
+            subsequent: 0,
+        },
+        featuredProjects: {
+            initial: 2.8,
+            subsequent: 0.1,
+        },
+        professionalHighlights: {
+            initial: 3.0,
+            subsequent: 0.15,
+        },
+        skills: {
+            initial: 3.2,
+            subsequent: 0,
+        },
+        workTogether: {
+            initial: 3.4,
+            subsequent: 0,
+        },
     },
 
     // Stagger intervals - time between sequential items
@@ -36,6 +57,17 @@ export const ANIMATION_TIMING = {
         timeline: {
             initial: 0.15, // Stagger between timeline items
             subsequent: 0.05,
+        },
+        // Landing page sections
+        hero: {
+            text: 0.15, // Between headline words
+            cta: 0.1, // Between CTA buttons
+        },
+        featuredProjects: {
+            cards: 0.15,
+        },
+        skills: {
+            bubbles: 0.05,
         },
     },
 
@@ -86,5 +118,54 @@ export function getTimelineTiming(isInitialLoad: boolean) {
         stagger: isInitialLoad
             ? ANIMATION_TIMING.stagger.timeline.initial
             : ANIMATION_TIMING.stagger.timeline.subsequent,
+    };
+}
+
+// Helper to get hero section timing
+export function getHeroTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.hero.initial
+            : ANIMATION_TIMING.delays.hero.subsequent,
+        textStagger: ANIMATION_TIMING.stagger.hero.text,
+        ctaStagger: ANIMATION_TIMING.stagger.hero.cta,
+    };
+}
+
+// Helper to get featured projects timing
+export function getFeaturedProjectsTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.featuredProjects.initial
+            : ANIMATION_TIMING.delays.featuredProjects.subsequent,
+        cardStagger: ANIMATION_TIMING.stagger.featuredProjects.cards,
+    };
+}
+
+// Helper to get professional highlights timing
+export function getProfessionalHighlightsTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.professionalHighlights.initial
+            : ANIMATION_TIMING.delays.professionalHighlights.subsequent,
+    };
+}
+
+// Helper to get skills showcase timing
+export function getSkillsTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.skills.initial
+            : ANIMATION_TIMING.delays.skills.subsequent,
+        bubbleStagger: ANIMATION_TIMING.stagger.skills.bubbles,
+    };
+}
+
+// Helper to get work together CTA timing
+export function getWorkTogetherTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.workTogether.initial
+            : ANIMATION_TIMING.delays.workTogether.subsequent,
     };
 }
