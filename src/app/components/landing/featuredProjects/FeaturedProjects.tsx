@@ -2,7 +2,7 @@
 
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getFeaturedProjectsTiming } from '@/app/constants/animations';
-import { experienceData } from '@/app/data/experience';
+import { projects } from '@/app/data/projects';
 import FeaturedProjectCard from './FeaturedProjectCard';
 
 export default function FeaturedProjects() {
@@ -10,8 +10,8 @@ export default function FeaturedProjects() {
     const { baseDelay, cardStagger } = getFeaturedProjectsTiming(isInitialLoad);
 
     // Filter for featured projects only
-    const featuredProjects = experienceData.filter(
-        (entry) => entry.featured && entry.category === 'project'
+    const featuredProjects = projects.filter(
+        (entry) => entry.featured
     );
 
     return (
@@ -31,7 +31,7 @@ export default function FeaturedProjects() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {featuredProjects.map((project, index) => (
                         <FeaturedProjectCard
-                            key={project.id}
+                            key={index}
                             project={project}
                             animationDelay={baseDelay + 0.2 + index * cardStagger}
                         />
