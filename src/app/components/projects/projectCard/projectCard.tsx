@@ -2,6 +2,7 @@
 
 import LanguageBadge from '../languageBadge/languageBadge';
 import type { Project } from '@/app/data/projects';
+import { useInitialLoad } from '@/app/context/InitialLoadContext';
 
 interface ProjectCardProps {
     project: Project;
@@ -9,8 +10,12 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: ProjectCardProps) {
-    const baseDelay = 0.3;
-    const stagger = 0.1;
+    const isInitialLoad = useInitialLoad();
+
+    // Initial load: start after header (2.7s), slower stagger
+    // Subsequent: fast animations with minimal delay
+    const baseDelay = isInitialLoad ? 2.7 : 0.1;
+    const stagger = isInitialLoad ? 0.1 : 0.05;
     const animationDelay = baseDelay + index * stagger;
 
     return (

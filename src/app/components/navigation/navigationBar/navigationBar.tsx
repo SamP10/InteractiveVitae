@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import Link from 'next/link';
 import CallingCard from '../../callingCard/callingCard';
-import { useInitialLoad } from '@/app/hooks/useInitialLoad';
+import { useInitialLoad } from '@/app/context/InitialLoadContext';
 
 export default function NavigationBar() {
     const isInitialLoad = useInitialLoad();
