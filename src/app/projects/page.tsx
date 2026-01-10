@@ -12,11 +12,11 @@ export default function ProjectsPage() {
     const { baseDelay, animationClass } = getContentTiming(isInitialLoad);
 
     return (
-        <div>
+        <div className="min-h-screen flex flex-col">
             <NavigationBar />
             <NavigationContainer />
 
-            <main className="m-4 flex items-center justify-center flex-col gap-8">
+            <main className="m-4 flex items-center justify-center flex-col gap-8 flex-1">
                 <header
                     className={`w-4/5 text-center ${animationClass}`}
                     style={{ animationDelay: `${baseDelay}s` }}>

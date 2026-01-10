@@ -6,11 +6,11 @@ import Footer from './components/footer/footer';
 
 export default function StartPage() {
     return (
-        <div>
-            <NavigationBar></NavigationBar>
-            <NavigationContainer></NavigationContainer>
-            <Landing></Landing>
-            <Footer></Footer>
+        <div className="min-h-screen flex flex-col">
+            <NavigationBar />
+            <NavigationContainer />
+            <Landing />
+            <Footer />
         </div>
     );
 }
