@@ -1,13 +1,16 @@
 'use client';
 
+import { useState } from 'react';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getWorkTogetherTiming } from '@/app/constants/animations';
 import AvailabilityBadge from './AvailabilityBadge';
 import ScheduleButton from './ScheduleButton';
+import { VirtualMeModal } from '../../virtualMe';
 
 export default function WorkTogether() {
     const isInitialLoad = useInitialLoad();
     const { baseDelay } = getWorkTogetherTiming(isInitialLoad);
+    const [isVirtualMeOpen, setIsVirtualMeOpen] = useState(false);
 
     const socialLinks = [
         {
@@ -81,9 +84,20 @@ export default function WorkTogether() {
 
                 {/* Schedule button */}
                 <div
-                    className="mb-10 animate-text-reveal"
+                    className="mb-6 animate-text-reveal"
                     style={{ animationDelay: `${baseDelay + 0.3}s` }}>
                     <ScheduleButton calendlyUrl="#" />
+                </div>
+
+                {/* Talk to virtual me link */}
+                <div
+                    className="mb-10 animate-text-reveal"
+                    style={{ animationDelay: `${baseDelay + 0.35}s` }}>
+                    <button
+                        onClick={() => setIsVirtualMeOpen(true)}
+                        className="text-moss hover:text-pine underline underline-offset-4 transition-colors duration-300">
+                        Or talk to virtual me first
+                    </button>
                 </div>
 
                 {/* Social links */}
@@ -103,6 +117,7 @@ export default function WorkTogether() {
                     ))}
                 </div>
             </div>
+            <VirtualMeModal isOpen={isVirtualMeOpen} onClose={() => setIsVirtualMeOpen(false)} />
         </section>
     );
 }
