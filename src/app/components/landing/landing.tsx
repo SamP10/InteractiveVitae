@@ -3,15 +3,12 @@
 import Image from 'next/image';
 import Logo from '../../assets/images/Logo.png';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
+import { getContentTiming } from '@/app/constants/animations';
 
 export default function Landing() {
     const isInitialLoad = useInitialLoad();
 
-    // Initial load: wait for header animations to complete (~2.5s), then stagger
-    // Subsequent loads: fast animations with minimal delay
-    const baseDelay = isInitialLoad ? 2.5 : 0;
-    const stagger = isInitialLoad ? 0.2 : 0.1;
-    const animationClass = isInitialLoad ? 'animate-content-fade-in' : 'animate-content-fade-in-fast';
+    const { baseDelay, stagger, animationClass } = getContentTiming(isInitialLoad);
 
     return (
         <div className="m-4 flex items-center justify-center flex-col gap-12">

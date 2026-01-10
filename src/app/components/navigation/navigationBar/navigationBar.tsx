@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import CallingCard from '../../callingCard/callingCard';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
+import { ANIMATION_TIMING } from '@/app/constants/animations';
 
 export default function NavigationBar() {
     const isInitialLoad = useInitialLoad();
@@ -19,8 +20,8 @@ export default function NavigationBar() {
         []
     );
 
-    const baseDelay = 0.8;
-    const stagger = 0.25;
+    const baseDelay = ANIMATION_TIMING.delays.navigation;
+    const stagger = ANIMATION_TIMING.stagger.navigation;
 
     return (
         <div className="inline-flex border-b-2 border-cream pb-2 w-full">
@@ -28,7 +29,7 @@ export default function NavigationBar() {
             <div className="flex-1 flex items-center justify-center m-auto gap-24 relative">
                 {navItems.map((item, i) => {
                     const underlineDelay = baseDelay + i * stagger;
-                    const textDelay = underlineDelay + 0.3;
+                    const textDelay = underlineDelay + ANIMATION_TIMING.delays.navTextOffset;
 
                     return (
                         <span key={item.label} className="inline-flex flex-col items-center relative">

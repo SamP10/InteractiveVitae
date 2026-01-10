@@ -5,12 +5,11 @@ import NavigationContainer from '../components/navigation/navigationContainer/na
 import Footer from '../components/footer/footer';
 import ProjectsGrid from '../components/projects/projectsGrid/projectsGrid';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
+import { getContentTiming } from '@/app/constants/animations';
 
 export default function ProjectsPage() {
     const isInitialLoad = useInitialLoad();
-
-    const baseDelay = isInitialLoad ? 2.5 : 0;
-    const animationClass = isInitialLoad ? 'animate-content-fade-in' : 'animate-content-fade-in-fast';
+    const { baseDelay, animationClass } = getContentTiming(isInitialLoad);
 
     return (
         <div>
