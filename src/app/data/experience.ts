@@ -17,9 +17,92 @@ export interface ITimelineEntry {
 }
 
 export const experienceData: ITimelineEntry[] = [
-    // Work Experience
     {
         id: 1,
+        category: 'project',
+        title: 'Interactive Vitae',
+        subtitle: 'Personal Project',
+        dateStart: '2024',
+        dateEnd: null,
+        summary:
+            'A React interactive CV utilizing Matter JS physics engine with plans to deploy a Llama 3 model for interactive Q&A.',
+        achievements: [
+            'Designed a React interactive CV with physics-based animations',
+            'Utilizing Matter JS physics engine to generate animations',
+            'Planning to deploy a Llama 3 model with persona of my experiences for interactive questions'
+        ],
+        technologies: [SKILLS.REACT, SKILLS.NEXTJS, SKILLS.TYPESCRIPT, SKILLS.TAILWIND, SKILLS.MATTERJS],
+        link: 'https://github.com/SamP10',
+        featured: true
+    },
+    {
+        id: 2,
+        category: 'project',
+        title: 'Pokemon iOS Card Pack Simulator',
+        subtitle: 'iOS App',
+        dateStart: '2024',
+        dateEnd: '2024',
+        summary:
+            'iOS application that makes REST API callouts to TCGP official website to simulate card pack openings.',
+        achievements: [
+            'Architected an app making REST API callouts to TCGP (The Card Game Pokemon) official website',
+            'Allows users to select a card set and generates a random pack of cards',
+            'Cards are added to a virtual collection'
+        ],
+        technologies: [SKILLS.SWIFT, SKILLS.SWIFTUI, SKILLS.REST_APIS],
+        link: 'https://github.com/SamP10',
+        featured: true
+    },
+    {
+        id: 3,
+        category: 'project',
+        title: 'Titanic Kaggle Prediction',
+        subtitle: 'ML Competition',
+        dateStart: '2024',
+        dateEnd: '2024',
+        summary:
+            'Kaggle competition submission using Sklearn and TensorFlow to predict Titanic survival rates.',
+        achievements: [
+            'Participated in Kaggle competition to predict survival rates based on Titanic dataset',
+            'Used Scikit-learn and TensorFlow to create and train prediction models',
+            'Collaborated with a friend on feature engineering and model optimization'
+        ],
+        technologies: [SKILLS.PYTHON, SKILLS.SCIKIT_LEARN, SKILLS.TENSORFLOW, SKILLS.PANDAS]
+    },
+    {
+        id: 4,
+        category: 'project',
+        title: 'AI-Powered Intrusion Detection System',
+        subtitle: 'MSc Dissertation',
+        dateStart: '2023',
+        dateEnd: '2023',
+        summary:
+            'Used Docker and web stack to simulate attacks and train an AI model for intrusion detection.',
+        achievements: [
+            'Simulated attacks on web interfaces including FTP servers, HTTP servers, and websites',
+            'Built custom applications with SQL injection vulnerabilities for training data',
+            'Achieved 79% accuracy on test data for detecting intrusions'
+        ],
+        technologies: [SKILLS.PYTHON, SKILLS.DOCKER, SKILLS.TENSORFLOW, SKILLS.KERAS, SKILLS.SQL],
+        featured: true
+    },
+    {
+        id: 5,
+        category: 'project',
+        title: 'Bulk Data Loader - Certinia',
+        subtitle: 'Developer Tool',
+        dateStart: '2022',
+        dateEnd: null,
+        summary: "CLI tool interacting with Salesforce's Bulk API to deploy large volumes of test data.",
+        achievements: [
+            "Developed a CLI tool which interacted with Salesforce's Bulk API",
+            'Enables deployment of large volumes of test data to developer sandboxes',
+            'Used internally to speed up development workflows'
+        ],
+        technologies: [SKILLS.NODEJS, SKILLS.TYPESCRIPT, SKILLS.SALESFORCE_BULK_API]
+    },
+        {
+        id: 6,
         category: 'work',
         title: 'Software Engineer',
         subtitle: 'Certinia',
@@ -40,10 +123,8 @@ export const experienceData: ITimelineEntry[] = [
         technologies: [SKILLS.TYPESCRIPT, SKILLS.SALESFORCE, SKILLS.APEX, SKILLS.LWC, SKILLS.REST_APIS],
         featured: true
     },
-
-    // Education
     {
-        id: 2,
+        id: 7,
         category: 'education',
         title: 'MSc Artificial Intelligence',
         subtitle: 'Manchester Metropolitan University',
@@ -58,109 +139,7 @@ export const experienceData: ITimelineEntry[] = [
         featured: true
     },
     {
-        id: 3,
-        category: 'education',
-        title: 'BSc Computer Forensics & Security',
-        subtitle: 'Leeds Beckett University',
-        dateStart: '2018',
-        dateEnd: '2021',
-        summary:
-            'Graduated with First Class Honours. Specialized in digital forensics, cybersecurity, and secure software development.',
-        achievements: [
-            'Graduated with First Class Honours',
-            'Dissertation: Docker container vulnerability analysis focusing on CVE-2019-5736',
-            'Featured on Episode 50 of Compromising Positions podcast for security research'
-        ],
-        technologies: [SKILLS.PYTHON, SKILLS.JAVA, SKILLS.DOCKER, SKILLS.LARAVEL, SKILLS.SQL]
-    },
-
-    // Projects
-    {
-        id: 4,
-        category: 'project',
-        title: 'Interactive Vitae',
-        subtitle: 'Personal Project',
-        dateStart: '2024',
-        dateEnd: null,
-        summary:
-            'A React interactive CV utilizing Matter JS physics engine with plans to deploy a Llama 3 model for interactive Q&A.',
-        achievements: [
-            'Designed a React interactive CV with physics-based animations',
-            'Utilizing Matter JS physics engine to generate animations',
-            'Planning to deploy a Llama 3 model with persona of my experiences for interactive questions'
-        ],
-        technologies: [SKILLS.REACT, SKILLS.NEXTJS, SKILLS.TYPESCRIPT, SKILLS.TAILWIND, SKILLS.MATTERJS],
-        link: 'https://github.com/SamP10',
-        featured: true
-    },
-    {
-        id: 5,
-        category: 'project',
-        title: 'Pokemon iOS Card Pack Simulator',
-        subtitle: 'iOS App',
-        dateStart: '2024',
-        dateEnd: '2024',
-        summary:
-            'iOS application that makes REST API callouts to TCGP official website to simulate card pack openings.',
-        achievements: [
-            'Architected an app making REST API callouts to TCGP (The Card Game Pokemon) official website',
-            'Allows users to select a card set and generates a random pack of cards',
-            'Cards are added to a virtual collection'
-        ],
-        technologies: [SKILLS.SWIFT, SKILLS.SWIFTUI, SKILLS.REST_APIS],
-        link: 'https://github.com/SamP10',
-        featured: true
-    },
-    {
-        id: 6,
-        category: 'project',
-        title: 'Bulk Data Loader',
-        subtitle: 'Developer Tool',
-        dateStart: '2022',
-        dateEnd: null,
-        summary: "CLI tool interacting with Salesforce's Bulk API to deploy large volumes of test data.",
-        achievements: [
-            "Developed a CLI tool which interacted with Salesforce's Bulk API",
-            'Enables deployment of large volumes of test data to developer sandboxes',
-            'Used internally to speed up development workflows'
-        ],
-        technologies: [SKILLS.NODEJS, SKILLS.TYPESCRIPT, SKILLS.SALESFORCE_BULK_API]
-    },
-    {
-        id: 7,
-        category: 'project',
-        title: 'Titanic Kaggle Prediction',
-        subtitle: 'ML Competition',
-        dateStart: '2024',
-        dateEnd: '2024',
-        summary:
-            'Kaggle competition submission using Sklearn and TensorFlow to predict Titanic survival rates.',
-        achievements: [
-            'Participated in Kaggle competition to predict survival rates based on Titanic dataset',
-            'Used Scikit-learn and TensorFlow to create and train prediction models',
-            'Collaborated with a friend on feature engineering and model optimization'
-        ],
-        technologies: [SKILLS.PYTHON, SKILLS.SCIKIT_LEARN, SKILLS.TENSORFLOW, SKILLS.PANDAS]
-    },
-    {
         id: 8,
-        category: 'project',
-        title: 'AI-Powered Intrusion Detection System',
-        subtitle: 'MSc Dissertation',
-        dateStart: '2023',
-        dateEnd: '2023',
-        summary:
-            'Used Docker and web stack to simulate attacks and train an AI model for intrusion detection.',
-        achievements: [
-            'Simulated attacks on web interfaces including FTP servers, HTTP servers, and websites',
-            'Built custom applications with SQL injection vulnerabilities for training data',
-            'Achieved 79% accuracy on test data for detecting intrusions'
-        ],
-        technologies: [SKILLS.PYTHON, SKILLS.DOCKER, SKILLS.TENSORFLOW, SKILLS.KERAS, SKILLS.SQL],
-        featured: true
-    },
-    {
-        id: 9,
         category: 'project',
         title: 'Docker Vulnerability Research',
         subtitle: 'BSc Dissertation',
@@ -175,6 +154,39 @@ export const experienceData: ITimelineEntry[] = [
             'Featured on Episode 50 of Compromising Positions podcast'
         ],
         technologies: [SKILLS.DOCKER, SKILLS.LARAVEL, SKILLS.PYTHON, SKILLS.LINUX]
+    },
+    {
+        id: 9,
+        category: 'education',
+        title: 'BSc Computer Forensics & Security',
+        subtitle: 'Leeds Beckett University',
+        dateStart: '2018',
+        dateEnd: '2021',
+        summary:
+            'Graduated with First Class Honours. Specialized in digital forensics, cybersecurity, and secure software development.',
+        achievements: [
+            'Graduated with First Class Honours',
+            'Dissertation: Docker container vulnerability analysis focusing on CVE-2019-5736',
+            'Featured on Episode 50 of Compromising Positions podcast for security research'
+        ],
+        technologies: [SKILLS.PYTHON, SKILLS.JAVA, SKILLS.DOCKER, SKILLS.LARAVEL, SKILLS.SQL]
+    },
+    {
+        id: 10,
+        category: 'work',
+        title: 'Team Leader - Wetherspoons',
+        subtitle: 'Wetherspoons',
+        dateStart: '2016',
+        dateEnd: '2022',
+        summary:
+            'Customer service and team leadership role in a fast-paced pub environment, ensuring high standards of service and operational efficiency.',
+        achievements: [
+            'Awards for highest sales within the Lancashire region during 2019 and 2020',
+            'Maintained a food hygiene rating of 5 for the venue during tenure',
+            'Worked across various departments including bar, kitchen, and floor service to ensure smooth operations',
+            'Led a team of up to 15 staff members during shifts, ensuring excellent customer service and efficient operations',
+            'Implemented training sessions for new staff, focusing on customer service skills and company policies'
+        ]
     }
 ];
 
