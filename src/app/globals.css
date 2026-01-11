@@ -450,6 +450,49 @@ body {
     animation: radarFill 0.8s ease-out forwards;
     opacity: 0;
   }
+
+  /* Modal animations */
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modalSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .animate-modal-backdrop {
+    animation: modalFadeIn 0.2s ease-out forwards;
+  }
+
+  .animate-modal-content {
+    animation: modalSlideUp 0.3s ease-out forwards;
+  }
+
+  /* Typing indicator animation */
+  @keyframes typingBounce {
+    0%, 60%, 100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .animate-typing-dot {
+    animation: typingBounce 1.4s ease-in-out infinite;
+  }
 }
 
 /* Respect user's OS-level reduced motion preference */
