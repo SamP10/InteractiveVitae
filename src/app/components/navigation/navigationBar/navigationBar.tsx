@@ -14,7 +14,7 @@ export default function NavigationBar() {
             { label: 'HOME', href: '/' },
             { label: 'PROJECTS', href: '/projects' },
             { label: 'EXPERIENCE', href: '/experience' },
-            { label: 'BLOG', href: '#' }
+            { label: 'BLOG', href: '/blog' }
         ],
         []
     );
