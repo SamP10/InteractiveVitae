@@ -16,6 +16,10 @@ export const ANIMATION_TIMING = {
             initial: 2.7, // Slightly after content starts
             subsequent: 0.1,
         },
+        blogCards: {
+            initial: 2.7, // Same timing as project cards
+            subsequent: 0.1,
+        },
         timelineItems: {
             initial: 2.7, // After header animation
             subsequent: 0.1,
@@ -167,5 +171,17 @@ export function getWorkTogetherTiming(isInitialLoad: boolean) {
         baseDelay: isInitialLoad
             ? ANIMATION_TIMING.delays.workTogether.initial
             : ANIMATION_TIMING.delays.workTogether.subsequent,
+    };
+}
+
+// Helper to get blog card timing based on initial load state
+export function getBlogCardTiming(isInitialLoad: boolean) {
+    return {
+        baseDelay: isInitialLoad
+            ? ANIMATION_TIMING.delays.blogCards.initial
+            : ANIMATION_TIMING.delays.blogCards.subsequent,
+        stagger: isInitialLoad
+            ? ANIMATION_TIMING.stagger.cards.initial
+            : ANIMATION_TIMING.stagger.cards.subsequent,
     };
 }
