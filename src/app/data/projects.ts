@@ -11,6 +11,8 @@ export interface IProject {
         end: string | null;
     };
     featured?: boolean;
+    image?: string;
+    hoverImage?: string;
 }
 
 export const projects: IProject[] = [
@@ -31,7 +33,9 @@ export const projects: IProject[] = [
         languages: [SKILLS.SWIFT],
         dates: {start: '2024', end: '2024'},
         githubUrl: 'https://github.com/SamP10/PokemonCardSim',
-        featured: true
+        featured: true,
+        image: '/images/Projects/PokemonCardSimLogo.png',
+        hoverImage: '/images/Projects/pokemonCardSim.gif'
     },
     {
         id: 3,
@@ -40,7 +44,8 @@ export const projects: IProject[] = [
         languages: [SKILLS.PHP, SKILLS.LARAVEL],
         dates: {start: '2021', end: '2021'},
         githubUrl: 'https://github.com/SamP10/Greensoft',
-        featured: true
+        featured: true,
+        image: '/images/Projects/GreensoftLogo.png',
     },
         {
         id: 4,
@@ -56,7 +61,8 @@ export const projects: IProject[] = [
         description: 'A console based blackjack game developed in C# as part of my C# online Microsoft Qualification.',
         languages: [SKILLS.CSHARP],
         dates: {start: '2023', end: '2023'},
-        githubUrl: 'https://github.com/SamP10/BlackJackCSharpProject'
+        githubUrl: 'https://github.com/SamP10/BlackJackCSharpProject',
+        image: '/images/Projects/CSharpBlackjackLogo.png',
     },
     {
         id: 6,
@@ -64,7 +70,8 @@ export const projects: IProject[] = [
         description: 'A Vulnerable DOCKER for containerizing a university business, demonstrating a known CVE in Dockerfiles. Completed as part of my university dissertation.',
         languages: [SKILLS.DOCKER],
         dates: {start: '2021', end: '2021'},
-        githubUrl: 'https://github.com/SamP10/VulnerableDockerfile'
+        githubUrl: 'https://github.com/SamP10/VulnerableDockerfile',
+        image: '/images/Projects/VulnerableDockerfileLogo.png',
     },
     {
         id: 7,
@@ -72,18 +79,12 @@ export const projects: IProject[] = [
         description: 'A Neo4j graph outlining aspects of a university business structure. Outlining vulnerabilities and possible attack vectors. Completed as part of my university dissertation.',
         languages: [SKILLS.NEO4J, SKILLS.CYPHER],
         dates: {start: '2021', end: '2021'},
-        githubUrl: 'https://github.com/SamP10/UniCypherGraph'
+        githubUrl: 'https://github.com/SamP10/UniCypherGraph',
+        image: '/images/Projects/GreendaleUniversityCypher.png',
+        hoverImage: '/images/Projects/GreendaleUniversityCypher.gif'
     },
     {
         id: 8,
-        name: 'DSALabs',
-        description: 'Data Structure and Algorithms labs - Manchester Met 2021',
-        languages: [SKILLS.CSHARP],
-        dates: {start: '2021', end: '2022'},
-        githubUrl: 'https://github.com/SamP10/DSALabs'
-    },
-    {
-        id: 9,
         name: 'BetDocker',
         description:
             'A Docker and docker compose orchestration to setup a gambling system and website using Laravel. Fitted with vulnerabilites such as a misconfigured SSH server and a FTP server. Completed as part of my university dissertation.',
@@ -92,20 +93,23 @@ export const projects: IProject[] = [
         githubUrl: 'https://github.com/SamP10/BetDocker'
     },
     {
-        id: 10,
+        id: 9,
         name: '24.7Cypher',
         description: 'A Neo4j graph database and Cypher queries to simulate a 24/7 Gambling website business. Outlining possible attack vectors within the system and exploitable vectors through social engineering. Completed as part of my university dissertation.',
         languages: [SKILLS.NEO4J, SKILLS.CYPHER],
         dates: {start: '2021', end: '2021'},
-        githubUrl: 'https://github.com/SamP10/24.7Cypher'
+        githubUrl: 'https://github.com/SamP10/24.7Cypher',
+        image: '/images/Projects/247BetCypher.png',
+        hoverImage: '/images/Projects/247BetCypher.gif'
     },
     {
-        id: 11,
+        id: 10,
         name: 'LaravelBet',
         description: 'A Laravel online betting application. Completed as part of my university dissertation.',
         languages: [SKILLS.PHP, SKILLS.LARAVEL],
         dates: {start: '2021', end: '2021'},
-        githubUrl: 'https://github.com/SamP10/LaravelBet'
+        githubUrl: 'https://github.com/SamP10/LaravelBet',
+        image: '/images/Projects/247BetLogo.png'
     },
     {
         id: 12,
@@ -113,6 +117,7 @@ export const projects: IProject[] = [
         description: 'A vulnerable website built for a university. Demonstrates common vulnerabilities such as SQL injection and XSS. Completed as part of my university dissertation.',
         languages: [SKILLS.JS, SKILLS.HTML, SKILLS.CSS, SKILLS.BOOTSTRAP],
         dates: {start: '2021', end: '2021'},
-        githubUrl: 'https://github.com/SamP10/UniVulnerableWebsite'
+        githubUrl: 'https://github.com/SamP10/UniVulnerableWebsite',
+        image: '/images/Projects/GreendaleUniversityLogo.png',
     }
 ];
