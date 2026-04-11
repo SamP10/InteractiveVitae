@@ -104,12 +104,12 @@ export const experienceData: ITimelineEntry[] = [
         {
         id: 6,
         category: 'work',
-        title: 'Software Engineer',
+        title: 'Senior Software Engineer',
         subtitle: 'Certinia',
         dateStart: '2022',
         dateEnd: null,
         summary:
-            'Detail-oriented software engineer driving complex projects with focus on AI features, developer productivity, and customer satisfaction.',
+            'Senior Software Engineer driving complex projects with focus on AI features, developer productivity, and customer satisfaction.',
         achievements: [
             'Played an integral role in achieving team objectives by completing over 500 user stories and 100+ Epics, consistently delivering high-quality features',
             'Spearheaded the development of key AI features for a CPQ product, resulting in a 10% increase in customer deals moving from prospect to adoption',

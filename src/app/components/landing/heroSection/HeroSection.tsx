@@ -8,7 +8,7 @@ export default function HeroSection() {
     const { baseDelay, textStagger, ctaStagger } = getHeroTiming(isInitialLoad);
 
     const headlineWords = ['SAM', 'PLANT'];
-    const tagline = 'Software Engineer';
+    const tagline = 'Senior Software Engineer';
     const valueProposition =
         'Helping Software Companies innovate during times of constant change.';
 
