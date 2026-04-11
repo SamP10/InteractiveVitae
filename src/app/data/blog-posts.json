@@ -32,53 +32,53 @@
             ],
             "readTimeMinutes": 6,
             "featured": true
-        },
-        {
-            "id": 3,
-            "slug": "designing-accessible-web-animations",
-            "title": "Designing Accessible Web Animations: Best Practices",
-            "excerpt": "Web animations can enhance user experience, but they must be designed with accessibility in mind. Here are best practices to ensure your animations are inclusive.",
-            "content": "## Building Bangalore
-
-In the Summer of 2025, Certinia announced that it was starting a new initiative to setup a new office over in Bangalore. This meant we would no longer need a hire third-party offshore teams in India, instead we would recruit and manage our own office. Giving more control over our developers and the standard way of doing things.
-
-### The \"No impact to existing teams\" Fallacy
-
-Thus was born the initiative to train 10-13 teams of developers, Product Managers and User Experience personnel in Bangalore, a thriving and booming Tech hub in the heart of south India. Whilst this venture was aimed to bolster our development lifecycle a sense of unease did settle amongst the existing teams. A question that was raised was to the level of effort required to do such a large-scale project, to which was deflected and deferred by Executive team. However, on the ground, the level of effort was massive. Between interviews and technical tests carried out by team members was larger than management made it out to be. Classic.
-
-## From Harrogate to Bangalore
-
-After 2 months of work, we finally built the first team within Certinia's plans for Bangalore, B1.
-
-During my 3 years at Certinia I had recently moved across to a new team to one of our products. This gave me strong leadership and collaboration skills, making me a strong candidate to assist on leading B1 strong into the upcoming release.
-
-I was told that I was expected to make a trip across to Bangalore within the next 3 weeks. A feeling of excitement and apprehension ran through me, this was to be the furthest I had ever travelled. 
-
-Visa approved and passport renewed, I arrived early November in Bangalore. Excited for my a once in a lifetime 2 week trip, experiencing food, culture, and hard work.
-
-## B1 and back again
-
-I am unable to adequately describe the culture shocks one has coming from the UK to India. Once you arrive at the airport between the sounds of hustle and hot humid heat of South India, the trip to the hotel seems trivial, little did I expect the treat I was in for.
-
-Nothing could prepare me for the experience of a Taxi ride in India. Lanes in Bangalore are treated as advisory, between the constant honking of car horns and toxic smell of petrol, it was safe to say that roads in India are a beast into themselves.
-
-Having arrived jet lagged at the hotel we checked in to the Adarsh Hamilton. Service was superb and welcoming, even being presented a free drink upon check-in. I consumed a exquisite  butter chicken curry and drifted off to sleep, dreaming of the next two weeks ahead.
-
-### First impressions
-
-I set off early the next day to the office, crossing the roads and taking my life into my own hands in doing so. Upon arrival I greeted the Director and other senior members of the Bangalore office before going and introducing myself to the team.
-
-First impressions of my team was fantastic, the office was buzzing with excitement. We discussed the format of work and how meetings run. The level of effort on my part was huge, I was leading every aspect of the team, from both Engineering, Product Management and UX. This was a interesting and challenging time, the first few days were spent refining meetings, the objectives and building the bases of knowledge.
-
-After a 5 day working week (3 of which I was in the office and not travelling for) it was clear I had the work cut out for me. The first week was a right off. But the hospitality of the Indian people meant I had plans for the weekend.
-",
-            "author": "Sam Plant",
-            "publishedAt": "2024-12-20",
-            "tags": [
-                { "id": 7, "name": "Accessibility", "slug": "accessibility", "color": "#2563EB" },
-                { "id": 8, "name": "Web Dev", "slug": "web-dev", "color": "#0F766E" }
-            ]
         }
+//         {
+//             "id": 3,
+//             "slug": "designing-accessible-web-animations",
+//             "title": "Designing Accessible Web Animations: Best Practices",
+//             "excerpt": "Web animations can enhance user experience, but they must be designed with accessibility in mind. Here are best practices to ensure your animations are inclusive.",
+//             "content": "## Building Bangalore
+
+// In the Summer of 2025, Certinia announced that it was starting a new initiative to setup a new office over in Bangalore. This meant we would no longer need a hire third-party offshore teams in India, instead we would recruit and manage our own office. Giving more control over our developers and the standard way of doing things.
+
+// ### The \"No impact to existing teams\" Fallacy
+
+// Thus was born the initiative to train 10-13 teams of developers, Product Managers and User Experience personnel in Bangalore, a thriving and booming Tech hub in the heart of south India. Whilst this venture was aimed to bolster our development lifecycle a sense of unease did settle amongst the existing teams. A question that was raised was to the level of effort required to do such a large-scale project, to which was deflected and deferred by Executive team. However, on the ground, the level of effort was massive. Between interviews and technical tests carried out by team members was larger than management made it out to be. Classic.
+
+// ## From Harrogate to Bangalore
+
+// After 2 months of work, we finally built the first team within Certinia's plans for Bangalore, B1.
+
+// During my 3 years at Certinia I had recently moved across to a new team to one of our products. This gave me strong leadership and collaboration skills, making me a strong candidate to assist on leading B1 strong into the upcoming release.
+
+// I was told that I was expected to make a trip across to Bangalore within the next 3 weeks. A feeling of excitement and apprehension ran through me, this was to be the furthest I had ever travelled. 
+
+// Visa approved and passport renewed, I arrived early November in Bangalore. Excited for my a once in a lifetime 2 week trip, experiencing food, culture, and hard work.
+
+// ## B1 and back again
+
+// I am unable to adequately describe the culture shocks one has coming from the UK to India. Once you arrive at the airport between the sounds of hustle and hot humid heat of South India, the trip to the hotel seems trivial, little did I expect the treat I was in for.
+
+// Nothing could prepare me for the experience of a Taxi ride in India. Lanes in Bangalore are treated as advisory, between the constant honking of car horns and toxic smell of petrol, it was safe to say that roads in India are a beast into themselves.
+
+// Having arrived jet lagged at the hotel we checked in to the Adarsh Hamilton. Service was superb and welcoming, even being presented a free drink upon check-in. I consumed a exquisite  butter chicken curry and drifted off to sleep, dreaming of the next two weeks ahead.
+
+// ### First impressions
+
+// I set off early the next day to the office, crossing the roads and taking my life into my own hands in doing so. Upon arrival I greeted the Director and other senior members of the Bangalore office before going and introducing myself to the team.
+
+// First impressions of my team was fantastic, the office was buzzing with excitement. We discussed the format of work and how meetings run. The level of effort on my part was huge, I was leading every aspect of the team, from both Engineering, Product Management and UX. This was a interesting and challenging time, the first few days were spent refining meetings, the objectives and building the bases of knowledge.
+
+// After a 5 day working week (3 of which I was in the office and not travelling for) it was clear I had the work cut out for me. The first week was a right off. But the hospitality of the Indian people meant I had plans for the weekend.
+// ",
+//             "author": "Sam Plant",
+//             "publishedAt": "2024-12-20",
+//             "tags": [
+//                 { "id": 7, "name": "Accessibility", "slug": "accessibility", "color": "#2563EB" },
+//                 { "id": 8, "name": "Web Dev", "slug": "web-dev", "color": "#0F766E" }
+//             ]
+//         }
     ],
     "nextId": 3
 }
