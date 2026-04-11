@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import TagBadge from './TagBadge';
 import ReadTimeIndicator from './ReadTimeIndicator';
-import type { IBlogPost } from '@/app/data/blog';
+import type { IBlogPost } from '@/app/data/blog-types';
 import { useInitialLoad } from '@/app/context/InitialLoadContext';
 import { getCardTiming } from '@/app/constants/animations';
 

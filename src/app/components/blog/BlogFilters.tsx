@@ -1,6 +1,6 @@
 'use client';
 
-import { ITag } from '@/app/data/blog';
+import { ITag } from '@/app/data/blog-types';
 
 export type SortOption = 'newest' | 'oldest' | 'popular';
 
