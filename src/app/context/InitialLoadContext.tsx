@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useLayoutEffect, ReactNode } from 'react';
 
 const STORAGE_KEY = 'nav-animated';
 
@@ -11,15 +11,14 @@ interface InitialLoadContextType {
 const InitialLoadContext = createContext<InitialLoadContextType>({ isInitialLoad: true });
 
 export function InitialLoadProvider({ children }: { children: ReactNode }) {
-    const [isInitialLoad, setIsInitialLoad] = useState(true);
+    const [isInitialLoad, setIsInitialLoad] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const hasAnimated = sessionStorage.getItem(STORAGE_KEY);
 
-        if (hasAnimated) {
-            setIsInitialLoad(false);
-        } else {
+        if (!hasAnimated) {
             sessionStorage.setItem(STORAGE_KEY, 'true');
+            setIsInitialLoad(true);
         }
     }, []);
 

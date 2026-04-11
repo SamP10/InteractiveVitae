@@ -15,17 +15,17 @@ export default function CallingCard({ isInitialLoad }: CallingCardProps) {
             <div className="flex flex-col max-w-full max-h-full mt-6 ml-6 pr-6">
                 <u className={`text-moss`}>
                     <h1
-                        className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.title} text-cream ${isInitialLoad ? 'animate-slide-in-right-0_8Second opacity-0' : ''}`}>
+                        className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.title} text-cream ${isInitialLoad ? 'animate-slide-in-right-0_8Second' : ''}`}>
                         SAM
                     </h1>
                     <h1
-                        className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.title} leading-none text-cream ${isInitialLoad ? 'animate-slide-in-right-0_8Second-with_0_12s-delay opacity-0' : ''}`}>
+                        className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.title} leading-none text-cream ${isInitialLoad ? 'animate-slide-in-right-0_8Second-with_0_12s-delay' : ''}`}>
                         PLANT
                     </h1>
                 </u>
                 <h2
-                    className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.subtitle} leading-none text-cream mt-2 ${isInitialLoad ? 'animate-slide-in-right-0_8Second-with_0_17s-delay opacity-0' : ''}`}>
-                    Software Engineer
+                    className={`${TYPOGRAPHY.fontFamilies.youngSerif} ${SPACING.textSize.subtitle} leading-none text-cream mt-2 ${isInitialLoad ? 'animate-slide-in-right-0_8Second-with_0_17s-delay' : ''}`}>
+                    Senior Software Engineer
                 </h2>
             </div>
         </div>

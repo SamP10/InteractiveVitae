@@ -140,13 +140,13 @@ body {
     animation: slideOutFromRight 0.7s ease-out forwards;
   }
   .animate-slide-in-right-0_8Second{
-    animation: slideInFromRight 0.8s ease-out forwards;
+    animation: slideInFromRight 0.8s ease-out both;
   }
   .animate-slide-in-right-0_8Second-with_0_12s-delay {
-    animation: slideInFromRight 0.8s ease-out 0.12s forwards;
+    animation: slideInFromRight 0.8s ease-out 0.12s both;
   }
   .animate-slide-in-right-0_8Second-with_0_17s-delay {
-    animation: slideInFromRight 0.8s ease-out 0.24s forwards;
+    animation: slideInFromRight 0.8s ease-out 0.24s both;
   }
 
   /* Navigation underline and pop-up animations */
