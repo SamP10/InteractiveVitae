@@ -51,18 +51,20 @@ src/app/
 
 - Tailwind CSS with custom theme colors defined as CSS variables in `globals.css`
 - Custom colors: cream, moss, pine, lily-pad, darkPine
-- Do not use Tailwind opacity modifiers (e.g., `text-pine/70`) with custom colors - they don't work with CSS variables
+- Do not use Tailwind opacity modifiers (e.g. `text-pine/70`) with custom colors — they don't work with CSS variables
 - Custom fonts: Young Serif, Notable, Limelight
 - Dark mode via `prefers-color-scheme` media query
 
 ### Component Patterns
 
-- Client components use `"use client"` directive
+- Client components use `"use client"` directive — only add it when needed (hooks, event handlers, browser APIs)
+- Prefer async server components for data fetching; extract interactive parts into child client components
 - React hooks for state (no external state management)
-- Feature-based folder organization
+- Feature-based folder organization — group related components, types, and constants together
 - Test files co-located as `*.test.tsx`
 
 ## Code Style
 
-- Prettier: 4-space tabs, 100-char width, single quotes, no trailing commas
-- JSX brackets on same line as props
+- Prettier: 4-space tabs, 100-char width, single quotes, no trailing commas, JSX brackets on same line
+- Run `npm run format` before committing if you've touched many files
+- No `console.log` left in production code
