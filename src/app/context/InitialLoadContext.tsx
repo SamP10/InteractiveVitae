@@ -11,14 +11,16 @@ interface InitialLoadContextType {
 const InitialLoadContext = createContext<InitialLoadContextType>({ isInitialLoad: true });
 
 export function InitialLoadProvider({ children }: { children: ReactNode }) {
-    const [isInitialLoad, setIsInitialLoad] = useState(false);
+    const [isInitialLoad, setIsInitialLoad] = useState(true);
 
     useLayoutEffect(() => {
-        const hasAnimated = sessionStorage.getItem(STORAGE_KEY);
-
-        if (!hasAnimated) {
-            sessionStorage.setItem(STORAGE_KEY, 'true');
-            setIsInitialLoad(true);
+        if (document.documentElement.hasAttribute('data-skip-animations')) {
+            setIsInitialLoad(false);
+        } else {
+            // Flip to false once all first-load animations have completed.
+            // Longest initial delay is workTogether at 3.4s + ~0.8s animation = ~4.2s.
+            const timer = setTimeout(() => setIsInitialLoad(false), 4500);
+            return () => clearTimeout(timer);
         }
     }, []);
 
