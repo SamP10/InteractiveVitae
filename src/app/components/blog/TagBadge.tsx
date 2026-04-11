@@ -1,4 +1,4 @@
-import type { ITag } from '@/app/data/blog';
+import type { ITag } from '@/app/data/blog-types';
 
 interface TagBadgeProps {
     tag: ITag;

@@ -1,6 +1,6 @@
 'use client';
 
-import { REACTIONS, ReactionType } from '@/app/data/blog';
+import { REACTIONS, ReactionType } from '@/app/data/blog-types';
 import { useReactions } from './hooks/useReactions';
 
 interface ReactionBarProps {

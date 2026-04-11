@@ -1,7 +1,7 @@
 'use client';
 
 import BlogCard from './BlogCard';
-import type { IBlogPost } from '@/app/data/blog';
+import type { IBlogPost } from '@/app/data/blog-types';
 
 interface BlogGridProps {
     posts: IBlogPost[];

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { ReactionType, REACTIONS } from '@/app/data/blog';
+import { ReactionType, REACTIONS } from '@/app/data/blog-types';
 
 const STORAGE_KEY_PREFIX = 'blog-reactions-';
 
