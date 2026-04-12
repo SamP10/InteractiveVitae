@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useLayoutEffect, ReactNode } from 'react';
 
 const STORAGE_KEY = 'nav-animated';
 
@@ -13,13 +13,14 @@ const InitialLoadContext = createContext<InitialLoadContextType>({ isInitialLoad
 export function InitialLoadProvider({ children }: { children: ReactNode }) {
     const [isInitialLoad, setIsInitialLoad] = useState(true);
 
-    useEffect(() => {
-        const hasAnimated = sessionStorage.getItem(STORAGE_KEY);
-
-        if (hasAnimated) {
+    useLayoutEffect(() => {
+        if (document.documentElement.hasAttribute('data-skip-animations')) {
             setIsInitialLoad(false);
         } else {
-            sessionStorage.setItem(STORAGE_KEY, 'true');
+            // Flip to false once all first-load animations have completed.
+            // Longest initial delay is workTogether at 3.4s + ~0.8s animation = ~4.2s.
+            const timer = setTimeout(() => setIsInitialLoad(false), 4500);
+            return () => clearTimeout(timer);
         }
     }, []);
 

@@ -33,7 +33,7 @@ export default function NavigationBar() {
                     return (
                         <span key={item.label} className="inline-flex flex-col items-center relative">
                             <Link
-                                className={`text-cream text-sm md:text-md lg:text-lg ${isInitialLoad ? 'animate-nav-pop-up' : ''}`}
+                                className={`text-cream text-sm md:text-md lg:text-lg first-load-hidden ${isInitialLoad ? 'animate-nav-pop-up' : ''}`}
                                 href={item.href}
                                 style={isInitialLoad ? { animationDelay: `${textDelay}s` } : undefined}>
                                 {item.label}

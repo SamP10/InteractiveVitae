@@ -121,6 +121,15 @@ body {
 }
 
 @layer animations {
+  /* On repeat visits, immediately cancel all load animations before first paint.
+     The inline script in layout.tsx sets data-skip-animations on <html> when
+     sessionStorage shows the user has visited before. This overrides animation
+     classes that the server always renders (isInitialLoad=true default). */
+  html[data-skip-animations] .first-load-hidden {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+
   /* Slide in animations */
   .animate-slide-in-right-rotate-1_5Second-with_0_8s-delay {
     animation: slideInFromRightRotate 1.5s ease-out 0.8s forwards;
@@ -140,13 +149,13 @@ body {
     animation: slideOutFromRight 0.7s ease-out forwards;
   }
   .animate-slide-in-right-0_8Second{
-    animation: slideInFromRight 0.8s ease-out forwards;
+    animation: slideInFromRight 0.8s ease-out both;
   }
   .animate-slide-in-right-0_8Second-with_0_12s-delay {
-    animation: slideInFromRight 0.8s ease-out 0.12s forwards;
+    animation: slideInFromRight 0.8s ease-out 0.12s both;
   }
   .animate-slide-in-right-0_8Second-with_0_17s-delay {
-    animation: slideInFromRight 0.8s ease-out 0.24s forwards;
+    animation: slideInFromRight 0.8s ease-out 0.24s both;
   }
 
   /* Navigation underline and pop-up animations */
