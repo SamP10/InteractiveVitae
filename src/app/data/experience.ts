@@ -25,13 +25,14 @@ export const experienceData: ITimelineEntry[] = [
         dateStart: '2024',
         dateEnd: null,
         summary:
-            'A React interactive CV utilizing Matter JS physics engine with plans to deploy a Llama 3 model for interactive Q&A.',
+            'A Next.js interactive CV with physics-based animations, a virtual AI assistant, and a blog — built iteratively over time with Claude Code introduced in the later stages of development.',
         achievements: [
-            'Designed a React interactive CV with physics-based animations',
-            'Utilizing Matter JS physics engine to generate animations',
-            'Planning to deploy a Llama 3 model with persona of my experiences for interactive questions'
+            'Designed a React interactive CV with physics-based animations using Matter.js',
+            'Built a virtual AI assistant powered by the Claude API, allowing visitors to ask questions in my persona',
+            'Developed a blog system with tag filtering and reaction tracking',
+            'Introduced Claude Code in the later stages of the project to accelerate feature development and explore agentic workflows in a real codebase'
         ],
-        technologies: [SKILLS.REACT, SKILLS.NEXTJS, SKILLS.TYPESCRIPT, SKILLS.TAILWIND, SKILLS.MATTERJS],
+        technologies: [SKILLS.REACT, SKILLS.NEXTJS, SKILLS.TYPESCRIPT, SKILLS.TAILWIND, SKILLS.MATTERJS, SKILLS.CLAUDE_CODE],
         link: 'https://github.com/SamP10',
         featured: true
     },
@@ -118,9 +119,12 @@ export const experienceData: ITimelineEntry[] = [
             'Developed internal tools using TypeScript, distributed across products, increasing developer productivity by 5% and improving milestone completion time by 7%',
             'Mentored graduate engineers, supporting their learning and skill development through regular meetings and pair programming',
             'Applied software design principles and design patterns to create reusable, efficient code, leading to a 23% reduction in code execution time',
-            'Practiced test driven development'
+            'Practiced test driven development',
+            'Led adoption of agentic development with Claude Code across the engineering organisation, establishing processes and best practices to embed AI-assisted workflows into day-to-day engineering',
+            'Ran internal workshops to upskill engineers on Claude Code, covering agentic workflows, prompt engineering, and effective use of AI tools in a professional codebase',
+            'Created structure and documentation to standardise how teams leverage Claude Code, driving measurable improvements in developer velocity'
         ],
-        technologies: [SKILLS.TYPESCRIPT, SKILLS.SALESFORCE, SKILLS.APEX, SKILLS.LWC, SKILLS.REST_APIS],
+        technologies: [SKILLS.APEX, SKILLS.TYPESCRIPT, SKILLS.LWC, SKILLS.SALESFORCE, SKILLS.REST_APIS, SKILLS.NODEJS, SKILLS.JEST, SKILLS.CLAUDE_CODE],
         featured: true
     },
     {

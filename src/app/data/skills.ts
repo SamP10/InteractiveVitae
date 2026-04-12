@@ -35,8 +35,10 @@ export const SKILLS: { [key: string]: ISkill } = {
     KERAS: { id: 122, name: 'Keras', color: '#D00000' },
     PANDAS: { id: 123, name: 'Pandas', color: '#150458' },
     MATTERJS: { id: 124, name: 'Matter.js', color: '#4B5563' },
+    JEST: { id: 125, name: 'Jest', color: '#C21325' },
 
     // Platforms & Tools
+    CLAUDE_CODE: { id: 200, name: 'Claude Code', color: '#D97757' },
     SALESFORCE: { id: 201, name: 'Salesforce', color: '#00A1E0' },
     LWC: { id: 202, name: 'LWC', color: '#00A1E0' },
     REST_APIS: { id: 203, name: 'REST APIs', color: '#6B7280' },
